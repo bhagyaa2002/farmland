@@ -7,6 +7,7 @@ import { AiFillLock } from "react-icons/ai";
 import { MdLocationPin } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
 import fpng from "../../assets/image/fpng.png";
+import { FiAlertCircle } from "react-icons/fi";
 import {
   Container,
   Input,
@@ -140,16 +141,16 @@ export default function Signup() {
 
   const validate = (values) => {
     const errors = {};
-    // const regex = /^\d{10}$/;
+   const regex = /^\d{10}$/;
     if (!values.user_name) {
       errors.user_name = "Username is required!";
     }
     // if (!values.phoneNo) {
     //   errors.password = "Usernam/PhoneNo is required";
     // }
-    // else if (!regex.test(values.phoneNo)) {
-    //   errors.phoneNo = "This is not a valid phoneNo!";
-    // }
+    if (!regex.test(values.phoneNo)) {
+      errors.phoneNo = "This is not a valid phoneNo!";
+    }
     if (!values.password) {
       errors.password = "Password is required";
     } else if (values.password.length < 4) {
@@ -238,7 +239,7 @@ export default function Signup() {
         </div>
 
         <div className="forms-container">
-          <div className="signin-signup">
+          <div className="signin-signup1">
             <form
               action="/signup"
               method="POST"
@@ -283,6 +284,7 @@ export default function Signup() {
                   Market owner
                 </label>
               </div>
+              
               <div className="input-field">
                 <div className="icon">
                   <FaUserAlt size={16} />
@@ -296,20 +298,17 @@ export default function Signup() {
                 />
               </div>
               {formValues.user_name.length === 0 && formErrors.user_name ? (
-                <Alert
-                sx={{
-                  width: "380px",
-                  borderRadius: "55px",
-                  marginBottom: "20px",
-                }}
-                severity="error"
-              >
-               <p>{formErrors.user_name}</p>
-              </Alert>
+                <>
+                <div className="error-container">
+                  <FiAlertCircle size={16} color="red"/>
+                  <p className="error-message">{formErrors.user_name}</p>
+                </div>
+              </>
                 
               ) : (
                 ""
               )}
+              
               <div className="input-field">
                 <div className="icon">
                   <MdEmail size={19} />
@@ -323,16 +322,12 @@ export default function Signup() {
                 />
               </div>
               {formValues.email.length === 0 && formErrors.email ? (
-                <Alert
-                sx={{
-                  width: "380px",
-                  borderRadius: "55px",
-                  marginBottom: "20px",
-                }}
-                severity="error"
-              >
-               <p>{formErrors.email}</p>
-              </Alert>): ""}
+                 <>
+                 <div className="error-container1">
+                   <FiAlertCircle size={16} color="red"/>
+                   <p className="error-message">{formErrors.email}</p>
+                 </div>
+               </>): ""}
               <div className="input-field">
                 <div className="icon">
                   <BsFillTelephoneFill size={16} />
@@ -346,16 +341,13 @@ export default function Signup() {
                 />
               </div>
               {formValues.phoneNo.length === 0 && formErrors.phoneNo? (
-                <Alert
-                sx={{
-                  width: "380px",
-                  borderRadius: "55px",
-                  marginBottom: "20px",
-                }}
-                severity="error"
-              >
-               <p>{formErrors.phoneNo}</p>
-              </Alert>
+                <>
+                <div className="error-container2">
+                  <FiAlertCircle size={16} color="red"/>
+                  <p className="error-message">{formErrors.phoneNo}</p>
+                </div>
+              </>
+               
               ) : (
                 ""
               )}
@@ -386,16 +378,12 @@ export default function Signup() {
                 />
               </div>
               {formValues.password.length === 0  && formErrors.password? (
-                <Alert
-                sx={{
-                  width: "380px",
-                  borderRadius: "55px",
-                  marginBottom: "20px",
-                }}
-                severity="error"
-              >
-               <p>{formErrors.password}</p>
-              </Alert>
+                <>
+                <div className="error-container3">
+                  <FiAlertCircle size={16} color="red"/>
+                  <p className="error-message">{formErrors.password}</p>
+                </div>
+              </>
               ) : (
                 ""
               )}
@@ -411,8 +399,13 @@ export default function Signup() {
                   onChange={handleChange}
                 />
               </div>
-              {formValues.city.length === 0 ? (
-                <p id="insertinputs">{formErrors.city}</p>
+              {formValues.city.length === 0 && formErrors.city? (
+                <>
+                <div className="error-container4">
+                  <FiAlertCircle size={16} color="red"/>
+                  <p className="error-message">{formErrors.city}</p>
+                </div>
+              </>
               ) : (
                 ""
               )}
@@ -461,7 +454,12 @@ export default function Signup() {
                   )}
                 </>
               </div>
-              {value.length === 0 ? <p>{formErrors.location}</p> : ""}
+              {value.length === 0 && formErrors.location ? (<>
+                <div className="error-container5">
+                  <FiAlertCircle size={16} color="red"/>
+                  <p className="error-message">{ formErrors.location}</p>
+                </div>
+              </> ): ""}
 
               <input
                 type="submit"

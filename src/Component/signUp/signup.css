@@ -15,6 +15,48 @@ input {
 input[type="radio"] {
   accent-color: #2f7b46;
 }
+.error-container {
+  display: flex;
+  align-items: center;
+  margin-right: 200px;
+  
+}
+.error-container1 {
+  display: flex;
+  align-items: center;
+  margin-right: 225px;
+  
+}
+.error-container2 {
+  display: flex;
+  align-items: center;
+  margin-right: 165px;
+  
+}
+.error-container3 {
+  display: flex;
+  align-items: center;
+  margin-right: 210px;
+  
+}
+.error-container4 {
+  display: flex;
+  align-items: center;
+  margin-right: 240px;
+  
+}
+.error-container5 {
+  display: flex;
+  align-items: center;
+  margin-right: 235px;
+  
+}
+
+.error-message {
+  font-size: small;
+  color: #f04337;
+  margin-left: 5px;
+}
 
 .container {
   width: 100%;
@@ -46,9 +88,9 @@ input[type="radio"] {
   left: 0;
 }
 
-.signin-signup {
+.signin-signup1 {
   position: absolute;
-  top: 50%;
+  top: 52%;
   transform: translate(-50%, -50%);
   left: 75%;
   width: 50%;
