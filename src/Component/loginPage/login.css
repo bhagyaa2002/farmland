@@ -15,6 +15,25 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #f0f0f0 inset !important;
   -webkit-border-radius: 55px;
 }
+.input-field {
+  input::placeholder {
+    font-weight: bold; 
+  }
+}
+
+.custom-input::placeholder,
+.custom-input::-webkit-input-placeholder,
+.custom-input::-moz-placeholder,
+.custom-input:-ms-input-placeholder,
+.custom-input:-moz-placeholder,
+.MuiInputBase-input[type="password"]::placeholder,
+.MuiInputBase-input[type="password"]::-webkit-input-placeholder,
+.MuiInputBase-input[type="password"]::-moz-placeholder,
+.MuiInputBase-input[type="password"]:-ms-input-placeholder,
+.MuiInputBase-input[type="password"]:-moz-placeholder {
+  font-weight: bold; /* Adjust to the desired thickness */
+}
+
 
 body,
 input {

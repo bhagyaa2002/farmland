@@ -22,6 +22,15 @@ input[type="radio"] {
   min-height: 100vh;
   overflow: hidden;
 }
+.MuiAlert-root {
+  position: relative; /* Ensure Alert stays in place */
+  z-index: 10; /* Adjusted z-index to appear above other elements */
+}
+
+.form-container {
+  position: relative; /* Ensure form stays in place */
+  z-index: 5; /* Adjusted z-index for form below the Alert */
+}
 
 .icon {
   display: flex;

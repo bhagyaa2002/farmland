@@ -114,6 +114,8 @@ export default function Login() {
                     type={values.showPassword ? "text" : "password"}
                     onChange={handlePasswordChange("password")}
                     value={values.password}
+                    className="custom-input" 
+                    placeholder="Password"
                     disableUnderline
                     endAdornment={
                       <InputAdornment position="end">

@@ -48,6 +48,9 @@ export default function Signup() {
   const [selected, setSelected] = useState("Farmer");
   const [value, setValue] = useState("");
 
+  
+  const [isSelectVisible, setIsSelectVisible] = useState(false);
+
   const menuItems = [
     "Uttar Pradesh",
     "Karnataka",
@@ -55,6 +58,19 @@ export default function Signup() {
     "Kerala",
     "Gujarat",
   ];
+
+  const handleInputChange = (e) => {
+    setValue(e.target.value);
+    setIsSelectVisible(false);
+  };
+
+  const handleSelectChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  const handleInputClick = () => {
+    setIsSelectVisible(true);
+  };
 
   const [values, setValues] = React.useState({
     password: "",
@@ -199,7 +215,7 @@ export default function Signup() {
 
   return (
     <Container>
-      <div className="container">
+      <div className="container"  style={{ height: "100vh", overflowY: "auto" }}>
         <div className="panels-container">
           <div className="panel left-panel">
             <div className="content">
@@ -279,8 +295,18 @@ export default function Signup() {
                   onChange={handleChange}
                 />
               </div>
-              {formValues.user_name.length === 0 ? (
-                <p>{formErrors.user_name}</p>
+              {formValues.user_name.length === 0 && formErrors.user_name ? (
+                <Alert
+                sx={{
+                  width: "380px",
+                  borderRadius: "55px",
+                  marginBottom: "20px",
+                }}
+                severity="error"
+              >
+               <p>{formErrors.user_name}</p>
+              </Alert>
+                
               ) : (
                 ""
               )}
@@ -296,7 +322,17 @@ export default function Signup() {
                   onChange={handleChange}
                 />
               </div>
-              {formValues.email.length === 0 ? <p>{formErrors.email}</p> : ""}
+              {formValues.email.length === 0 && formErrors.email ? (
+                <Alert
+                sx={{
+                  width: "380px",
+                  borderRadius: "55px",
+                  marginBottom: "20px",
+                }}
+                severity="error"
+              >
+               <p>{formErrors.email}</p>
+              </Alert>): ""}
               <div className="input-field">
                 <div className="icon">
                   <BsFillTelephoneFill size={16} />
@@ -309,8 +345,17 @@ export default function Signup() {
                   onChange={handleChange}
                 />
               </div>
-              {formValues.phoneNo.length === 0 ? (
-                <p>{formErrors.phoneNo}</p>
+              {formValues.phoneNo.length === 0 && formErrors.phoneNo? (
+                <Alert
+                sx={{
+                  width: "380px",
+                  borderRadius: "55px",
+                  marginBottom: "20px",
+                }}
+                severity="error"
+              >
+               <p>{formErrors.phoneNo}</p>
+              </Alert>
               ) : (
                 ""
               )}
@@ -322,6 +367,7 @@ export default function Signup() {
                   type={values.showPassword ? "text" : "password"}
                   onChange={handlePasswordChange("password")}
                   value={values.password}
+                  placeholder="Password"
                   disableUnderline
                   endAdornment={
                     <InputAdornment position="end">
@@ -339,8 +385,17 @@ export default function Signup() {
                   }
                 />
               </div>
-              {formValues.password.length === 0 ? (
-                <p>{formErrors.password}</p>
+              {formValues.password.length === 0  && formErrors.password? (
+                <Alert
+                sx={{
+                  width: "380px",
+                  borderRadius: "55px",
+                  marginBottom: "20px",
+                }}
+                severity="error"
+              >
+               <p>{formErrors.password}</p>
+              </Alert>
               ) : (
                 ""
               )}
@@ -365,26 +420,46 @@ export default function Signup() {
                 <div className="icon">
                   <MdLocationPin size={19} />
                 </div>
-                <Select
-                  onChange={(e) => {
-                    setValue(e.target.value);
-                  }}
-                  className="select-box"
-                  variant="standard"
-                  value={value}
-                  disableUnderline
-                  sx={{ fontWeight: 600 }}
-                >
-                  {menuItems.map((val) => (
-                    <MenuItem
-                      value={val}
-                      className="select-box-option"
-                      sx={{ fontWeight: 600 }}
-                    >
-                      {val}
-                    </MenuItem>
-                  ))}
-                </Select>
+                <>
+                  {!isSelectVisible && (
+
+                      <input
+                        type="text"
+                        name="city"
+                        placeholder="Enter your state"
+                        onChange={handleInputChange}
+                        onClick={handleInputClick}
+                      />
+                  
+                  )}
+
+                  {isSelectVisible && (
+                   
+                      <Select
+                        onChange={handleSelectChange}
+                        className="select-box"
+                        name="state"
+                        variant="standard"
+                        value={value}
+                        placeholder="State"
+                        disableUnderline
+                        sx={{ fontWeight: 600 }}
+                      >
+                        
+                        {menuItems.map((val) => (
+                          <MenuItem
+                            key={val}
+                            value={val}
+                            className="select-box-option"
+                            sx={{ fontWeight: 600 }}
+                          >
+                            {val}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                   
+                  )}
+                </>
               </div>
               {value.length === 0 ? <p>{formErrors.location}</p> : ""}
 
