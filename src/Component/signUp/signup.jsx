@@ -113,6 +113,12 @@ export default function Signup() {
     if (Object.keys(formErrors).length === 0) {
       setIsSubmit(true);
     }
+    // if (formErrors.length === 0) {
+    //   setIsSubmit(true);
+    // }
+    // else{
+    //   setIsSubmit(false);
+    // }
     if (document.getElementById("shop")) {
       formValues.shop = document.getElementById("shop").value;
     } else if (selected === "Farmer") {
@@ -122,9 +128,10 @@ export default function Signup() {
     if (isSubmit) {
       try {
         const a = await signUp(formValues.email, formValues.password);
-        if (a != "success") {
+        if (a !== "success") {
           setErrorDisplay(true);
         } else {
+          <Alert severity="success">Signup Succesful</Alert>
           addUser(formValues);
           navigate("/CropInfo");
         }
@@ -149,14 +156,14 @@ export default function Signup() {
     //   errors.password = "Usernam/PhoneNo is required";
     // }
     if (!regex.test(values.phoneNo)) {
-      errors.phoneNo = "This is not a valid phoneNo!";
+      errors.phoneNo = "This is not a valid phone number!";
     }
     if (!values.password) {
-      errors.password = "Password is required";
+      errors.password = "Password is required!";
     } else if (values.password.length < 4) {
-      errors.password = "Password must be more than 4 characters";
+      errors.password = "Password must be more than 4 characters!";
     } else if (values.password.length > 10) {
-      errors.password = "Password cannot exceed more than 10 characters";
+      errors.password = "Password cannot exceed more than 10 characters!";
     }
     if (!values.city) {
       errors.city = "City is required!";
@@ -171,7 +178,7 @@ export default function Signup() {
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       )
     ) {
-      errors.email = "Email is not vaid";
+      errors.email = "Email is not valid!";
     }
 
     return errors;
