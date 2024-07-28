@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import Card from '../../Component/Card/Card'
-import CarouselList from '../../Component/Carousel/Carousel'
+import CarouselList from '../../Component/Carousel/CarouselFertilizer'
 import Nav from '../../Component/nav/Nav'
 import './Fertilizermarketstyle.scss'
 

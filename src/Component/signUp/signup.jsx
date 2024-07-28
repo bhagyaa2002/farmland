@@ -110,9 +110,10 @@ export default function Signup() {
     e.preventDefault();
     formValues.location = value;
     setFormErrors(validate(formValues));
-    if (Object.keys(formErrors).length === 0) {
-      setIsSubmit(true);
-    }
+    // if (Object.keys(formErrors).length === 0) {
+    //   console.log("line 115");
+    //   setIsSubmit(true);
+    // }
     // if (formErrors.length === 0) {
     //   setIsSubmit(true);
     // }
@@ -131,6 +132,7 @@ export default function Signup() {
         if (a !== "success") {
           setErrorDisplay(true);
         } else {
+          console.log("line 137");
           <Alert severity="success">Signup Succesful</Alert>
           addUser(formValues);
           navigate("/CropInfo");
@@ -180,6 +182,12 @@ export default function Signup() {
     ) {
       errors.email = "Email is not valid!";
     }
+   if(Object.keys(errors).length>0){
+    setIsSubmit(false);
+   }
+   else{
+    setIsSubmit(true);
+   }
 
     return errors;
   };
@@ -304,7 +312,7 @@ export default function Signup() {
                   onChange={handleChange}
                 />
               </div>
-              {formValues.user_name.length === 0 && formErrors.user_name ? (
+              {formValues.user_name.length >= 0 && formErrors.user_name ? (
                 <>
                 <div className="error-container">
                   <FiAlertCircle size={16} color="red"/>
@@ -328,7 +336,7 @@ export default function Signup() {
                   onChange={handleChange}
                 />
               </div>
-              {formValues.email.length === 0 && formErrors.email ? (
+              {formValues.email.length >= 0 && formErrors.email ? (
                  <>
                  <div className="error-container1">
                    <FiAlertCircle size={16} color="red"/>
@@ -347,7 +355,7 @@ export default function Signup() {
                   onChange={handleChange}
                 />
               </div>
-              {formValues.phoneNo.length === 0 && formErrors.phoneNo? (
+              {formValues.phoneNo.length >= 0 && formErrors.phoneNo? (
                 <>
                 <div className="error-container2">
                   <FiAlertCircle size={16} color="red"/>
@@ -358,6 +366,7 @@ export default function Signup() {
               ) : (
                 ""
               )}
+            
               <div className="input-field">
                 <div className="icon">
                   <AiFillLock size={19} />
@@ -384,7 +393,7 @@ export default function Signup() {
                   }
                 />
               </div>
-              {formValues.password.length === 0  && formErrors.password? (
+              {formValues.password.length >= 0  && formErrors.password? (
                 <>
                 <div className="error-container3">
                   <FiAlertCircle size={16} color="red"/>
@@ -406,7 +415,7 @@ export default function Signup() {
                   onChange={handleChange}
                 />
               </div>
-              {formValues.city.length === 0 && formErrors.city? (
+              {formValues.city.length >= 0 && formErrors.city? (
                 <>
                 <div className="error-container4">
                   <FiAlertCircle size={16} color="red"/>
@@ -461,7 +470,7 @@ export default function Signup() {
                   )}
                 </>
               </div>
-              {value.length === 0 && formErrors.location ? (<>
+              {value.length >= 0 && formErrors.location ? (<>
                 <div className="error-container5">
                   <FiAlertCircle size={16} color="red"/>
                   <p className="error-message">{ formErrors.location}</p>

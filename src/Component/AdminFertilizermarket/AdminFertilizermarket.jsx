@@ -1,9 +1,10 @@
 import React,{useState,useEffect} from 'react'
 import "./AdminFertilizermarketstyle.scss"
-import wheat from '../../assets/image/wheat.jpg'
-import money from '../../assets/image/money.jpg'
+import wheat from '../../assets/image/Pesticides.jpg'
+import money from '../../assets/image/money_1.jpg'
 import rupee from '../../assets/image/rupee.jpg'
-import CarouselList from '../Carousel/Carousel'
+
+import CarouselList from '../Carousel/CarouselFertilizer'
 import Nav from '../nav/Nav'
 import { Icon } from '@iconify/react'
 import AdminCropcard from '../AdminCropcard/AdminCropcard'
@@ -45,13 +46,13 @@ const AdminFertilizermarket = () => {
           <div className='eachbanner'>
             <img style={{opacity:"0.7"}} src={wheat} alt="" />
             <div className='text-block'  style={{position:"absolute",top:"50px",left:"30px"}}>
-              <p>Sell Crop Directly To Supplier</p>
+              <p>Directly  From Dealer To Farmer</p>
             </div>
           </div>
           <div className='eachbanner'>
             <img src={money} alt="" />
             <div className='text-block' style={{position:"absolute",top:"50px",right:"30px"}}>
-              <p>Honest Pricing </p>
+              <p>Fertillizer At Factory Rate  </p>
             </div>
           </div>
           <div className='eachbanner'>

@@ -1,10 +1,10 @@
 import React from 'react'
 import './Offerstyle.scss'
 
-export const Offer = ({image}) => {
+export const Offer = ({image,url}) => {
   return (
     <>
-    <a href='https://karnatakabank.com/agri-rural' target="_blank">
+    <a href={url} target="_blank" rel="noopener noreferrer">
     <div className='offermain' >
       <img src={image} alt="" />
     </div>

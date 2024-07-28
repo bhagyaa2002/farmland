@@ -3,10 +3,11 @@ import Crop from '../../Component/Crop/Crop'
 import './CropInfostyle.scss'
 import Nav from '../../Component/nav/Nav';
 import { useUserAuth } from "../../context/UserAuthContext";
-import CarouselList from "../../Component/Carousel/Carousel"
+import CarouselList from "../../Component/Carousel/CarouselHome"
 import Categories from '../../Component/Categories/Categories';
 import fertilizer from '../../assets/image/fertilizer.png'
 import harvest from '../../assets/image/harvest.png'
+
 import corn_ from '../../assets/image/corn_.png'
 import hydroponics from '../../assets/image/hydroponics.png'
 import cotton from '../../assets/image/cotton.png'
@@ -130,10 +131,10 @@ const changecat = (cat) =>{
 
           <div className='offerlist'>
 
-            <Offer image ={indusindbank}/>
-            <Offer image={karnataka}/>
-            <Offer image={icicibank}/>
-            <Offer image={axis}/>
+            <Offer image ={indusindbank} url='https://www.indusind.com/in/en/corporate/specialization/agri-financing.html'/>
+            <Offer image={karnataka} url='https://karnatakabank.com/agri-rural'/>
+            <Offer image={icicibank} url='https://www.icicibank.com/rural#'/>
+            <Offer image={axis} url='https://www.axisbank.com/agri-and-rural/loans'/>
           </div>
 
         </div>

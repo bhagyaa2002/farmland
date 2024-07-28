@@ -17,38 +17,44 @@ input[type="radio"] {
 }
 .error-container {
   display: flex;
-  align-items: center;
-  margin-right: 200px;
+  align-self: flex-start;
+  margin-left: 120px;
+ 
   
 }
 .error-container1 {
   display: flex;
-  align-items: center;
-  margin-right: 225px;
+  align-self: flex-start;
+  margin-left: 120px;
+ 
   
 }
 .error-container2 {
   display: flex;
-  align-items: center;
-  margin-right: 135px;
+  align-self: flex-start;
+  margin-left: 120px;
+ 
   
 }
 .error-container3 {
   display: flex;
-  align-items: center;
-  margin-right: 200px;
+  align-self: flex-start;
+  margin-left: 120px;
+ 
   
 }
 .error-container4 {
   display: flex;
-  align-items: center;
-  margin-right: 240px;
+  align-self: flex-start;
+  margin-left: 120px;
+ 
   
 }
 .error-container5 {
   display: flex;
-  align-items: center;
-  margin-right: 235px;
+  align-self: flex-start;
+  margin-left: 120px;
+ 
   
 }
 

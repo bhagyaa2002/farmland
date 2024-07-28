@@ -45,7 +45,7 @@ function Cropmarket() {
       <>
        <div className='markettop'>
         <div className='carousel'>
-        <CarouselList type={""}/>
+        <CarouselList type={"crop"}/>
         </div>
 
         <div className='banner'>

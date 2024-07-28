@@ -58,17 +58,17 @@ const BuyFertilizer = ({id,open,onClose,data}) => {
                     </div>
                     <div className='pricefer'>
                     <Icon icon="heroicons-solid:currency-rupee" width="30" height="30" />
-                    <h2 style={{color:"green"}}>{data.offerPrice}/Bag</h2>
+                    <h2 style={{color:"green"}}>{data.offerPrice}/Item</h2>
                     <h2 style={{textDecoration:' line-through'}}>({data.mrp})</h2>
                     </div>
 
                     <div className="sellfer">
                         <TextField
-                        label="No of Bags"
+                        label="Quantity"
                         id="outlined-start-adornment"
                         sx={{ m: 1, width: '25ch', color:"#ffffff"}}
                         InputProps={{
-                            startAdornment: <InputAdornment position="start" sx={{color:"black"}}>kg</InputAdornment>,
+                            startAdornment: <InputAdornment position="start" sx={{color:"black"}}>Qty</InputAdornment>,
                         }}
                         value={kg}
                         onChange={(e)=>setKg(e.target.value)}
@@ -79,7 +79,7 @@ const BuyFertilizer = ({id,open,onClose,data}) => {
                     <div className='modalbtnfer'>
                         <div className='btnclosefer' onClick={()=>handelclose()}>
                             <Icon icon="eva:close-outline" color="white" width="24" height="24" />
-                            <h2>close</h2>
+                            <h2>Close</h2>
                         </div>
                         <div className="btnsellfer" onClick={()=>handelsell()}>
                         <Icon icon="icons8:buy" color="white" width="24" height="24" />

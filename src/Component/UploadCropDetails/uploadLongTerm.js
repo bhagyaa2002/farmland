@@ -21,84 +21,74 @@ export default function UploadDetails(){
 "https://firebasestorage.googleapis.com/v0/b/farmland-89e6d.appspot.com/o/crops%2Fcoconut%2Fsebastien-gabriel-rMqbe4WLqXk-unsplash.jpg?alt=media&token=991e0f91-e39c-4cef-9e31-29b12099e3a9"
 ],
 cropImageUrl:"https://firebasestorage.googleapis.com/v0/b/farmland-89e6d.appspot.com/o/crops%2Fcoconut%2Flouis-hansel-gBxUqEpBPsI-unsplash.jpg?alt=media&token=862aff6e-5288-41b8-805a-e4260e3484bb",
-soiltype:"ಕೆಂಪು ಮರಳು ಮಣ್ಣು",
-        temperature:"36",
-        irrigation:"ಹನಿ ನೀರಾವರಿ",
-        location:"ಕರಾವಳಿ ಪ್ರದೇಶ",
-        price:"500",
-        description:"ತೆಂಗಿನಕಾಯಿಯನ್ನು 'ಕಲ್ಪವೃಕ್ಷ' - 'ಸ್ವರ್ಗದ ಮರ' ಎಂದು ಉಲ್ಲೇಖಿಸಲಾಗುತ್ತದೆ ಏಕೆಂದರೆ ಹಸ್ತದ ಪ್ರತಿಯೊಂದು ಭಾಗವು ಒಂದಲ್ಲ ಒಂದು ರೀತಿಯಲ್ಲಿ ಉಪಯುಕ್ತವಾಗಿದೆ. ಭಾರತದಲ್ಲಿ ಹತ್ತು ಮಿಲಿಯನ್ ಜನರು ನೇರವಾಗಿ ಅಥವಾ ಪರೋಕ್ಷವಾಗಿ ತಮ್ಮ ಜೀವನೋಪಾಯಕ್ಕಾಗಿ ತೆಂಗಿನಕಾಯಿಯನ್ನು ಅವಲಂಬಿಸಿದ್ದಾರೆ. ಭಾರತವು ವಿಸ್ತೀರ್ಣದಲ್ಲಿ ಮೂರನೇ ಸ್ಥಾನದಲ್ಲಿದೆ ಮತ್ತು ಪ್ರಪಂಚದಲ್ಲಿ ತೆಂಗಿನ ಉತ್ಪಾದನೆಯಲ್ಲಿ ಮೊದಲ ಸ್ಥಾನದಲ್ಲಿದೆ. ಲಭ್ಯವಿರುವ ಇತ್ತೀಚಿನ ಅಂಕಿಅಂಶಗಳ ಪ್ರಕಾರ (2018-19), ಭಾರತದಲ್ಲಿ ವಾರ್ಷಿಕ ತೆಂಗಿನಕಾಯಿ ಉತ್ಪಾದನೆಯು 2.15 ಮಿಲಿಯನ್ ಹೆಕ್ಟೇರ್ ಪ್ರದೇಶದಿಂದ 23.90 ಬಿಲಿಯನ್ ಅಡಿಕೆಗಳಾಗಿದ್ದು, ಸರಾಸರಿ ಉತ್ಪಾದಕತೆ 9897 ಅಡಿಕೆಗಳು/ಹೆ. ನಾಲ್ಕು ದಕ್ಷಿಣದ ರಾಜ್ಯಗಳಾದ ಕೇರಳ, ತಮಿಳುನಾಡು, ಕರ್ನಾಟಕ ಮತ್ತು ಆಂಧ್ರಪ್ರದೇಶಗಳು ಭಾರತದಲ್ಲಿ ತೆಂಗಿನಕಾಯಿಯನ್ನು ಉತ್ಪಾದಿಸುವ ಪ್ರಮುಖ ರಾಜ್ಯಗಳಾಗಿವೆ, ಇದು 90 ಪ್ರತಿಶತಕ್ಕಿಂತ ಹೆಚ್ಚಿನ ಪ್ರದೇಶ ಮತ್ತು ಉತ್ಪಾದನೆಯನ್ನು ಹೊಂದಿದೆ. ಅವೈಜ್ಞಾನಿಕ ಪದ್ಧತಿಗೆ ಹೋಲಿಸಿದರೆ ತೆಂಗು ಕೃಷಿಯಲ್ಲಿ ವೈಜ್ಞಾನಿಕ ತಂತ್ರಜ್ಞಾನಗಳನ್ನು ಅಳವಡಿಸಿಕೊಂಡರೆ ಇಳುವರಿಯಲ್ಲಿ ನಾಲ್ಕು ಪಟ್ಟು ಹೆಚ್ಚಳ ಸಾಧಿಸಬಹುದು ಎಂಬುದನ್ನು ನಿರೂಪಿಸಲಾಗಿದೆ. ಹೀಗಾಗಿ, ಮುಂದಿನ ಪುಟಗಳಲ್ಲಿ ನೀಡಿರುವಂತೆ ವೈಜ್ಞಾನಿಕ ಕೃಷಿ ತಂತ್ರಜ್ಞಾನಗಳನ್ನು ಅಳವಡಿಸಿಕೊಳ್ಳುವ ಮೂಲಕ ತೆಂಗಿನ ಉತ್ಪಾದಕತೆಯನ್ನು ಹೆಚ್ಚಿಸಲು ಹೆಚ್ಚಿನ ಅವಕಾಶವಿದೆ.",
-        subcrops:["ಅಡಿಕೆ","ಬಾಳೆಹಣ್ಣು","ಕೋಕೋ","ಕರಿ ಮೆಣಸು","ಯಾಮ್"],
-        variety:["ಕಲ್ಪತರು","ಕಲ್ಪ ಪ್ರತಿಭಾ ","ಕೇರಾ ಕೇರಳಂ","ಕಲ್ಪ ಮಿತ್ರ","ಚಂದ್ರ ಲಕ್ಷ ","ಕಲ್ಪ ಸಮೃದ್ಧಿ"],
-        soilPreparation:[" ತೆಂಗಿನಕಾಯಿಗೆ ಹೆಚ್ಚಿನ ಆರ್ದ್ರತೆಯೊಂದಿಗೆ ಸಮಭಾಜಕ ಹವಾಮಾನದ ಅಗತ್ಯವಿದೆ. ಆದರ್ಶ ಸರಾಸರಿ ವಾರ್ಷಿಕ ತಾಪಮಾನವು 27 ಡಿಗ್ರಿ ಸೆಲ್ಸಿಯಸ್ ಆಗಿದೆ.",
-        "ಬೀಜ ಕಾಯಿಗಳನ್ನು 25-30 ಸೆಂ.ಮೀ ಆಳದ ಕಂದಕಗಳಲ್ಲಿ ಬೆಡ್‌ಗಳಲ್ಲಿ ನೆಟ್ಟು ಮಣ್ಣಿನಿಂದ ಮುಚ್ಚಬೇಕು ಇದರಿಂದ ಸಿಪ್ಪೆಯ ಮೇಲಿನ ಭಾಗ ಮಾತ್ರ ಗೋಚರಿಸುತ್ತದೆ.",
-        "2 ಅಡಿ X 2 ಅಡಿ X 2 ಅಡಿಯ ಗುಂಡಿಯನ್ನು ತಯಾರಿಸಿ ಮತ್ತು ಗುಂಡಿಯ ಕೆಳಭಾಗದಲ್ಲಿ ತೆಂಗಿನಕಾಯಿ ಮತ್ತು ಗೊಬ್ಬರವನ್ನು ತುಂಬಿಸಿ, ನಂತರ ಉಳಿದ ಭಾಗವನ್ನು ಕಾಡಿನ ಎಲೆಗಳಿಂದ ಮಣ್ಣಿನಿಂದ ತುಂಬಿಸಿ."
-        ],
-        seeding:[" ಯಾವಾಗಲೂ 80 ಕ್ಕಿಂತ ಹೆಚ್ಚು ಕಾಯಿಗಳನ್ನು ಕೊಡುವ 20 ವರ್ಷದ ಮರದಿಂದ ಬಿತ್ತು ಆರಿಸಿ, ಮರಕ್ಕೆ ದೃಢವಾಗಿ ಅಂಟಿಕೊಂಡಿರುವ 30 ಸಂಪೂರ್ಣವಾಗಿ ತೆರೆದ ಎಲೆಗಳು.",
-        "ಮರವು ಮಧ್ಯಮ ಗಾತ್ರದ ಕಾಯಿಗಳನ್ನು ಹೊಂದಿರುವ ಬಲವಾದ ಗೊಂಚಲು ಕಾಂಡಗಳೊಂದಿಗೆ ಕನಿಷ್ಠ 12 ಗೊಂಚಲು ಕಾಯಿಗಳನ್ನು ಹೊಂದಿರಬೇಕು.",
-        "ಡಿಸೆಂಬರ್‌ನಿಂದ ಮೇ ವರೆಗಿನ ಅವಧಿಯಲ್ಲಿ ಬಲಿತ ಕಾಯಿಗಳನ್ನು ಸಂಗ್ರಹಿಸಿ. ಕಾಯಿಗಳನ್ನು ನೆಟ್ಟಗೆ ಇಟ್ಟು ಮೇ ಅಂತ್ಯದಲ್ಲಿ ಕಾಯಿ ಬಿತ್ತಬೇಕು.",
-        ],
-        waterManagement:["ವಯಸ್ಕ ಮರ ದಿನಕ್ಕೆ 40 ರಿಂದ 50 ಲೀಟರ್ ನೀರು ಬೇಕಾಗುತ್ತದೆ.",
-        "ತೆಂಗಿನಕಾಯಿಗೆ ನೀರುಣಿಸಲು ಹನಿ ನೀರಾವರಿ ಉತ್ತಮ ವಿಧಾನವಾಗಿದೆ."
-        // "The crop requires irrigation at weekly intervals. When it is grown as mixed crop with arecanut, the crop is to be irrigated once in a week.",
-        // "The grown plant requies 20-25 liters of water per day and young plant requires 5-10 liters water per day."
-        ],
-        organicFertilizer:[
-        {
-        "ಸೆಪ್ಟೆಂಬರ್-ಅಕ್ಟೋಬರ್":"ದನದ ಗೊಬ್ಬರ, ತೆಂಗಿನಕಾಯಿ ಪುಡಿ ಮತ್ತು ಎಲೆಗಳಂತಹ ಸಾವಯವ ವಸ್ತುಗಳಿಂದ ಸಸ್ಯದ ಗುಂಡಿಗೆ ಸುಮಾರು 10 ಕೆ.ಜಿ."
-        
-        },
-        {
-        "ಡಿಸೆಂಬರ್-ಜನವರಿ":"ಬೇವಿನ ಕಾಯಿ 3ಕೆಜಿಯನ್ನು ಗಿಡದ ಸುತ್ತಲೂ ಹಾಕಿ ನೀರು ಹಾಕಿ."
-        
-        },
-        {
-        "ಫೆಬ್ರವರಿ-ಮಾರ್ಚ್":"ಸಸ್ಯವನ್ನು ಆರೋಗ್ಯಕರವಾಗಿಡಲು 20 ಕೆಜಿ ಹಸುವಿನ ಸಗಣಿ ಮತ್ತು ಇತರ ಜಾನುವಾರು ಗೊಬ್ಬರಗಳನ್ನು ಒದಗಿಸಿ."
-        
-        },
-        {
-        "ಏಪ್ರಿಲ್-ಮೇ":"ಮಳೆಗಾಲದಲ್ಲಿ ಗಿಡವನ್ನು ಆರೋಗ್ಯವಾಗಿಡಲು ಬೆಳೆಗೆ ಡಾಲಮೈಟ್ ಹಾಕಿ."
-        
-        }
-        ],
-        chemicalFertilizer:[
-        {
-        "ಸೆಪ್ಟೆಂಬರ್-ಅಕ್ಟೋಬರ್":"ಹಳ್ಳಕ್ಕೆ ಕಾಡಿನ ಎಲೆಗಳು ಮತ್ತು ತೆಂಗಿನಕಾಯಿ ಉದುರುವಿಕೆಯಿಂದ ಪ್ರತಿ ಗಿಡಕ್ಕೆ ಸುಮಾರು 10 ಕೆ.ಜಿ.ಯನ್ನು ತುಂಬಿಸಿ ಮತ್ತು 500 ಗ್ರಾಂ ಎನ್‌ಪಿಕೆಯನ್ನು ಅನ್ವಯಿಸಿ."
-        
-        },
-        {
-        "ಡಿಸೆಂಬರ್-ಜನವರಿ":"ಉತ್ತಮ ಹಣ್ಣು ಇಳುವರಿಗಾಗಿ 500 ಗ್ರಾಂ ಮೆಗ್ನೀಸಿಯಮ್ ಸಲ್ಫೇಟ್ ಅನ್ನು ಸಸ್ಯದ ಸುತ್ತಲೂ ಅನ್ವಯಿಸಿ."
-        
-        },
-        {
-        "ಫೆಬ್ರವರಿ-ಮಾರ್ಚ್":"NPK 500 ಗ್ರಾಂಗಳನ್ನು ಅನ್ವಯಿಸಿ ಮತ್ತು ಸಾಕಷ್ಟು ಪ್ರಮಾಣದ ನೀರನ್ನು ನೀಡಿ."
-        
-        },
-        {
-        "ಏಪ್ರಿಲ್-ಮೇ":"ಸಸ್ಯವನ್ನು ಆರೋಗ್ಯಕರವಾಗಿಡಲು ಮಣ್ಣಿನ ಆಮ್ಲೀಯತೆಯನ್ನು ಕಡಿಮೆ ಮಾಡಲು ಮಳೆಗಾಲದ ಆರಂಭದಲ್ಲಿ 300 ಗ್ರಾಂ ಕ್ಯಾಲ್ಸಿಯಂ ಅನ್ನು ಒದಗಿಸಿ."
-        
-        }
-        ],
-        disease:[
-        
-        { 
-        "ದ್ರವಸ್ರಾವ":"ಹೊರಸೂಸುವ ದ್ರವವು ಒಣಗಿ ಕಪ್ಪು ಬಣ್ಣಕ್ಕೆ ತಿರುಗುತ್ತದೆ. ರಕ್ತಸ್ರಾವದ ಬಿಂದುಗಳ ಕೆಳಗಿರುವ ಅಂಗಾಂಶಗಳು ಕೊಳೆಯುತ್ತವೆ ಮತ್ತು ಹಳದಿ ಬಣ್ಣಕ್ಕೆ ತಿರುಗುತ್ತವೆ. ರೋಗವು ಮುಂದುವರೆದಂತೆ ಗಾಯಗಳು ಮೇಲ್ಮುಖವಾಗಿ ಹರಡುತ್ತವೆ. ಮುಂದುವರಿದ ಹಂತಗಳಲ್ಲಿ, ಎಲೆಯ ಗಾತ್ರವು ಕಡಿಮೆಯಾಗುತ್ತದೆ, ಇದು ಕಿರೀಟದ ಗಾತ್ರದಲ್ಲಿ ಇಳಿಕೆಗೆ ಕಾರಣವಾಗುತ್ತದೆ. ಎಲೆಗಳ ಉತ್ಪಾದನೆಯ ದರವು ನಿಧಾನಗೊಳ್ಳುತ್ತದೆ. ಗೊಂಚಲುಗಳ ಉತ್ಪಾದನೆಯು ಪರಿಣಾಮ ಬೀರುತ್ತದೆ ಮತ್ತು ಹಳಿ ಉದುರುವಿಕೆ ನಡೆಯುತ್ತದೆ. ಕಾಂಡವು ಕ್ರಮೇಣ ತುದಿಯ ಕಡೆಗೆ ಕುಗ್ಗುತ್ತದೆ. ಜುಲೈನಿಂದ ನವೆಂಬರ್‌ವರೆಗೆ ರೋಗದ ಪ್ರಗತಿಯು ವೇಗವಾಗಿರುತ್ತದೆ. ಪೀಡಿತ ಅಂಗಾಂಶಗಳನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಉಳಿ ಮಾಡಿ ಮತ್ತು ಬೋರ್ಡೆಕ್ಸ್ ಪೇಸ್ಟ್‌ನಿಂದ ಗಾಯವನ್ನು ಬಣ್ಣ ಮಾಡಿ.1-2 ದಿನಗಳ ನಂತರ ಕಲ್ಲಿದ್ದಲು ಟಾರ್ ಅನ್ನು ಅನ್ವಯಿಸಿ. ಉಳಿದ ವಸ್ತುಗಳನ್ನು ಸುಡುವ ಮೂಲಕ ನಾಶಮಾಡಿ, ಕಾಂಡಕ್ಕೆ ಯಾವುದೇ ಯಾಂತ್ರಿಕ ಗಾಯವನ್ನು ತಪ್ಪಿಸಿ."
-        },
-        {
-        "ಪೌಷ್ಟಿಕಾಂಶದ ಕೊರತೆ":"ನೀರಾವರಿ ಪರಿಸ್ಥಿತಿಗಳಲ್ಲಿ, ರಸಗೊಬ್ಬರಗಳನ್ನು 3-4 ಸಮಾನ ವಿಭಜಿತ ಪ್ರಮಾಣದಲ್ಲಿ ಅನ್ವಯಿಸಬಹುದು. ತಗ್ಗು ಪ್ರದೇಶಗಳ ಸಂದರ್ಭದಲ್ಲಿ, ನೀರಿನ ಮಟ್ಟ ಕಡಿಮೆಯಾದ ನಂತರ ಒಂದು ಡೋಸ್‌ನಲ್ಲಿ ಅಥವಾ ಪರಿಸ್ಥಿತಿಗಳು ಅನುಮತಿಸುವಂತೆ ಎರಡು ವಿಭಜಿತ ಪ್ರಮಾಣದಲ್ಲಿ ರಸಗೊಬ್ಬರಗಳನ್ನು ಅನ್ವಯಿಸಿ. ಸಾವಯವ ವಸ್ತುಗಳಾದ ಕಾಡಿನ ಎಲೆಗಳು, ದನಗಳ ಗೊಬ್ಬರ, ತೆಂಗಿನಕಾಯಿ ಪುಡಿ ಅಥವಾ ತೆಂಗಿನಕಾಯಿ ಚೂರುಗಳನ್ನು ಮೊದಲ ಮೂರು ವರ್ಷಗಳಲ್ಲಿ ಪ್ರತಿ ಹಳ್ಳಕ್ಕೆ 10 ಕೆಜಿ ಮತ್ತು ನಂತರ 15-25 ಕೆಜಿಯಂತೆ ಬಳಸುವುದು ಮರಳು ಮಣ್ಣು ಮತ್ತು ಕರಾವಳಿಯಲ್ಲಿ ತೆಂಗಿನಕಾಯಿಗಳನ್ನು ಉತ್ತಮವಾಗಿ ಸ್ಥಾಪಿಸಲು ಉಪಯುಕ್ತವಾಗಿದೆ. ಸನ್ನಿವೇಶಗಳು."
-        },
-        {
-        "ಎಲೆ ಬೀಳುವಿಕೆ":"ಎಲ್ಲಾ ವಯಸ್ಸಿನ ಅಂಗೈಗಳು ದಾಳಿಗೆ ಒಳಗಾಗುತ್ತವೆ ಆದರೆ ಸಾಮಾನ್ಯವಾಗಿ ಎಳೆಯ ಅಂಗೈಗಳು ಹೆಚ್ಚು ಒಳಗಾಗುತ್ತವೆ, ವಿಶೇಷವಾಗಿ ಮಾನ್ಸೂನ್ ಸಮಯದಲ್ಲಿ ತಾಪಮಾನವು ಕಡಿಮೆ ಮತ್ತು ತೇವಾಂಶವು ತುಂಬಾ ಹೆಚ್ಚಾಗಿರುತ್ತದೆ. ಮೊಳಕೆಗಳಲ್ಲಿ, ಈಟಿಯ ಎಲೆಯು ತೆಳುವಾಗಿ ತಿರುಗುತ್ತದೆ ಮತ್ತು ಮೃದುವಾದ ಎಳೆತದಿಂದ ಹೊರಬರುತ್ತದೆ. ವಯಸ್ಕ ಅಂಗೈಗಳಲ್ಲಿ, ಈಟಿಯ ಬಣ್ಣ ಬದಲಾವಣೆಯು ಮೊದಲ ಗೋಚರ ಲಕ್ಷಣವಾಗಿದೆ, ಇದು ತೆಳುವಾಗುತ್ತದೆ ಮತ್ತು ತಳದಲ್ಲಿ ಒಡೆಯುತ್ತದೆ ಮತ್ತು ಸ್ಥಗಿತಗೊಳ್ಳುತ್ತದೆ. ಕಿರೀಟದ ಕೋಮಲ ಎಲೆಯ ತಳ ಮತ್ತು ಮೃದು ಅಂಗಾಂಶಗಳು ಕೊಳೆತ ವಸ್ತುವಿನ ತೆಳ್ಳನೆಯ ದ್ರವ್ಯರಾಶಿಯಾಗಿ ಕೊಳೆಯುತ್ತವೆ, ಇದು ಕೆಟ್ಟ ವಾಸನೆಯನ್ನು ಹೊರಸೂಸುತ್ತದೆ. 1% ಬೋರ್ಡೆಕ್ಸ್ ಮಿಶ್ರಣವನ್ನು ಸ್ಪಿಂಡಲ್ ಎಲೆಗಳು ಮತ್ತು ರೋಗ ಪೀಡಿತ ಕಿರೀಟದ ಮೇಲೆ ಮತ್ತು ನೆರೆಯ ಅಂಗೈಗಳ ಮೇಲೆ ರೋಗನಿರೋಧಕ ಕ್ರಮವಾಗಿ ಸಿಂಪಡಿಸಿ. ಶಿಲೀಂಧ್ರನಾಶಕಗಳನ್ನು ಹೊಂದಿರುವ ತಾಮ್ರಕ್ಕೆ ಸಂವೇದನಾಶೀಲವಾಗಿರುವ ಅಂಗೈಗಳನ್ನು ಮ್ಯಾಂಕೋಜೆಬ್ನಿಂದ ರಕ್ಷಿಸಬಹುದು."
-        }
-        ],
-        harvesting:["ಹನ್ನೆರಡು ತಿಂಗಳ ಹಳೆಯ ಕಾಯಿಗಳನ್ನು ಬೀಜ ಮತ್ತು ಕೊಪ್ಪರ್ ತಯಾರಿಕೆಗಾಗಿ ಕೊಯ್ಲು ಮಾಡಲಾಗುತ್ತದೆ. ಟೆಂಡರ್ ಅಡಿಕೆ ಉದ್ದೇಶಕ್ಕಾಗಿ 7 ರಿಂದ 8 ತಿಂಗಳ ಹಳೆಯ ಅಡಿಕೆಗಳನ್ನು ಕೊಯ್ಲು ಮಾಡಲಾಗುತ್ತದೆ.",
-        "ಎತ್ತರವಾಗಿದ್ದಲ್ಲಿ ಬೀಜದ ಉದ್ದೇಶಕ್ಕಾಗಿ ಕೊಯ್ಲು ಮಾಡಿದ ಕಾಯಿಗಳನ್ನು ಬಿತ್ತನೆ ಮಾಡುವ ಮೊದಲು 2 ರಿಂದ 3 ತಿಂಗಳವರೆಗೆ ಸಂಗ್ರಹಿಸಬಹುದು.",
-        "ಅಡಿಕೆಗಳನ್ನು ಶೆಡ್ ಅಡ್ನಾವಾಯ್ಡ್ ರಾಶಿ ಸಂಗ್ರಹಣೆಯ ಅಡಿಯಲ್ಲಿ ಸಂಗ್ರಹಿಸಿ ಅದು ಗರಿಷ್ಠ ಹಾನಿಯನ್ನುಂಟುಮಾಡುತ್ತದೆ, ಕೊಪ್ಪರನ್ನು ನೆಟೆಡ್ ಪಾಲಿಥಿನ್ ಚೀಲಗಳಲ್ಲಿ ಅಥವಾ ಗೋಣಿ ಚೀಲಗಳಲ್ಲಿ ಸಂಗ್ರಹಿಸಿ."
-        ],
-        youtubeLinks:["TEbM1KmcVDA",
-        "tHNkNxg2NKU",
-        "lgZBlD-TCFE" //bannerimage
-        ],
-        state:["Kerala","Karnataka","Maharashtra"]
+soiltype:"Red Sandy Soil",
+temperature:"19",
+irrigation:"Water Logging",
+location:"Tropical cold",
+price:"59",
+description:"Capsicum is the genus of pepper plants, which includes sweet peppers such as bell peppers. These peppers are a part of the nightshade family along with eggplant, potatoes and tomatoes. This vegetable is native to the Americas but is produced and used worldwide in international cuisines and as natural remedies. Capsicums are sweet and tangy, though the green varieties tend to taste more bitter.  Red capsicums, for example contain more phytonutrients than any of the other capsicums, making them the type with the highest antioxidants content. It has 11 times more beta-carotene, and one and a half times more vitamin C than green varieties.",
+subcrops:["Maize","Sesame","Greengram","Blackgram"],
+variety:["Ratna giri","Kuttanad","Pant dhan","Padma","Kiron"],
+soilPreparation:["Plough the field thoroughly to incorporate the weeds in the field.",
+"Ensure a smooth, level field for transplanting the seeding. It would be better to transplant 10-15 days after incorporating organic manure.",
+"Before sowing specified for the region and variety apply the fertilizer on the drained soil at the time of final ploughing and leveling."
+],
+seeding:["The seed bed need to prepare by plouging the field two to three times until the soil is thoroughly puddled and levelled.",
+"Prepare raised beds 5 to 10cm high 1 to 1.5m wide and of convenient length with drainage channels between the beds.",
+"Apply cattle manure 1kg per square meter and mix it well. Then soak the paddy seed in the water for 12-16 hours.",
+"The soaked seed then need to place it on the wet bed for week. The seed will germinate within 3 days and the seed always need to kept wet."
+],
+waterManagement:["Maintain water level at about 1.5cm during transplanting. Therefore increase it gradually to about 5cm untill maximum tillering.",
+"In the areas where water for irrigation is assured and where acidity is high,draining and reflooding every 15days are recommended."
+],
+organicFertilizer:[
+{
+"0-5days":"Apply green leaf 5 ton/hectare and incorporate into the soil while ploghing, also add vermicompost 2.5 tons/hectare."
+},
+{
+"10-18days":"Azospirillum is good bio fertilizer which fixes the nitrogen to the plant. Mix 2kg culture with 60 liter water and apply to 1 hectare."
+},
+{
+"20-25days":"Blue green algae is applied 10kg/hectare to maintain the pH level of the soil. "
+},
+{
+"28-33days":"Cow dung, Neem cake and other organic fertilizer applied at regular interval of time like 45th day and 70th day."
+}
+],
+chemicalFertilizer:[
+{
+"0-5days":"Apply 0.5-1 ton NPK(30-10-10) per hectare after planting small paddyy."
+},
+{
+"10-18days":"Apply Urea 1.5 ton per heatare and maintain 7-8cm water level regularly."
+},
+{
+"40-45days":"Apply 0.2-0.3 tons of NPK(40-0-0) or NPK(30-0-0) per hectare."
+},
+{
+"65-70days":"MOP is good for better holding the paddy grains. 20kg per hectare is applied during this time."
+}
+],
+disease:[
+{ 
+"Blast":"This disease also known as rice fever. This severe disease were farmer can loss upto 80% of his production. The better way to overcome this disease is avoid excess usage of nitrogen."
+},
+{
+"Bacterial Leaf Blight":"The Water-soaked to yellowish stripes on leaf blades or starting at leaf tips then later increase in lengthand width with a wavy margin. Spraying fresh cowdung extract 20% is best medicine."
+},
+{
+"Brown Spot":"This is also called as sesame leaf spot or Helminthosporiose or fungal blight. The leaf spotting is very common. Spraying Metominostrobin @ 500ml/ha will help the management of disease."
+}
+],
+harvesting:["Threshing - separating the paddy grain from the rest of cut crop.",
+" Cleaning - removing immature, unfilled, non-grain materials. Hauling - moving the cut crop to the threshing location.",
+"Field drying - leaving the cut crop in the field and exposing it to the sun for drying"
+],
+youtubeLinks:["TEbM1KmcVDA",
+"tHNkNxg2NKU",
+"lgZBlD-TCFE" //bannerimage
+],
+state:["Kerala","Karnataka","Tamilnadu","Andhra Pradesh"]
         
         };
         
