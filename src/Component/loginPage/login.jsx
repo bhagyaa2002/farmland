@@ -56,17 +56,21 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const a=await logIn(email, values.password);
-      if(a!="success"){
-        setError(a)
-        setErrorDisplay(true)
-        navigate("/login");
+      await logIn(email, values.password).then(a=>{
+        if(a!="success"){
+          console.log("line 61", a);
+          setError(a)
+          setErrorDisplay(true)
+          navigate("/login");
+  
+        }
+        else{
+  
+          navigate("/CropInfo");
+        }
 
-      }
-      else{
-
-        navigate("/CropInfo");
-      }
+      })
+      
       
     } catch (err) {
       // setError(err.message)

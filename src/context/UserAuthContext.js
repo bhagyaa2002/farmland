@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import {collection,addDoc, getDocs,doc,deleteDoc,updateDoc, getDoc, query, orderBy} from 'firebase/firestore'
 import {auth,db} from "../config/firebase"
-
+import axios from 'axios';
 
 const userAuthContext=createContext();
 
@@ -41,15 +41,29 @@ export function UserAuthContextProvider({children}){
             
         })
     }
-    function logIn(email,password){
-        return signInWithEmailAndPassword(auth,email,password).then(()=>{
-            return "success"
+    async function logIn(email,password){
+        const url = 'http://localhost:8080/login';
+        const data ={
+        email:email,
+        password:password
+        } 
+        const response = await axios.post(url, data);
+        if(response.data.message==="success"){
+            presentUser(data.email);
+            return "success";
+        }
+        else{
+            return response.data.message;
+        }
+            
+        // return signInWithEmailAndPassword(auth,email,password).then(()=>{
+        //     return "success"
 
-        }).catch((error)=>{
-            const errorCode=error.code
-            const errorMessage=error.message
-            return errorCode
-        })
+        // }).catch((error)=>{
+        //     const errorCode=error.code
+        //     const errorMessage=error.message
+        //     return errorCode
+        // })
     }
     const logout =async()=>{
         signOut(auth).then(() => {
@@ -61,20 +75,33 @@ export function UserAuthContextProvider({children}){
         
     }
     const presentUser = async(email) =>{
-    const data= await getDocs(userCollectionRef)
-
-    data.docs.map((currentUser)=>{
-        if(currentUser.data().email === email)
-        {
-            setUser(currentUser.data())
-            getCrop()
-        }
-    })
+        const data= await getDocs(userCollectionRef);
+        data.docs.map((currentUser)=>{
+            if(currentUser.data().email === email)
+            {
+                setUser(currentUser.data())
+                getCrop()
+            }
+        })
     }
     
-    const addUser = async(newUser) =>{
-      await addDoc(userCollectionRef,newUser)
+const addUser = async(newUser) =>{
+    const url = 'http://localhost:8080/signup';
+    const data = newUser;
+    const response = await axios.post(url, data)
+    console.log('Success:', response);
+    if(response.data.message==="success"){
+        presentUser(data.email);
+        return "success";
     }
+    else{
+        return response.data.message;
+    }
+      //await addDoc(userCollectionRef,newUser)
+}
+
+
+
     const addCrop = async(crop) =>{
         await addDoc(cropsCollectionRef,crop)
     }
@@ -199,15 +226,15 @@ export function UserAuthContextProvider({children}){
    
     
 
-    useEffect(()=>{
-        const unsubscribe= onAuthStateChanged(auth,(currentUser)=>{
-            presentUser(currentUser.email)
-        })
-        return ()=>{
-            unsubscribe();
-        }
+    // useEffect(()=>{
+    //     const unsubscribe= onAuthStateChanged(auth,(currentUser)=>{
+    //         presentUser(currentUser.email)
+    //     })
+    //     return ()=>{
+    //         unsubscribe();
+    //     }
 
-    },[]);
+    // },[]);
    return <userAuthContext.Provider value={{user,setUser,signUp,logIn,addUser,addCrop,getCrop,cropdata,addCropMarket,getCropMarket,cropMarketData,updateCropMarket,deleteCropMarket,addFertilizerMarket,getFertilizerMarket,deleteFertilizerMarket,updateFertilizerMarket,makeDeal,buyFertilizer,getCropTransaction,getFertilizerTransaction,addScheme,getScheme,addArticle,getArticle,addNews,getNews,logout,deletePendingcrop}}>{children}</userAuthContext.Provider>
 }
 

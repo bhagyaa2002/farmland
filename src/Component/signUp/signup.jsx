@@ -128,16 +128,26 @@ export default function Signup() {
     //  console.log(formValues);
     if (isSubmit) {
       try {
-        const a = await signUp(formValues.email, formValues.password);
-        if (a !== "success") {
-          setErrorDisplay(true);
-        } else {
-          console.log("line 137");
-          <Alert severity="success">Signup Succesful</Alert>
-          addUser(formValues);
-          navigate("/CropInfo");
-        }
-      } catch (err) {}
+
+        //const a = await signUp(formValues.email, formValues.password);
+        console.log("line 133");
+       addUser(formValues).then(a=>{
+        console.log("line 134",a);
+          if (a !== "success") {
+            setErrorDisplay(true);
+          } 
+          else {
+          console.log("line 141");
+            <Alert severity="success">Signup Succesful</Alert>
+          //   addUser(formValues);
+            navigate("/CropInfo");
+          }
+       })
+          
+        
+      } catch (err) {
+        console.log("line 149");
+      }
     }
   };
 
