@@ -66,14 +66,14 @@ export function UserAuthContextProvider({children}){
         // })
     }
     const logout =async()=>{
-        signOut(auth).then(() => {
-           setUser(false)
-          }).catch((error) => {
-           console.log("failure");
-          });
-          
-        
+        setUser(false)
+        // signOut(auth).then(() => {
+        //    setUser(false)
+        //   }).catch((error) => {
+        //    console.log("failure");
+        //   });
     }
+
     const presentUser = async(email) =>{
         const data= await getDocs(userCollectionRef);
         data.docs.map((currentUser)=>{
@@ -107,10 +107,24 @@ const addUser = async(newUser) =>{
     }
 
     const getCrop=async()=>{
-        const data= await getDocs(cropsCollectionRef)
-         setCrop(data.docs)
-         console.log(data.docs);
-         return data
+    //     const data= await getDocs(cropsCollectionRef).then(result=>{
+    //         console.log("line 119",result.docs);
+    //         setCrop(result.docs)
+    // // //       result.docs.map((onecrop) => {
+    // // //         const url = 'http://localhost:8080/addCrop';
+    // // //         axios.post(url, onecrop.data())
+    // // // })
+    
+    //     })
+    const url = 'http://localhost:8080/getAllCrops';
+    const response = await axios.get(url);
+    console.log("line 121",response.data.data);
+    setCrop(response.data.data);
+
+        // console.log("line 119",data.docs);
+        //  setCrop(data.docs)
+        //  console.log("line 112",data.docs);
+        //return data
 
     }
     const addCropMarket = async(crop) =>{

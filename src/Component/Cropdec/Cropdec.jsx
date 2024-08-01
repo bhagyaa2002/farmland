@@ -42,10 +42,13 @@ const ref=collection(db,"crops")
     const setdata=async()=>{
      await console.log(cropdata);
     await  cropdata.map((onecrop) => {
-        if (onecrop.data().cropname == params.id) {
-            console.log(params.id);
+        // if (onecrop.data().cropname == params.id) {
+        //     console.log(params.id);
 
-          setCrop(onecrop.data())
+        //   setCrop(onecrop.data())
+        // }
+        if(onecrop.cropname==params.id){
+          setCrop(onecrop);
         }
       })
     }

@@ -28,6 +28,7 @@ import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../../config/firebase';
 import {useNavigate} from 'react-router'
 import Weather from '../../Component/Weather/Weather';
+import axios from 'axios';
 
 
 
@@ -42,9 +43,24 @@ const navigate  = useNavigate()
 
 
 useEffect(() => {
-  const data = onSnapshot(ref, (doc) => {
-    setCropdata(doc.docs)
-  });
+  // const data = onSnapshot(ref, (doc) => {
+  //   setCropdata(doc.docs)
+  // });
+
+  const fetchCropData = async () => {
+    try {
+      const url = 'http://localhost:8080/getAllCrops';
+      const response = await axios.get(url);
+      console.log("line 121", response.data.data);
+      setCropdata(response.data.data);
+    } catch (error) {
+      console.error("Error fetching crop data:", error);
+    }
+  };
+
+  // Call the async function
+  fetchCropData();
+
 
 }, [window.location.pathname=="/cropinfo"])
 
@@ -71,7 +87,7 @@ const changecat = (cat) =>{
             <div className='cropdiv'>
               {
                 cropdata?.map((crop) => (
-                  <Crop id={crop.id} crop={crop.data()} categorie={categorie}/>
+                  <Crop id={crop.id} crop={crop} categorie={categorie}/>
                 )
                 )
               }
@@ -117,7 +133,7 @@ const changecat = (cat) =>{
             <div className='cropdivdemand'>
               {
                 cropdata?.map((crop) => (
-                  <Crop id={crop.id} crop={crop.data()} categorie="Long Term Crop"/>
+                  <Crop id={crop.id} crop={crop} categorie="Long Term Crop"/>
                 )
                 )
               }
