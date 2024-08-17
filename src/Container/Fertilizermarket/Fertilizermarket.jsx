@@ -34,12 +34,9 @@ const Fertilizermarket = () => {
   useEffect(() => {
     const getdata = async() =>{
       const data = await getFertilizerMarket()
-      await setFertilizermarket(data.docs)
-
+      await setFertilizermarket(data)
     }
     getdata()
- 
-
  }, [window.location.pathname=="/fertilizermarket"])
 
 
@@ -102,7 +99,7 @@ const Fertilizermarket = () => {
         </div>
         <div className='cardlist'>
           {fertilizerMarket.map((fertilizerdata)=>(
-           <Fertilizercard id={fertilizerdata.id} data={fertilizerdata.data()} categori={categori} type={categoritype[0]}/>
+           <Fertilizercard id={fertilizerdata.id} data={fertilizerdata} categori={categori} type={categoritype[0]}/>
           ))}
         </div>
       </div>
@@ -112,7 +109,7 @@ const Fertilizermarket = () => {
         </div>
         <div className='cardlist'>
         {fertilizerMarket.map((fertilizerdata)=>(
-           <Fertilizercard id={fertilizerdata.id} data={fertilizerdata.data()} categori={categori} type={categoritype[1]}/>
+           <Fertilizercard id={fertilizerdata.id} data={fertilizerdata} categori={categori} type={categoritype[1]}/>
           ))}
         </div>
       </div>

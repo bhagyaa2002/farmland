@@ -26,11 +26,11 @@ function Cropmarket() {
   const ref=collection(db,"crop market")
   useEffect(() => {
      const getdata = async() =>{
-      //  const data = await getCropMarket()
-      //  await setCropmarket(data.docs)
-       const data = onSnapshot(ref, (doc) => {
-        setCropmarket(doc.docs)
-      });
+       const data = await getCropMarket()
+       await setCropmarket(data)
+      //  const data = onSnapshot(ref, (doc) => {
+      //   setCropmarket(doc.docs)
+      // });
 
      }
      getdata()
@@ -87,7 +87,7 @@ function Cropmarket() {
         </div>
         <div className='cardlist'>
           {cropMarket.map((marketdata)=>(
-               <Card Id={marketdata.id} data={marketdata.data()} type="Required Instant" type2="" cat={cropcat}/>
+               <Card Id={marketdata.id} data={marketdata} type="Required Instant" type2="" cat={cropcat}/>
           ))}
         </div>
       </div>

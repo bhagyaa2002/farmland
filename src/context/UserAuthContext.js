@@ -136,16 +136,34 @@ const addUser = async(newUser) =>{
     }
 
     const getCropMarket = async() =>{
-        const data=await getDocs(cropsMarketCollectionRef)
-        console.log(data.docs);
-        return data
+//         const data1= await getDocs(cropsMarketCollectionRef).then(result=>{
+//           result.docs.map((onecrop) => {
+//             console.log("line 151",onecrop)
+//             const url = 'http://localhost:8080/addCropListing';
+//             axios.post(url, onecrop.data())
+//     })
+// })
+const url = 'http://localhost:8080/getAllCropListing';
+        const response = await axios.get(url);
+        return response.data.data;
         // setCropMarket(data.docs)
     }
     
-    const getFertilizerMarket = async() =>{
-        const data=await getDocs(fertilizerMarketCollectionRef)
-        console.log(data.docs);
-        return data
+    const getFertilizerMarket = async() =>{ 
+        const url = 'http://localhost:8080/getAllFertilizerListing';
+        const response = await axios.get(url);
+        console.log("line 151",response.data.data);
+//                const data1= await getDocs(fertilizerMarketCollectionRef).then(result=>{
+//           result.docs.map((onefertilizer) => {
+
+//             console.log("line 151",onefertilizer)
+//             const url = 'http://localhost:8080/addFertilizerListing';
+//             axios.post(url, onefertilizer.data())
+//     })
+// })
+
+       // return data
+       return response.data.data;
     }
 
     const updateCropMarket = async(id,data) =>{
