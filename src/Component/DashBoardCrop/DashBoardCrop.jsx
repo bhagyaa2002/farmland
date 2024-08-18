@@ -43,10 +43,26 @@ import Spinner from '../Spinner/Spinner';
   ];
 
   const columnsfer = [
-    { field: 'transactionId', headerName: 'Transaction Date', width: 300 ,valueGetter: (params) =>
-    `${new Date(params.row.timestamp?.toDate()).toLocaleString("en-US", {
-      timeZone: "Asia/Kolkata",
-      })|| '6/2/2022, 11:43:26 AM'}`},
+    // { field: 'transactionId', headerName: 'Transaction Date', width: 300 ,valueGetter: (params) =>
+    // `${new Date(params.row.timestamp?.toDate()).toLocaleString("en-US", {
+    //   timeZone: "Asia/Kolkata",
+    //   })|| '6/2/2022, 11:43:26 AM'}`},
+
+    {
+      field: 'transactionId',
+      headerName: 'Transaction Date',
+      width: 300,
+      valueGetter: (params) => {
+        const timestamp = params.row.timestamp;
+        if (timestamp && timestamp.seconds) {
+          const milliseconds = (timestamp.seconds * 1000) + (timestamp.nanoseconds / 1e6);
+          return new Date(milliseconds).toLocaleString("en-US", {
+            timeZone: "Asia/Kolkata",
+          });
+        }
+        return '6/2/2022, 11:43:26 AM'; // Default value if timestamp is missing
+      }
+    },
     { field: 'cropName', headerName: 'Crop Name', width: 250 },
     { field: 'buyerName', headerName: 'Buyer Name', width: 190 },
     { field: 'price', headerName: 'Price/Unit', width: 190 },
@@ -82,7 +98,7 @@ const DashBoardCrop = () => {
 
              data = data
              marketcrop = marketcrop
-             ferdata = ferdata.docs
+             ferdata = ferdata
       
 
              await setCroporder(data.length)
@@ -96,13 +112,13 @@ const DashBoardCrop = () => {
 
              pay=0
              await ferdata.map((fer)=>{
-                 pay=pay+fer.data().Total
+                 pay=pay+fer.Total
                 
              })
              setFerpay(pay)
 
             await setTrans(data.map((document) => document))
-            await setFertrans(ferdata.map((document) => document.data()))
+            await setFertrans(ferdata.map((document) => document))
             await setCropMarket(marketcrop)
             await console.log(trans);
 
@@ -122,7 +138,7 @@ const DashBoardCrop = () => {
               <div style={{ height: 400, width: '100%',}}>
       <DataGrid
         rows={fertrans}
-        getRowId ={(row) => row.timestamp}
+        getRowId ={(row) => row.transactionId}
         columns={columnsfer}
         pageSize={6}
         rowsPerPageOptions={[6]}
@@ -171,7 +187,7 @@ const DashBoardCrop = () => {
                   <div style={{ height: 400, width: '100%',}}>
       <DataGrid
         rows={trans}
-        getRowId ={(row) => row.timestamp}
+        getRowId ={(row) => row.transactionId}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}

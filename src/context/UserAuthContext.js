@@ -300,8 +300,8 @@ return response.data.data
     }
 
     const getCropTransaction = async() =>{
-        const data=await getDocs(cropDashboardCollectionRef)
-        console.log("line 304",data.docs);
+        // const data=await getDocs(cropDashboardCollectionRef)
+        // console.log("line 304",data.docs);
         
 //         const data1= await getDocs(cropDashboardCollectionRef).then(result=>{
 //                 // const url = 'http://localhost:8080/addCropOrderHistory';
@@ -322,7 +322,22 @@ return response.data.data
 
     const getFertilizerTransaction = async() =>{
         const data=await getDocs(fertilizerDashboardCollectionRef)
-        return data
+
+        // const data1= await getDocs(fertilizerDashboardCollectionRef).then(result=>{
+        //                     // const url = 'http://localhost:8080/addFertilizerOrderHistory';
+        //                     //         axios.post(url, result.docs[0].data())
+                        
+        //               result.docs.map((oneCropTransaction) => {
+        //                 console.log("line 151",oneCropTransaction)
+        //                 const url = 'http://localhost:8080/addFertilizerOrderHistory';
+        //                 axios.post(url, oneCropTransaction.data())
+        //         })
+        //     })
+        // return data
+        const url = 'http://localhost:8080/getAllFertilizerOrderTransaction';
+const response = await axios.get(url);
+console.log("line 339",response.data.data);
+return response.data.data
     }
    
     // const uploadShortTermCropDetails = async(newData) =>{
