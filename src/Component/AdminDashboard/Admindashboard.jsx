@@ -13,21 +13,26 @@ import { useNavigate } from "react-router";
 const Admindashboard = () => {
   const ref=collection(db,"pending crops")
   const[cropdata,setCropdata]=useState()
-  const { addCrop,deletePendingcrop} =useUserAuth();
+  const { addCrop,deletePendingcrop,getPendingCrop} =useUserAuth();
   const navigate = useNavigate();
   
   useEffect(() => {
-    const data = onSnapshot(ref, (doc) => {
-      setCropdata(doc.docs)
-      console.log(doc.docs);
-    });
-  
+    const getdata = async()=>{
+    const data1= await getPendingCrop();
+    console.log("line 21 admin",data1);
+    setCropdata(data1);
+    // const data = onSnapshot(ref, (doc) => {
+    //   setCropdata(doc.docs)
+    //   console.log(doc.docs);
+    // });
+  }
+    getdata()
   }, [])
 
 
  const publish = async (i,id)=>{
-  console.log(cropdata[i].data());
-    await addCrop(cropdata[i].data())
+  console.log(cropdata[i]);
+    await addCrop(cropdata[i])
     console.log(id);
     await deletePendingcrop(id)
  }
@@ -51,17 +56,17 @@ const Admindashboard = () => {
 
             <div className='dashCard'>
             <div className='dashImage'>
-            <img src={crop.data().cropImageUrl} alt="" />
+            <img src={crop.cropImageUrl} alt="" />
             </div>
             <div className='dashleft'>
-              <h1>{crop.data().cropname}</h1>
+              <h1>{crop.cropname}</h1>
                 <div className='dashinfo'>
                   <Icon icon="carbon:soil-moisture-field" width="23" height="23" />
-                    <h3>{crop.data().soiltype}</h3>
+                    <h3>{crop.soiltype}</h3>
                 </div>
                 <div className='dashinfo'>
                     <Icon icon="entypo:drop" color="#73c1fa" width="23" height="23" />
-                    <h3>{crop.data().irrigation}</h3>
+                    <h3>{crop.irrigation}</h3>
                 </div>
                 {/* <div className='dashinfo'>
                   <Icon icon="bx:rupee" width="23" height="23"/>
@@ -69,7 +74,7 @@ const Admindashboard = () => {
                 </div> */}
                 <div className='dashinfo'>
                   <Icon icon="carbon:temperature-max" color="red" width="23" height="23" />
-                  <h3>{crop.data().temperature}°C</h3>
+                  <h3>{crop.temperature}°C</h3>
                 </div>
             </div>
             <div className='dashbtn'>
