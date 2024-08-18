@@ -18,10 +18,21 @@ import Loder from '../Loder/Loder';
 import Spinner from '../Spinner/Spinner';
 
   const columns = [
-    { field: 'transactionId', headerName: 'Transaction Date', width: 300 ,valueGetter: (params) =>
-    `${new Date(params.row.timestamp?.toDate()).toLocaleString("en-US", {
-      timeZone: "Asia/Kolkata",
-      })|| '6/2/2022, 11:43:26 AM'}`},
+    {
+      field: 'transactionId',
+      headerName: 'Transaction Date',
+      width: 300,
+      valueGetter: (params) => {
+        const timestamp = params.row.timestamp;
+        if (timestamp && timestamp.seconds) {
+          const milliseconds = (timestamp.seconds * 1000) + (timestamp.nanoseconds / 1e6);
+          return new Date(milliseconds).toLocaleString("en-US", {
+            timeZone: "Asia/Kolkata",
+          });
+        }
+        return '6/2/2022, 11:43:26 AM'; // Default value if timestamp is missing
+      }
+    },
     { field: 'cropName', headerName: 'CropName', width: 250 },
     { field: 'sellerName', headerName: 'SellerName', width: 190 },
     { field: 'price', headerName: 'Price', width: 190 },
@@ -69,8 +80,8 @@ const DashBoardCrop = () => {
             var ferdata = await getFertilizerTransaction()
             var marketcrop  =await getCropMarket()
 
-             data = data.docs
-             marketcrop = marketcrop.docs
+             data = data
+             marketcrop = marketcrop
              ferdata = ferdata.docs
       
 
@@ -79,7 +90,7 @@ const DashBoardCrop = () => {
              
              var pay=0
              data.map((d)=>{
-                 pay =pay+d.data().Total
+                 pay =pay+d.Total
              })
              setPayout(pay)
 
@@ -90,7 +101,7 @@ const DashBoardCrop = () => {
              })
              setFerpay(pay)
 
-            await setTrans(data.map((document) => document.data()))
+            await setTrans(data.map((document) => document))
             await setFertrans(ferdata.map((document) => document.data()))
             await setCropMarket(marketcrop)
             await console.log(trans);
@@ -238,13 +249,13 @@ const DashBoardCrop = () => {
             <div className='dashprogress'>
                 <h2>Procurement Progress</h2>
               {cropMarket.map((crop,i)=>{
-                  if(crop.data().owner!=user.shop || i>6)  return <div/>
-                  var req = crop.data().quantity
-                  var comp = crop.data().quantity - crop.data().reamining
+                  if(crop.owner!=user.shop || i>6)  return <div/>
+                  var req = crop.quantity
+                  var comp = crop.quantity - crop.reamining
                   return(
                     <div className='progresslist'>
                     <div className='cropname'>
-                     <h4>{crop.data().name}</h4>
+                     <h4>{crop.name}</h4>
                     </div>
                     <div className='progressdoen'>
                         <Progress done={(comp*100/req).toFixed(1)}/>
