@@ -34,19 +34,19 @@ const News_sg = () => {
   }, [page]);
 
   const fetchNews = async () => {
-    // const data = await getNews();
-    // setnewsContent(data.docs)
-    const data = onSnapshot(ref, (doc) => {
-      setnewsContent(doc.docs);
-    });
+    const data = await getNews();
+    await setnewsContent(data)
+    // const data = onSnapshot(ref, (doc) => {
+    //   setnewsContent(doc.docs);
+    // });
   };
 
   const fetchArticle = async () => {
-    // const data = await getArticle();
-    // setArticle(data.docs)
-    const data = onSnapshot(ref1, (doc) => {
-      setArticle(doc.docs);
-    });
+    const data = await getArticle();
+    await setArticle(data)
+    // const data = onSnapshot(ref1, (doc) => {
+    //   setArticle(doc.docs);
+    // });
   };
 
   const menuItems = ["News", "Article"];
@@ -89,7 +89,7 @@ const News_sg = () => {
         {value === "News" &&
           newsContent &&
           newsContent.map((da) => {
-            const c = da.data();
+            const c = da;
             return (
               <NewsCard_sg
                 key={c.title}
@@ -104,7 +104,7 @@ const News_sg = () => {
         {value === "Article" &&
           article &&
           article.map((da) => {
-            const c = da.data();
+            const c = da;
             return (
               <NewsCard_sg
                 key={c.title}

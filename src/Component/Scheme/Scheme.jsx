@@ -22,14 +22,14 @@ const Scheme = () => {
     getData();
   }, []);
   const getData = async () => {
-    // const data = await getScheme();
-    // setschemeContent(data.docs);
-    const data = onSnapshot(ref, (doc) => {
-      setschemeContent(doc.docs);
-    });
+    const data = await getScheme();
+    await setschemeContent(data);
+    // const data = onSnapshot(ref, (doc) => {
+    //   setschemeContent(doc.docs);
+    // });
   };
 
-  const menuItems = [...new Set(schemeContent.map((Val) => Val.data().type))];
+  const menuItems = [...new Set(schemeContent.map((Val) => Val.type))];
 
   return (
     <div>
@@ -79,7 +79,7 @@ const Scheme = () => {
         </div>
         {schemeContent &&
           schemeContent.map((datas) => {
-            const c = datas.data();
+            const c = datas;
             if (value === c.type)
               return (
                 <SchemeCard

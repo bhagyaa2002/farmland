@@ -186,26 +186,63 @@ const url = 'http://localhost:8080/getAllCropListing';
         await addDoc(schemeCollectionRef,scheme)
     }
     const getScheme = async() =>{
-        const data=await getDocs(schemeCollectionRef)
-        console.log(data.docs);
-        return data
+        //const data=await getDocs(schemeCollectionRef)
+        // console.log("line 190",data.docs);
+        const url = 'http://localhost:8080/getAllScheme';
+        const response = await axios.get(url);
+    //     const data1= await getDocs(schemeCollectionRef).then(result=>{
+
+            
+    //       result.docs.map((oneschema) => {
+
+    //         console.log("line 151",oneschema)
+    //         const url = 'http://localhost:8080/addScheme';
+    //         axios.post(url, oneschema.data())
+    // })
+// })
+        return response.data.data
     }
 
     const addNews = async(news) =>{
         await addDoc(newsCollectionRef,news)
     }
     const getNews= async() =>{
-        const data=await getDocs(newsCollectionRef)
-        console.log(data.docs);
-        return data
+            // const data1= await getDocs(newsCollectionRef).then(result=>{
+                // const url = 'http://localhost:8080/addNews';
+                //         axios.post(url, result.docs[0].data())
+            
+    //       result.docs.map((onenews) => {
+
+    //         console.log("line 151",onenews)
+    //         const url = 'http://localhost:8080/addNews';
+    //         axios.post(url, onenews.data())
+    // })
+// })
+const url = 'http://localhost:8080/getAllNews';
+        const response = await axios.get(url);
+        return response.data.data
     }
     const addArticle = async(article) =>{
         await addDoc(articleCollectionRef,article)
     }
     const getArticle= async() =>{
-        const data=await getDocs(articleCollectionRef)
-        console.log(data.docs);
-        return data
+        // const data=await getDocs(articleCollectionRef)
+        // console.log("line 230",data.docs);
+
+        // const data1= await getDocs(articleCollectionRef).then(result=>{
+                // const url = 'http://localhost:8080/addArticle';
+                //         axios.post(url, result.docs[0].data())
+            
+    //       result.docs.map((onenews) => {
+    //         console.log("line 151",onenews)
+    //         const url = 'http://localhost:8080/addArticle';
+    //         axios.post(url, onenews.data())
+    // })
+// })
+const url = 'http://localhost:8080/getAllArticle';
+const response = await axios.get(url);
+console.log("line 244",response.data.data);
+return response.data.data
     }
 
     const makeDeal = async(id,data)=>{
