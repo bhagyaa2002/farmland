@@ -16,7 +16,7 @@ const userAuthContext=createContext();
 export function UserAuthContextProvider({children}){
     const[user,setUser]= useState(false);
     const[cropdata,setCrop]=useState({})
-    const userCollectionRef = collection(db,"users")
+    //const userCollectionRef = collection(db,"users")
     // const shortTermCollectionRef = collection(db,"Short Term Crops")
     // const longTermCollectionRef = collection(db,"Long Term Crops")
     const cropsCollectionRef = collection(db,"crops")
@@ -49,7 +49,9 @@ export function UserAuthContextProvider({children}){
         } 
         const response = await axios.post(url, data);
         if(response.data.message==="success"){
-            presentUser(data.email);
+            // presentUser(data.email);
+            setUser(response.data.data);
+            getCrop();
             return "success";
         }
         else{
@@ -74,16 +76,16 @@ export function UserAuthContextProvider({children}){
         //   });
     }
 
-    const presentUser = async(email) =>{
-        const data= await getDocs(userCollectionRef);
-        data.docs.map((currentUser)=>{
-            if(currentUser.data().email === email)
-            {
-                setUser(currentUser.data())
-                getCrop()
-            }
-        })
-    }
+    // const presentUser = async(email) =>{
+    //     const data= await getDocs(userCollectionRef);
+    //     data.docs.map((currentUser)=>{
+    //         if(currentUser.data().email === email)
+    //         {
+    //             setUser(currentUser.data())
+    //             getCrop()
+    //         }
+    //     })
+    // }
     
 const addUser = async(newUser) =>{
     const url = 'http://localhost:8080/signup';
@@ -91,7 +93,7 @@ const addUser = async(newUser) =>{
     const response = await axios.post(url, data)
     console.log('Success:', response);
     if(response.data.message==="success"){
-        presentUser(data.email);
+        //presentUser(data.email);
         return "success";
     }
     else{
@@ -118,7 +120,6 @@ const addUser = async(newUser) =>{
     //     })
     const url = 'http://localhost:8080/getAllCrops';
     const response = await axios.get(url);
-    console.log("line 121",response.data.data);
     setCrop(response.data.data);
 
         // console.log("line 119",data.docs);
@@ -127,6 +128,29 @@ const addUser = async(newUser) =>{
         //return data
 
     }
+
+    const getPendingCrop=async()=>{
+        //     const data= await getDocs(cropsCollectionRef).then(result=>{
+        //         console.log("line 119",result.docs);
+        //         setCrop(result.docs)
+        // // //       result.docs.map((onecrop) => {
+        // // //         const url = 'http://localhost:8080/addCrop';
+        // // //         axios.post(url, onecrop.data())
+        // // // })
+        
+        //     })
+        const url = 'http://localhost:8080/getAllPendingCrops';
+        const response = await axios.get(url);
+        return response.data.data;
+    
+            // console.log("line 119",data.docs);
+            //  setCrop(data.docs)
+            //  console.log("line 112",data.docs);
+            //return data
+    
+        }
+
+
     const addCropMarket = async(crop) =>{
         await addDoc(cropsMarketCollectionRef,crop)
     }
@@ -277,8 +301,23 @@ return response.data.data
 
     const getCropTransaction = async() =>{
         const data=await getDocs(cropDashboardCollectionRef)
-        console.log(data.docs);
-        return data
+        console.log("line 304",data.docs);
+        
+//         const data1= await getDocs(cropDashboardCollectionRef).then(result=>{
+//                 // const url = 'http://localhost:8080/addCropOrderHistory';
+//                 //         axios.post(url, result.docs[0].data())
+            
+//           result.docs.map((oneCropTransaction) => {
+//             console.log("line 151",oneCropTransaction)
+//             const url = 'http://localhost:8080/addCropOrderHistory';
+//             axios.post(url, oneCropTransaction.data())
+//     })
+// })
+//         return data
+        const url = 'http://localhost:8080/getAllCropOrderTransaction';
+const response = await axios.get(url);
+console.log("line 319",response.data.data);
+return response.data.data
     }
 
     const getFertilizerTransaction = async() =>{
@@ -304,7 +343,7 @@ return response.data.data
     //     }
 
     // },[]);
-   return <userAuthContext.Provider value={{user,setUser,signUp,logIn,addUser,addCrop,getCrop,cropdata,addCropMarket,getCropMarket,cropMarketData,updateCropMarket,deleteCropMarket,addFertilizerMarket,getFertilizerMarket,deleteFertilizerMarket,updateFertilizerMarket,makeDeal,buyFertilizer,getCropTransaction,getFertilizerTransaction,addScheme,getScheme,addArticle,getArticle,addNews,getNews,logout,deletePendingcrop}}>{children}</userAuthContext.Provider>
+   return <userAuthContext.Provider value={{user,setUser,signUp,logIn,addUser,addCrop,getCrop,getPendingCrop,cropdata,addCropMarket,getCropMarket,cropMarketData,updateCropMarket,deleteCropMarket,addFertilizerMarket,getFertilizerMarket,deleteFertilizerMarket,updateFertilizerMarket,makeDeal,buyFertilizer,getCropTransaction,getFertilizerTransaction,addScheme,getScheme,addArticle,getArticle,addNews,getNews,logout,deletePendingcrop}}>{children}</userAuthContext.Provider>
 }
 
 
