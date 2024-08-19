@@ -51,6 +51,7 @@ export function UserAuthContextProvider({children}){
         if(response.data.message==="success"){
             // presentUser(data.email);
             setUser(response.data.data);
+            localStorage.setItem('user',JSON.stringify(response.data.data))
             getCrop();
             return "success";
         }
@@ -69,6 +70,7 @@ export function UserAuthContextProvider({children}){
     }
     const logout =async()=>{
         setUser(false)
+        localStorage.removeItem('user')
         // signOut(auth).then(() => {
         //    setUser(false)
         //   }).catch((error) => {
@@ -94,9 +96,11 @@ const addUser = async(newUser) =>{
     console.log('Success:', response);
     if(response.data.message==="success"){
         //presentUser(data.email);
+        
         return "success";
     }
     else{
+        localStorage.setItem('user',JSON.stringify(response.data.data))
         return response.data.message;
     }
       //await addDoc(userCollectionRef,newUser)
@@ -349,15 +353,18 @@ return response.data.data
    
     
 
-    // useEffect(()=>{
+    useEffect(()=>{
     //     const unsubscribe= onAuthStateChanged(auth,(currentUser)=>{
     //         presentUser(currentUser.email)
     //     })
     //     return ()=>{
     //         unsubscribe();
     //     }
-
-    // },[]);
+        const storedUser = localStorage.getItem('user');
+        if(storedUser){
+            setUser(JSON.parse(storedUser));
+        }
+    },[]);
    return <userAuthContext.Provider value={{user,setUser,signUp,logIn,addUser,addCrop,getCrop,getPendingCrop,cropdata,addCropMarket,getCropMarket,cropMarketData,updateCropMarket,deleteCropMarket,addFertilizerMarket,getFertilizerMarket,deleteFertilizerMarket,updateFertilizerMarket,makeDeal,buyFertilizer,getCropTransaction,getFertilizerTransaction,addScheme,getScheme,addArticle,getArticle,addNews,getNews,logout,deletePendingcrop}}>{children}</userAuthContext.Provider>
 }
 
