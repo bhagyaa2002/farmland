@@ -20,9 +20,13 @@ const AdminCropmarket = () => {
     const ref=collection(db,"crop market")
     useEffect(() => {
       const getdata=async()=>{
-        const data = onSnapshot(ref, (doc) => {
-          setCropmarket(doc.docs)
-        });
+
+        const data = await getCropMarket()
+        await setCropmarket(data);
+        // const data = onSnapshot(ref, (doc) => {
+        //   console.log("line 24",doc.docs);
+        //   setCropmarket(doc.docs)
+        // });
       }
      getdata()
     }, [])  //window.location.pathname==="/cropmarket", open
@@ -76,7 +80,8 @@ const AdminCropmarket = () => {
         <div className='cardlist'>
           {
             cropmarket.map((cropone)=>(
-              <AdminCropcard id={cropone.id} data={cropone.data()}/>
+              
+              <AdminCropcard id={cropone.id} data={cropone}/>
             ))
           }
         </div>

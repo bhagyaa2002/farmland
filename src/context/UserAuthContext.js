@@ -303,15 +303,15 @@ return response.data.data
         // const data=await getDocs(cropDashboardCollectionRef)
         // console.log("line 304",data.docs);
         
-//         const data1= await getDocs(cropDashboardCollectionRef).then(result=>{
-//                 // const url = 'http://localhost:8080/addCropOrderHistory';
-//                 //         axios.post(url, result.docs[0].data())
+    //     const data1= await getDocs(cropDashboardCollectionRef).then(result=>{
+    //             // const url = 'http://localhost:8080/addCropOrderHistory';
+    //             //         axios.post(url, result.docs[0].data())
             
-//           result.docs.map((oneCropTransaction) => {
-//             console.log("line 151",oneCropTransaction)
-//             const url = 'http://localhost:8080/addCropOrderHistory';
-//             axios.post(url, oneCropTransaction.data())
-//     })
+    //       result.docs.map((oneCropTransaction) => {
+    //         console.log("line 151",oneCropTransaction)
+    //         const url = 'http://localhost:8080/addCropOrderHistory';
+    //         axios.post(url, oneCropTransaction.data())
+    // })
 // })
 //         return data
         const url = 'http://localhost:8080/getAllCropOrderTransaction';

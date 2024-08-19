@@ -22,14 +22,15 @@ const AdminFertilizermarket = () => {
     const ref=collection(db,"fertilizer market")
     useEffect(() => {
       const getdata=async()=>{
-        // const data = await getFertilizerMarket()
-        // await setCropmarket(data.docs);
-        const data = onSnapshot(ref, (doc) => {
-          setCropmarket(doc.docs)
-        });
+        const data = await getFertilizerMarket()
+        await setCropmarket(data);
+        // const data = onSnapshot(ref, (doc) => {
+        //   console.log("line 28",doc.docs);
+        //   setCropmarket(doc.docs)
+        // });
       }
      getdata()
-    }, [window.location.pathname==="/fertilizermarket", open])
+    }, [window.location.pathname==="/fertilizermarket"])
     
   return (
     <div className='admincropmarketmainfer'>
@@ -78,7 +79,7 @@ const AdminFertilizermarket = () => {
         <div className='cardlist'>
           {
             cropmarket.map((cropone)=>(
-              <AdminFertilizerCard id={cropone.id} data={cropone.data()}/>
+              <AdminFertilizerCard id={cropone.id} data={cropone}/>
             ))
           }
         </div>
