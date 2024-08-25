@@ -25,6 +25,7 @@ import AdminFertilizermarket from "./Component/AdminFertilizermarket/AdminFertil
 import MakeaDeal from "./Component/MakeaDeal/MakeaDeal";
 import Done from "./Component/Done/Done";
 import BuyDone from "./Component/BuyDone/BuyDone";
+import Cancel from "./Component/BuyDone/Cancel";
 import DashBoardCrop from "./Component/DashBoardCrop/DashBoardCrop";
 import { Provider } from "react-redux";
 import Profile from "./Component/Profile/Profile";
@@ -66,7 +67,8 @@ function App() {
           {user && <Route path="/news" exact element={<News_sg />} />}
           {/* {user && <Route path="/news" exact element={<Admindashboard />} />} */}
           {user && <Route path="/sucess/:id" exact element={<Done />} />}
-          {user && <Route path="/buysucess/:id" exact element={<BuyDone />} />}
+          {user && <Route path="/buysucess" exact element={<BuyDone />} />}
+          {user && <Route path="/cancel" exact element={<Cancel />} />}
           {user && <Route path="/editpendingcrop/:id" exact element={<Addpendingcrop />} />}
           {user && <Route path="/scheme" exact element={<Scheme />} />}
           {user && (

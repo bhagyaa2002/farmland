@@ -3,14 +3,6 @@ import { Container } from '@mui/material';
 import { useUserAuth } from "../../context/UserAuthContext";
 import { useState } from 'react';
 
-
-
-
-
-
-
-
-
 export default function UploadDetails(){
     const { addCrop,getCrop,getCropMarket} =useUserAuth();
     //const [imageUpload,setImageUpload]=useState(null)

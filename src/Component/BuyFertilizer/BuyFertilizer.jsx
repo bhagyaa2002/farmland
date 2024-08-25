@@ -4,7 +4,9 @@ import { Icon } from '@iconify/react';
 import { InputAdornment, TextField } from '@mui/material';
 import { useUserAuth } from "../../context/UserAuthContext";
 import {useNavigate} from 'react-router'
+import { loadStripe } from "@stripe/stripe-js";
 import Backdrop from '@mui/material/Backdrop';
+import axios from 'axios';
 
 
 
@@ -12,7 +14,9 @@ const BuyFertilizer = ({id,open,onClose,data}) => {
     console.log(new Date().getDate());
     const[kg, setKg] = useState(0)
     const {user,makeDeal,getCropMarket,buyFertilizer } =useUserAuth();
-
+    
+   //const stripe = new stripePromise(STRIPE_SECRET_KEY);
+    
     const navigate = useNavigate()
 
     const handelsell = async() =>{
@@ -21,8 +25,26 @@ const BuyFertilizer = ({id,open,onClose,data}) => {
             farmerName:user.user_name,
             owner:data.owner
         }
-        navigate(`/buysucess/${(kg*data.offerPrice)}`)
-        buyFertilizer(id,senddata)
+
+        const STRIPE_SECRET_KEY="pk_test_51OYphVSIebbx1BJCR4C4jNX9wd0oKwi9ThyTG8ufLWzwqrWzzL2VH1L4huRz939976Q0mUUOFlOq9uSPLu7vnP2600J1DoRnHF"
+    // Initialize Stripe with your publishable key
+    const stripePromise= loadStripe(STRIPE_SECRET_KEY);
+    const stripe = await stripePromise;
+    const url = 'http://localhost:8080/checkout';
+    const transaction ={
+        id:id,
+        owner:data.owner,
+        name:data.name,
+        offerPrice:data.offerPrice,
+        quantity:kg,
+        farmerName:user.user_name
+    }
+    const res= await axios.post(url, transaction);
+    
+    await stripe.redirectToCheckout({ sessionId: res.data.data})
+    // buyFertilizer(id,senddata)
+        // navigate(`/buysucess/${(kg*data.offerPrice)}`)
+        
     }
 
     const handelclose = async() =>{

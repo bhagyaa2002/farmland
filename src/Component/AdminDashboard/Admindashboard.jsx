@@ -34,10 +34,19 @@ const Admindashboard = () => {
   console.log(cropdata[i]);
     await addCrop(cropdata[i])
     console.log(id);
-    await deletePendingcrop(id)
+    await deletePendingcrop({cropname:cropdata[i].cropname})
+    const updatedData = await getPendingCrop();
+    console.log(updatedData);
+    setCropdata(updatedData);  
+    // const data1= await getPendingCrop();
+    // setCropdata(data1);
+    // window.location.reload();
+    navigate(0); 
+    
  }
 
  const view=(id)=>{
+  console.log("line 49",id);
   navigate(`/editpendingcrop/${id}`)
  }
 
@@ -78,10 +87,10 @@ const Admindashboard = () => {
                 </div>
             </div>
             <div className='dashbtn'>
-              <div className='btndash' onClick={()=>view(crop.id)} style={{backgroundColor:"yellowgreen"}}>
+              <div className='btndash' onClick={()=>view(crop._id)} style={{backgroundColor:"yellowgreen"}}>
                View
               </div>
-              <div className='btndash' onClick={()=>publish(i,crop.id)}  style={{backgroundColor:"green"}}>
+              <div className='btndash' onClick={()=>publish(i,crop._id)}  style={{backgroundColor:"green"}}>
                Publish
               </div>
               <div className='btndash'  style={{backgroundColor:"red"}}>
