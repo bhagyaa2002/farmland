@@ -15,6 +15,7 @@ import UploadNews from "./Component/UploadCropDetails/uploadNews";
 import Cropmarket from "./Container/CropMarket/Cropmarket";
 import News_sg from "./Component/News/News_sg";
 import Scheme from "./Component/Scheme/Scheme";
+import OrderHistoryCard from "./Component/orderTab/OrderHistoryCard";
 
 import { useUserAuth } from "./context/UserAuthContext";
 
@@ -69,6 +70,7 @@ function App() {
           {user && <Route path="/sucess/:id" exact element={<Done />} />}
           {user && <Route path="/buysucess" exact element={<BuyDone />} />}
           {user && <Route path="/cancel" exact element={<Cancel />} />}
+          {user && <Route path="/order" exact element={<OrderHistoryCard />} />}
           {user && <Route path="/editpendingcrop/:id" exact element={<Addpendingcrop />} />}
           {user && <Route path="/scheme" exact element={<Scheme />} />}
           {user && (

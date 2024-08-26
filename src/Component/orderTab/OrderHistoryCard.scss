@@ -1,0 +1,89 @@
+.order-history {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+    &__title {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+  
+    &__list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+  
+      &__item {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+        &-header {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+  
+          h3 {
+            margin: 0;
+          }
+  
+          .order-history__item-date {
+            font-size: 14px;
+            color: #888;
+          }
+        }
+  
+        &-details {
+          p {
+            margin: 5px 0;
+            font-size: 16px;
+          }
+  
+          .order-history__item-items {
+            margin-top: 10px;
+  
+            h4 {
+              margin: 0;
+            }
+  
+            ul {
+              padding-left: 20px;
+              margin: 0;
+              list-style-type: none;
+              padding: 0;
+  
+              &__item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 10px;
+  
+                .order-history__item-image {
+                  width: 50px;
+                  height: 50px;
+                  object-fit: cover;
+                  border-radius: 5px;
+                  margin-right: 10px;
+                }
+  
+                .order-history__item-info {
+                  p {
+                    margin: 0;
+                    font-size: 16px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

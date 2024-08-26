@@ -9,6 +9,7 @@ import {
 import { collection, addDoc, getDocs, doc, deleteDoc, updateDoc, getDoc, query, orderBy } from 'firebase/firestore'
 import { auth, db } from "../config/firebase"
 import axios from 'axios';
+import CryptoJS from 'crypto-js';
 
 const userAuthContext = createContext();
 
@@ -43,10 +44,14 @@ export function UserAuthContextProvider({ children }) {
     // }
     async function logIn(email, password) {
         const url = 'http://localhost:8080/login';
+        const encryptedPassword = CryptoJS.AES.encrypt(password, 'your-secret-key').toString();
+        const lowerCaseEmail = email.toLowerCase();
         const data = {
-            email: email,
-            password: password
+            email: lowerCaseEmail,
+            password: encryptedPassword
         }
+        console.log("password",encryptedPassword);
+        
         const response = await axios.post(url, data);
         if (response.data.message === "success") {
             // presentUser(data.email);
@@ -93,17 +98,23 @@ export function UserAuthContextProvider({ children }) {
 
     const addUser = async (newUser) => {
         const url = 'http://localhost:8080/signup';
+        console.log("line 96",newUser)
+        const encryptedPassword = CryptoJS.AES.encrypt(newUser.password, 'your-secret-key').toString();
+        const lowerCaseEmail = newUser.email.toLowerCase();
+        newUser.email=lowerCaseEmail;
+        newUser.password=encryptedPassword;
         const data = newUser;
+        console.log("line 103",data);
         const response = await axios.post(url, data)
         console.log('Success:', response);
         if (response.data.message === "success") {
             //presentUser(data.email);
-
+            sessionStorage.setItem('user', JSON.stringify(response.data.data));
             return "success";
         }
         else {
             //localStorage.setItem('user', JSON.stringify(response.data.data))
-            sessionStorage.setItem('user', JSON.stringify(response.data.data));
+            // sessionStorage.setItem('user', JSON.stringify(response.data.data));
             return response.data.message;
         }
         //await addDoc(userCollectionRef,newUser)
@@ -407,8 +418,16 @@ export function UserAuthContextProvider({ children }) {
         console.log("line 379", sessionStorage.getItem('user'));
         const storedUser= sessionStorage.getItem('user');
         if (storedUser) {
+
+        try {
             setUser(JSON.parse(storedUser));
+        } catch (error) {
+            console.error('Error parsing stored user:', error);
+            // Handle the error (e.g., clear the invalid data or show a message to the user)
+            sessionStorage.removeItem('user'); // Optionally remove invalid data
         }
+    }
+
     }, []);
     return <userAuthContext.Provider value={{ user, setUser, logIn, addUser, addCrop, addPendingCrop, getCrop, getPendingCrop, cropdata, addCropMarket, getCropMarket, cropMarketData, updateCropMarket, deleteCropMarket, addFertilizerMarket, getFertilizerMarket, deleteFertilizerMarket, updateFertilizerMarket, makeDeal, buyFertilizer, getCropTransaction, getFertilizerTransaction, addScheme, getScheme, addArticle, getArticle, addNews, getNews, logout, deletePendingcrop }}>{children}</userAuthContext.Provider>
 }
