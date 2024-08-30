@@ -1,12 +1,13 @@
 import React from 'react'
 import { Icon } from '@iconify/react';
 import './Listdisplaystyle.scss'
+// import arrowForward from '@iconify/icons-material/arrow-forward';
 
 
 function Listdisplay({name}) {
   return (
     <div className='listmain'>
-        <Icon icon="ci:dot-05-xl" width="30" height="30" />
+        <Icon icon="fa:arrow-right" className="icon1" />
         <p>{name}</p>
     </div>
   )

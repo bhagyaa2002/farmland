@@ -28,6 +28,15 @@ function Nav() {
     await setUser(false);
     navigate("/login");
   };
+
+  const capitalizeFirstLetter = (str) => {
+    if (!str) return '';
+    return str
+      .toLowerCase()
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
   return (
     <div className="nav">
       <div className="navlogo">
@@ -81,18 +90,31 @@ function Nav() {
         >
           <h3>Articles</h3> {location.match("/news") ? <hr /> : <div />}
         </div>
+        <div onClick={
+        ()=>{
+          navigate("/orders");
+        } 
+      } className={location.match("/orders") ? "navitemon" : "navitem"}>
+      <h3>Orders</h3>
+      </div>
       
       </div>
+      
+      
+
 
       <div className="searchbar">
         <LocationOnIcon sx={{ color: "#ffffff" }} />
         <h3>
-          {user.city}, {user.location}
+        {capitalizeFirstLetter(user.city)}, {capitalizeFirstLetter(user.location)}
         </h3>
       </div>
 
+
+      
+
       <div className="profile">
-        <h3>{user.user_name}</h3>
+        <h3>{capitalizeFirstLetter(user.user_name)}</h3>
         <div className="profileicon" onClick={() => setOpen(!open)}>
           <AccountCircleOutlinedIcon
             sx={{ fontSize: 40, color: "#fff", paddingLeft: 1 }}

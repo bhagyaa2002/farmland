@@ -332,18 +332,38 @@
 
 
 
-    .video{
+    // .video{
+    //     display: flex;
+    //     flex-direction: column;
+    //     margin-top: 30px;
+
+    //     .videolist{
+    //         display: flex;
+    //         flex-direction: row;
+    //         justify-content: space-between;
+    //         margin-top: 30px;
+            
+    //     }
+
+    // }
+
+    .video {
         display: flex;
         flex-direction: column;
         margin-top: 30px;
-
-        .videolist{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            margin-top: 30px;
-        }
-
+    }
+    
+    .videolist {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+    .video-item {
+        flex: 1; /* or specify a width like 30% */
+        margin: 0 10px; /* Adjust as needed */
+        /* Optional: Set a max-width to prevent overflow */
+        max-width: 100%; 
     }
 
 }

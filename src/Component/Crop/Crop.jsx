@@ -7,6 +7,8 @@ import { useUserAuth } from "../../context/UserAuthContext";
 
 
 function Crop({id,crop,categorie}) {
+  console.log(crop.cropname)
+  console.log(crop.category," ",categorie )
   const {user} =useUserAuth({});
 
   const navigate  = useNavigate()

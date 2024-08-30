@@ -43,7 +43,8 @@ const BuyDone = () => {
     const senddata = {
       quantity:ans.quantity,
       farmerName:ans.farmerName,
-      owner:ans.owner
+      owner:ans.owner,
+      email:ans.email
   }
     await buyFertilizer(ans.id,senddata)
     }
@@ -51,7 +52,7 @@ const BuyDone = () => {
   }, [])
 
     const handelclose = async() =>{
-        navigate('/fertilizermarket')
+        navigate('/orders')
     }
   return (<>
     {data?

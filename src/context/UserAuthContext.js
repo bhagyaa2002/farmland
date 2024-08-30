@@ -215,6 +215,26 @@ export function UserAuthContextProvider({ children }) {
         return response.data.data;
     }
 
+    const fetchFertilizerOrderHistoryByUser = async (buyerName) => {
+        const url = 'http://localhost:8080/fetchFertilizerOrderHistoryByUser';
+        const data={
+            email:buyerName
+        }
+        const response = await axios.post(url,data);
+        console.log("line 224", response.data.data);
+        //                const data1= await getDocs(fertilizerMarketCollectionRef).then(result=>{
+        //           result.docs.map((onefertilizer) => {
+
+        //             console.log("line 151",onefertilizer)
+        //             const url = 'http://localhost:8080/addFertilizerListing';
+        //             axios.post(url, onefertilizer.data())
+        //     })
+        // })
+
+        // return data
+        return response.data.data;
+    }
+
     const getOneFertilizerMarket = async (_id) => {
         const url = 'http://localhost:8080/getOneFertlizerListing';
         const data={
@@ -250,8 +270,11 @@ export function UserAuthContextProvider({ children }) {
 
     const deletePendingcrop = async (cropname) => {
         console.log("line 217",cropname);
+        const data= {
+            cropname:cropname
+        }
         const url = 'http://localhost:8080/deletePendingCrop';
-                axios.post(url,cropname);
+                axios.post(url,data);
        // await deleteDoc(doc(db, "pending crops", id))
     }
     const addScheme = async (scheme) => {
@@ -350,7 +373,9 @@ export function UserAuthContextProvider({ children }) {
             Quantity: data.quantity,
             Total: data.quantity * fertilizerInfo.offerPrice,
             timestamp: timestamp,
-            owner: data.owner
+            owner: data.owner,
+            email:data.email,
+            url:fertilizerInfo.url
         }
         const url = 'http://localhost:8080/addFertilizerOrderHistory';
         axios.post(url, transaction)
@@ -429,7 +454,7 @@ export function UserAuthContextProvider({ children }) {
     }
 
     }, []);
-    return <userAuthContext.Provider value={{ user, setUser, logIn, addUser, addCrop, addPendingCrop, getCrop, getPendingCrop, cropdata, addCropMarket, getCropMarket, cropMarketData, updateCropMarket, deleteCropMarket, addFertilizerMarket, getFertilizerMarket, deleteFertilizerMarket, updateFertilizerMarket, makeDeal, buyFertilizer, getCropTransaction, getFertilizerTransaction, addScheme, getScheme, addArticle, getArticle, addNews, getNews, logout, deletePendingcrop }}>{children}</userAuthContext.Provider>
+    return <userAuthContext.Provider value={{ user, setUser, logIn, addUser, addCrop, addPendingCrop, getCrop, getPendingCrop, cropdata, addCropMarket, getCropMarket, cropMarketData, updateCropMarket, deleteCropMarket, addFertilizerMarket, getFertilizerMarket, deleteFertilizerMarket, updateFertilizerMarket, makeDeal, buyFertilizer, getCropTransaction, getFertilizerTransaction, addScheme, getScheme, addArticle, getArticle, addNews, getNews, logout, deletePendingcrop, fetchFertilizerOrderHistoryByUser }}>{children}</userAuthContext.Provider>
 }
 
 

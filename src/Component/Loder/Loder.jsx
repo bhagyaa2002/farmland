@@ -12,6 +12,7 @@ const Loder = () => {
         <CircularProgress size={60}  sx={{color:"#F9D923"}} />
       </Backdrop>
     </div>
+    
   )
 }
 

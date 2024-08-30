@@ -17,6 +17,14 @@ import { db } from '../../config/firebase';
 import Loder from '../Loder/Loder';
 import Spinner from '../Spinner/Spinner';
 
+const capitalizeFirstLetter = (str) => {
+  if (!str) return '';
+  return str
+    .toLowerCase()
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
   const columns = [
     {
       field: 'transactionId',
@@ -34,7 +42,12 @@ import Spinner from '../Spinner/Spinner';
       }
     },
     { field: 'cropName', headerName: 'CropName', width: 250 },
-    { field: 'sellerName', headerName: 'SellerName', width: 190 },
+    { 
+      field: 'sellerName', 
+      headerName: 'Seller Name', 
+      width: 190,
+      valueGetter: (params) => capitalizeFirstLetter(params.row.sellerName)
+    },
     { field: 'price', headerName: 'Price', width: 190 },
     { field: 'Quantity', headerName: 'Quantity', width: 220 },
     { field: 'Total', headerName: 'Total', width: 130, valueGetter: (params) =>
@@ -43,11 +56,6 @@ import Spinner from '../Spinner/Spinner';
   ];
 
   const columnsfer = [
-    // { field: 'transactionId', headerName: 'Transaction Date', width: 300 ,valueGetter: (params) =>
-    // `${new Date(params.row.timestamp?.toDate()).toLocaleString("en-US", {
-    //   timeZone: "Asia/Kolkata",
-    //   })|| '6/2/2022, 11:43:26 AM'}`},
-
     {
       field: 'transactionId',
       headerName: 'Transaction Date',
@@ -64,7 +72,12 @@ import Spinner from '../Spinner/Spinner';
       }
     },
     { field: 'cropName', headerName: 'Crop Name', width: 250 },
-    { field: 'buyerName', headerName: 'Buyer Name', width: 190 },
+    { 
+      field: 'buyerName', 
+      headerName: 'Buyer Name', 
+      width: 190,
+      valueGetter: (params) => capitalizeFirstLetter(params.row.buyerName)
+    },
     { field: 'price', headerName: 'Price/Unit', width: 190 },
     { field: 'Quantity', headerName: 'Quantity', width: 220 },
     { field: 'Total', headerName: 'Total', width: 130,valueGetter: (params) =>

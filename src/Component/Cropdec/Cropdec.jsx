@@ -20,7 +20,7 @@ function Cropdec() {
   const[crop,setCrop]= useState(null)
   const[crops,setCrops]= useState()
   const[fatbtn,setFatbtn]=useState("organicFertilizer")
-  const {cropdata} =useUserAuth();
+  const {cropdata,getCrop} =useUserAuth();
   const params = useParams();
   const navigate  = useNavigate()
 
@@ -41,6 +41,7 @@ const ref=collection(db,"crops")
 
     const setdata=async()=>{
      await console.log(cropdata);
+    const res= await getCrop()
     await  cropdata.map((onecrop) => {
         // if (onecrop.data().cropname == params.id) {
         //     console.log(params.id);
@@ -220,7 +221,10 @@ const ref=collection(db,"crops")
             <h2>Related videos</h2>
             <div className='videolist'>
               {crop.youtubeLinks.map((id)=>(
+               
+            
                 <Video embedId={id}/>
+                
               ))}
                
             </div>

@@ -89,6 +89,14 @@
        font-size:smaller;
        
     }
+    .textinputLeftTimeframe1{
+        margin-bottom: 10px;
+        margin-top: 10px;
+        color:darkslategrey;
+       font-weight: bold;
+       font-size:smaller;
+       
+    }
     .textinputPrice{
         margin-left: 100px ;
         font-weight:bold;
@@ -109,6 +117,12 @@
         color:darkslategrey;
        font-weight:bold;
     }
+    .textinputLeft1small{
+        margin-bottom: 10px;
+        margin-top: 20px;
+        color:darkslategrey;
+       font-weight:small;
+    }
     .textinputCropName{
         margin-bottom: 10px;
         color:darkslategrey;
@@ -116,10 +130,11 @@
     }
     .youtubeButtonadd{
         display: flex;
-        flex-direction: row;
+        flex-direction:row-reverse;
+        width: 700px;
     }
     .addButton{
-        margin-left: 620px;
+        // margin-left: 620px;
         margin-top: 10px;
         width: 80px;
         height: 30px;
@@ -127,6 +142,14 @@
         background-color: #ffd700;
     }
     .removeButton{
+        margin-right: 540px;
+        margin-top: 10px;
+        width: 80px;
+        height: 30px;
+        border-radius: 0px;
+        background-color: #ffd700;
+    }
+    .removeButton1{
         margin-right: 620px;
         margin-top: 10px;
         width: 80px;
@@ -134,22 +157,14 @@
         border-radius: 0px;
         background-color: #ffd700;
     }
-    
-    // .addButton, .removeButton {
-    //     margin-top: 10px;
-    //     width: 80px;
-    //     height: 30px;
-    //     border-radius: 0px;
-    //     background-color: #ffd700;
-    //     margin-left: 0px;
-    // }
+   
 
     .multiinput{
         display: flex;
         flex-direction: row;
 
       
-            margin-top: 20px;
+            margin-top: 10px;
             
             input{
                 height: 50px;

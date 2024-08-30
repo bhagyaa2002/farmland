@@ -1,31 +1,125 @@
-import React, { useState } from 'react'
-import "./Addcrop.scss"
+import "./Addcrop1.scss"
 import TextField from '@mui/material/TextField';
 import Nav from '../nav/Nav';
 import { useUserAuth } from "../../context/UserAuthContext";
-import e from 'cors';
+import { useParams } from "react-router-dom";
+import {auth,db} from "../../config/firebase"
+import { collection, getDocs, onSnapshot } from 'firebase/firestore'
+import React, { useEffect, useState } from 'react'
+import Loder from "../Loder/Loder";
+import { useNavigate } from "react-router";
 
-const Addcrop = () => {
-  const { addPendingCrop } = useUserAuth();
-  const [cropname, setCropname] = useState("")
+const Addpendingcrop = () => {
+  const ref=collection(db,"pending crops")
+  const[cropdata,setCropdata]=useState()
+  const navigate = useNavigate();
+  const { getPendingCrop } = useUserAuth();
+  useEffect(() => {
+    getting()
+    
+  //console.log(cropdata);
+  }, [])
 
-  const [soiltype, setSoiltype] = useState("")
-  const [cropirr, setCropirr] = useState("")
-  const [croptemp, setCroptemp] = useState("")
-  const [croploc, setCroploc] = useState("")
+  const getting= async()=>{
 
-  const [cropdec, setCropdec] = useState("")
 
-  const [cropsub1, setCropsub1] = useState("")
-  const [cropsub2, setCropsub2] = useState("")
-  const [cropsub3, setCropsub3] = useState("")
-  const [cropsub4, setCropsub4] = useState("")
+    // const data1=await getDocs(ref)
+    const data1 = await getPendingCrop()
+    console.log("line 28", data1);
+    await data1.map((crop)=>{
+        
+      if(crop._id==params.id){
+        setCropname(crop.cropname)
+        setCropweather(crop.soiltype)
+        setCropirr(crop.irrigation)
+        setCroptemp(crop.temperature)
+        setCroploc(crop.location)
+        setCropdec(crop.description)
+        setCropsub1(crop.subcrops[0])
+        setCropsub2(crop.subcrops[1])
+        setCropsub3(crop.subcrops[2])
+        setCropsub4(crop.subcrops[3])
+        setCropvar1(crop.variety[0])
+        setCropvar2(crop.variety[1])
+        setCropvar3(crop.variety[2])
+        setCropvar4(crop.variety[3])
+        setSoiltype(crop.soiltype)
+        setimage(crop.cropImageUrl)
+        setBannerImageurl(crop.bannerImageUrl)
+        setPrice(crop.price)
+        setCategory(crop.category)
+        const state=crop.state
+        state.map((s)=>{
+          if(s==="Kerala"){
+            setIsCheckedKerala(true);
+          }
+          if(s==="Karnataka"){
+            setIsCheckedKarnataka(true);
+          }
+          if(s==="Tamilnadu"){
+            setIsCheckedTamilnadu(true);
+          }
+          if(s==="Andra Pradesh"){
+            setIsCheckedAndrapradesh(true);
+          }
+        })
+        setorganicFertilizer(convertBackToOrganicFertilizer(crop.organicFertilizer))
+        setChemicalFerilizer(convertBackToChemicalcFertilizer(crop.chemicalFertilizer))
+        setDiseases(convertBackToDiseases(crop.disease))
+        setHarvesting(crop.harvesting)
+        setSeeding(crop.seeding)
+        setSoilPreparation(crop.soilPreparation)
+        setWaterManagement(crop.waterManagement)
+        setYoutubeLinks(crop.youtubeLinks)
 
-  const [cropvar1, setCropvar1] = useState("")
-  const [cropvar2, setCropvar2] = useState("")
-  const [cropvar3, setCropvar3] = useState("")
-  const [cropvar4, setCropvar4] = useState("")
-  const [Imageurl, setimage] = useState("")
+        console.log(crop);
+        console.log("line 69",convertBackToOrganicFertilizer(crop.organicFertilizer));
+        setCropdata(crop)
+      }
+    
+    })
+    
+    // const data = onSnapshot(ref, (doc) => {
+
+    //   console.log(doc.docs);
+      // doc.docs.map((crop)=>{
+        
+      //   if(crop.id==params.id){
+      //     console.log(crop);
+      //     setCropdata(crop.data())
+      //   }
+      
+
+      // })
+      
+    // });
+
+  }
+
+
+  const { addCrop,deletePendingcrop} =useUserAuth();
+  const params = useParams();
+
+    const[cropname,setCropname]=useState("")
+
+    const[cropweather,setCropweather]=useState("")
+    const[cropirr,setCropirr]=useState("")
+    const[croptemp,setCroptemp]=useState("")
+    const[croploc,setCroploc]=useState("")
+
+    const[cropdec,setCropdec]=useState("")
+
+    const[cropsub1,setCropsub1]=useState("")
+    const[cropsub2,setCropsub2]=useState("")
+    const[cropsub3,setCropsub3]=useState("")
+    const[cropsub4,setCropsub4]=useState("")
+
+    const[cropvar1,setCropvar1]=useState("")
+    const[cropvar2,setCropvar2]=useState("")
+    const[cropvar3,setCropvar3]=useState("")
+    const[cropvar4,setCropvar4]=useState("")
+    const [soiltype, setSoiltype] = useState("")
+    const [Imageurl, setimage] = useState("")
   const [bannerImageurl, setBannerImageurl] = useState("")
   const [price, setPrice] = useState("")
   const [category, setCategory] = useState("");
@@ -34,7 +128,9 @@ const Addcrop = () => {
   const [isCheckedTamilnadu, setIsCheckedTamilnadu] = useState(false);
   const [isCheckedAndrapradesh, setIsCheckedAndrapradesh] = useState(false);
 
-  const categories = ["Horticulture", "Long Term Crop", "Short Term Crop", "Sericulture"];
+
+
+    const categories = ["Horticulture", "Long Term Crop", "Short Term Crop", "Sericulture"];
 
   const handleCheckboxChangeKerala = (event) => {
     setIsCheckedKerala(event.target.checked);
@@ -50,25 +146,36 @@ const Addcrop = () => {
   };
 
 
-  const [organicFerilizer, setOrganicFerilizer] = useState([{ name: "", description: "" }]);
+  const [organicFertilizer, setorganicFertilizer] = useState([{ name: "", description: "" }]);
 
-  const handleAddOrganicFerilizer = () => {
-    setOrganicFerilizer([...organicFerilizer, { name: "", description: "" }]);
+  const handleAddorganicFertilizer = () => {
+    setorganicFertilizer([...organicFertilizer, { name: "", description: "" }]);
   };
 
-  const handleRemoveOrganicFerilizer = (index) => {
-    setOrganicFerilizer(organicFerilizer.filter((_, i) => i !== index));
+  const handleRemoveorganicFertilizer = (index) => {
+    setorganicFertilizer(organicFertilizer.filter((_, i) => i !== index));
   };
 
-  const handleOrganicFerilizerChange = (index, field, value) => {
-    const newOrganic = [...organicFerilizer];
+  const handleorganicFertilizerChange = (index, field, value) => {
+    const newOrganic = [...organicFertilizer];
     newOrganic[index][field] = value;
-    setOrganicFerilizer(newOrganic);
+    setorganicFertilizer(newOrganic);
   };
 
-  const getFormattedOrganicFerilizer = () => {
-    return organicFerilizer.map(organic => ({ [organic.name]: organic.description }));
+  const getFormattedOrganicFertilizer = () => {
+    return organicFertilizer.map(organic => ({ [organic.name]: organic.description }));
   };
+
+
+const convertBackToOrganicFertilizer = (formattedOrganicFertilizer = []) => {
+  return formattedOrganicFertilizer.map(organic => {
+      const key = Object.keys(organic)[0];
+      const key1 = Object.keys(organic)[1];
+      const name = organic[key];
+      const description=organic[key1]
+      return { name, description };
+  });
+};
 
 
 
@@ -88,8 +195,18 @@ const Addcrop = () => {
     setChemicalFerilizer(newChemical);
   };
 
-  const getFormattedChemicalFerilizer = () => {
+  const getFormattedChemicalFertilizer = () => {
     return chemicalFerilizer.map(chemical => ({ [chemical.name]: chemical.description }));
+  };
+
+  const convertBackToChemicalcFertilizer = (formattedChemicalFertilizer = []) => {
+    return formattedChemicalFertilizer.map(chemical => {
+      const key = Object.keys(chemical)[0];
+      const key1 = Object.keys(chemical)[1];
+      const name = chemical[key];
+      const description=chemical[key1]
+      return { name, description };
+    });
   };
 
   const [diseases, setDiseases] = useState([{ name: "", description: "" }]);
@@ -110,6 +227,16 @@ const Addcrop = () => {
 
   const getFormattedDiseases = () => {
     return diseases.map(disease => ({ [disease.name]: disease.description }));
+  };
+
+  const convertBackToDiseases = (formattedDiseases = []) => {
+    return formattedDiseases.map(disease => {
+      const key = Object.keys(disease)[0];
+      const key1 = Object.keys(disease)[1];
+      const name = disease[key];
+      const description=disease[key1]
+      return { name, description };
+    });
   };
 
 
@@ -199,8 +326,10 @@ const Addcrop = () => {
 
 
 
-  const handelchange = async () => {
-    let states = [];
+   
+    const handelchange = async() =>{
+
+      let states = [];
     if (isCheckedKerala) {
       states.push("Kerala")
     }
@@ -213,40 +342,45 @@ const Addcrop = () => {
     if (isCheckedAndrapradesh) {
       states.push("Andra Pradesh")
     }
-    console.log("line 201",getFormattedDiseases);
-    
 
-    const data = {
-      cropname: cropname,
-      soiltype: soiltype,
-      irrigation: cropirr,
-      temperature: croptemp,
-      cropImageUrl: Imageurl,
-      subcrops: [cropsub1, cropsub2, cropsub3, cropsub4],
-      description: cropdec,
-      location: croploc,
-      variety: [cropvar1, cropvar2, cropvar3, cropvar4],
-      category: category,
-      state: states,
-      bannerImageUrl: [bannerImageurl],
-      price: price,
-      organicFertilizer:getFormattedOrganicFerilizer(),
-      chemicalFertilizer:getFormattedChemicalFerilizer(),
-      disease: getFormattedDiseases(),
-      harvesting: harvesting,
-      seeding: seeding,
-      soilPreparation: soilPreparation,
-      waterManagement: waterManagement,
-      youtubeLinks: youtubeLinks
-
+      const data = {
+        cropname: cropname,
+        soiltype: soiltype,
+        irrigation: cropirr,
+        temperature: croptemp,
+        cropImageUrl: Imageurl,
+        subcrops: [cropsub1, cropsub2, cropsub3, cropsub4],
+        description: cropdec,
+        location: croploc,
+        variety: [cropvar1, cropvar2, cropvar3, cropvar4],
+        category: category,
+        state: states,
+        bannerImageUrl: bannerImageurl,
+        price: price,
+        organicFertilizer:getFormattedOrganicFertilizer(),
+        chemicalFertilizer:getFormattedChemicalFertilizer(),
+        disease: getFormattedDiseases(),
+        harvesting: harvesting,
+        seeding: seeding,
+        soilPreparation: soilPreparation,
+        waterManagement: waterManagement,
+        youtubeLinks: youtubeLinks  
+      }
+      console.log(data);
+      
+      await addCrop(data);
+     
+      await deletePendingcrop(cropname)
+      navigate(`/cropinfo`)
 
     }
-    console.log("line 48", data);
-    await addPendingCrop(data);
-  }
 
   return (
-    <div className='addcontanier'>
+    
+    <>
+    {
+      cropdata?
+      <div className='addcontanier'>
       <Nav />
       <h1>CrowdSourcing</h1>
       <div className='textinputwithHeading'>
@@ -371,7 +505,7 @@ const Addcrop = () => {
       <div className='textinput'>
         <div className='textinputwithHeading'>
           <span className='textinputLeft1'>Organic Fertilizer</span>
-          {organicFerilizer.map((organic, index) => (
+          {organicFertilizer.map((organic, index) => (
             <div key={index} className='textinput'>
               <div className='textinputwithHeading'>
                 <>
@@ -379,30 +513,30 @@ const Addcrop = () => {
                   <div className='multiinput'>
                     <div className='textinputwithHeading'>
                       <span className='textinputLeftTimeframe'>Timeframe</span>
-                      <input type="text" placeholder='eg: 0-10days' style={{ width: "140px" }} value={organic.name} onChange={(e) => handleOrganicFerilizerChange(index, 'name', e.target.value)} />
+                      <input type="text" placeholder='eg: 0-10days' style={{ width: "140px" }} value={organic.name} onChange={(e) => handleorganicFertilizerChange(index, 'name', e.target.value)} />
                     </div>
                     <div className='textinputwithHeading'>
                       <span className='textinputRightForFertilizer'>Description</span>
-                      <input type="text" style={{ width: "510px", marginLeft: "50px" }} value={organic.description} onChange={(e) => handleOrganicFerilizerChange(index, 'description', e.target.value)} />
+                      <input type="text" style={{ width: "510px", marginLeft: "50px" }} value={organic.description} onChange={(e) => handleorganicFertilizerChange(index, 'description', e.target.value)} />
                     </div>
                   </div>
 
 
                 </>
                 <div className="youtubeButtonadd">
-                  {index === organicFerilizer.length - 1 && (
+                  {index === organicFertilizer.length - 1 && (
                     <div >
-                      <button className='addButton' onClick={handleAddOrganicFerilizer}>Add</button>
+                      <button className='addButton' onClick={handleAddorganicFertilizer}>Add</button>
                     </div>
                   )}
-                  {index > 0 && index !== organicFerilizer.length - 1 && (
+                  {index > 0 && index !== organicFertilizer.length - 1 && (
                     <div >
-                      <button className="removeButton1" onClick={() => handleRemoveOrganicFerilizer(index)}>Remove</button>
+                      <button className="removeButton1" onClick={() => handleRemoveorganicFertilizer(index)}>Remove</button>
                     </div>
                   )}
-                  {index > 0 && index === organicFerilizer.length - 1 && (
+                  {index > 0 && index === organicFertilizer.length - 1 && (
                     <div>
-                      <button className="removeButton" onClick={() => handleRemoveOrganicFerilizer(index)}>Remove</button>
+                      <button className="removeButton" onClick={() => handleRemoveorganicFertilizer(index)}>Remove</button>
                     </div>
                   )}
                 </div>
@@ -717,7 +851,14 @@ const Addcrop = () => {
       </div>
 
     </div>
+    :<Loder/>
+    }
+     
+    
+    </>
+    
+   
   )
 }
 
-export default Addcrop
+export default Addpendingcrop
