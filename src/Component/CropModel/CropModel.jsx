@@ -55,6 +55,7 @@ const CropModel = ({open,onClose,type}) => {
           owner:user.shop,
           location:user.location
         };
+        console.log(data)
         addFertilizerMarket(data)
       })
     });

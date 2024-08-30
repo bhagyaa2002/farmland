@@ -177,11 +177,16 @@ export function UserAuthContextProvider({ children }) {
 
 
     const addCropMarket = async (crop) => {
-        await addDoc(cropsMarketCollectionRef, crop)
+        const url = 'http://localhost:8080/addCropListing';
+        const response = await axios.post(url,crop);
+        // await addDoc(cropsMarketCollectionRef, crop)
     }
 
     const addFertilizerMarket = async (fertilizer) => {
-        await addDoc(fertilizerMarketCollectionRef, fertilizer)
+        const url = 'http://localhost:8080/addFertilizerListing';
+        const response = await axios.post(url,fertilizer);
+        
+       // await addDoc(fertilizerMarketCollectionRef, fertilizer)
     }
 
     const getCropMarket = async () => {
