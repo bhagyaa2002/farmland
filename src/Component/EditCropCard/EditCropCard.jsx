@@ -31,6 +31,7 @@ const EditCropModel = ({open,onClose,data,id}) => {
     setBtnclick(true)
 
         const data={
+          _id:id,
           name:cropname,
           quantity:quantity,
           mrp:rate,
@@ -48,7 +49,8 @@ const EditCropModel = ({open,onClose,data,id}) => {
     setRequiredtype("")
     setCroptype("")
     setBtnclick(true)
-    navigate("/cropmarket")
+    window.location.reload()
+    // navigate("/cropmarket")
     onClose()
   }
 
@@ -66,10 +68,12 @@ const EditCropModel = ({open,onClose,data,id}) => {
             <p onClick={onClose} className="closebtn">X</p>
             </div>
             <div className='modelbody'> 
+            <h2>Edit Crop</h2>
             <TextField 
             label="Crop Name" 
             variant="outlined" 
-            sx={{width:"500px"}}
+            sx={{width:"500px",marginTop:"3px"
+            }}
             value={cropname}
             onChange={(e)=>{setCropname(e.target.value)}}
             />

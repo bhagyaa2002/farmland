@@ -261,16 +261,32 @@ export function UserAuthContextProvider({ children }) {
     }
 
     const updateCropMarket = async (id, data) => {
-        await updateDoc(doc(db, "crop market", id), data)
+        const url = 'http://localhost:8080/updateCropListing';
+        const response = await axios.post(url,data);
+        
+        // await updateDoc(doc(db, "crop market", id), data)
     }
     const updateFertilizerMarket = async (id, data) => {
-        await updateDoc(doc(db, "fertilizer market", id), data)
+        const url = 'http://localhost:8080/updateFertilizerListing';
+        const response = await axios.post(url,data);
+       // await updateDoc(doc(db, "fertilizer market", id), data)
     }
     const deleteCropMarket = async (id) => {
-        await deleteDoc(doc(db, "crop market", id))
+        const data={
+            _id:id
+        }
+        const url = 'http://localhost:8080/deleteCropListing';
+        const response = await axios.post(url,data);
+        // await deleteDoc(doc(db, "crop market", id))
     }
     const deleteFertilizerMarket = async (id) => {
-        await deleteDoc(doc(db, "fertilizer market", id))
+        const data={
+            _id:id
+        }
+        const url = 'http://localhost:8080/deleteFertilizerListing';
+        const response = await axios.post(url,data);
+        
+        // await deleteDoc(doc(db, "fertilizer market", id))
     }
 
     const deletePendingcrop = async (cropname) => {
@@ -409,7 +425,7 @@ export function UserAuthContextProvider({ children }) {
     }
 
     const getFertilizerTransaction = async () => {
-        const data = await getDocs(fertilizerDashboardCollectionRef)
+        // const data = await getDocs(fertilizerDashboardCollectionRef)
 
         // const data1= await getDocs(fertilizerDashboardCollectionRef).then(result=>{
         //                     // const url = 'http://localhost:8080/addFertilizerOrderHistory';

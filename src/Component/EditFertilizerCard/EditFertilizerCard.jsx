@@ -19,8 +19,10 @@ const EditFertilizerModel = ({open,onClose,data,id}) => {
 
 
   const handleChange = async() =>{
-
+      console.log("line 22",id);
+      
         const data={
+          _id:id,
             name:fertilizername,
             quantity:fertilizerquantity,
             mrp:fertilizerate,
@@ -36,7 +38,9 @@ const EditFertilizerModel = ({open,onClose,data,id}) => {
         setFertilizerOfferate("")
         setFertilizerCat("")
         setFertilizertype("")
-        navigate("/fertilizermarket")
+        window.location.reload()
+        // navigate("/fertilizermarket")
+
         onClose()
   }
 
@@ -49,7 +53,7 @@ const EditFertilizerModel = ({open,onClose,data,id}) => {
     <div onClick={onClose} className='editoverlay'>
         <div onClick={(e)=>{
             e.stopPropagation()
-        }} className='editmodelcontainer'>
+        }} className='editmodelcontainer1'>
                         <div className='btncover'>
             <p onClick={onClose} className="closebtn">X</p>
             </div>

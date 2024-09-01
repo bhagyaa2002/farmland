@@ -81,7 +81,7 @@ const AdminCropmarket = () => {
           {
             cropmarket.map((cropone)=>(
               
-              <AdminCropcard id={cropone.id} data={cropone}/>
+              <AdminCropcard id={cropone._id} data={cropone}/>
             ))
           }
         </div>

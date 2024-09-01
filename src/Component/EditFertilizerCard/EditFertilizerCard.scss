@@ -8,8 +8,10 @@
     flex-direction: column;
     
     
-        .editmodelcontainer
+    
+        .editmodelcontainer1
         {
+            
             width: 700px;
             height: 600px;
             background-color: #ffffff;
@@ -50,6 +52,7 @@
                 border-radius: 8px;
                 text-align: center;
                 color: #ffffff;
+                cursor: pointer;
                }
     
            }
