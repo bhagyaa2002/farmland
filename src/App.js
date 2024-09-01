@@ -37,6 +37,9 @@ import CrowdSourcing from "./Component/CrowdSourcing/CrowdSourcing";
 import Addcrop from "./Component/AddCrop/Addcrop";
 import Addpendingcrop from "./Component/editpendingcrop/Addcrop"
 import Editpendingcrop from "./Component/editpendingcrop/EditPendingCrop";
+import SchemeForm from "./Component/SchemeForm/SchemeForm";
+import NewsForm from "./Component/NewsForm/NewsForm";
+import ArticleForm from "./Component/ArticleForm/ArticleForm";
 
 function App() {
   const { user } = useUserAuth();
@@ -45,6 +48,9 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/crowdsourcing" exact element={<Addcrop />} />
+          <Route path="/uploadscheme" exact element={<SchemeForm />} />
+          <Route path="/uploadnews" exact element={<NewsForm />} />
+          <Route path="/uploadarticle" exact element={<ArticleForm />} />
           <Route path="/login" exact element={<Login />} />
           <Route path="/signup" exact element={<Signup />} />
           <Route path="/forgotpassword" exact element={<ForgotPassword />} />
