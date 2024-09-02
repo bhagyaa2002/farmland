@@ -112,12 +112,12 @@ const changecat = (cat) =>{
               <div onClick={()=>changecat("Short Term Crop")}>
               <Categories name="Food Crops " icon={corn_}/>
               </div>
-              <div onClick={()=>navigate("/cropmarket")}>
+              {/* <div onClick={()=>navigate("/cropmarket")}>
               <Categories name="Crop Market" icon={harvest}/>
               </div>
               <div onClick={()=>navigate("/fertilizermarket")}>
               <Categories name="Fertilizer Market" icon={fertilizer}/>
-              </div>
+              </div> */}
             </div>
         </div>
 

@@ -31,6 +31,8 @@ function Cropmarket() {
       //  const data = onSnapshot(ref, (doc) => {
       //   setCropmarket(doc.docs)
       // });
+      console.log("line 34",data);
+      
 
      }
      getdata()
@@ -87,7 +89,7 @@ function Cropmarket() {
         </div>
         <div className='cardlist'>
           {cropMarket.map((marketdata)=>(
-               <Card Id={marketdata.id} data={marketdata} type="Required Instant" type2="" cat={cropcat}/>
+               <Card Id={marketdata._id} data={marketdata} type="Required Instant" type2="" cat={cropcat}/>
           ))}
         </div>
       </div>
@@ -98,8 +100,8 @@ function Cropmarket() {
         </div>
         <div className='cardlist'>
         {cropMarket.map((marketdata)=>(
-        (marketdata.id != undefined &&
-               <Card Id={marketdata.id } data={marketdata.data()} type="Required after week" type2="Required after 2 days" cat={cropcat}/>
+        (marketdata._id != undefined &&
+               <Card Id={marketdata._id } data={marketdata} type="Required after week" type2="Required after 2 days" cat={cropcat}/>
         )
           ))}
         </div>

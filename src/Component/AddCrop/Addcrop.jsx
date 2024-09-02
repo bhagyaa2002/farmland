@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
-import "./Addcrop.scss"
-import TextField from '@mui/material/TextField';
-import Nav from '../nav/Nav';
+import React, { useState } from 'react';
 import { useUserAuth } from "../../context/UserAuthContext";
-import e from 'cors';
+import Nav from '../nav/Nav';
+import "./Addcrop.scss";
 
 const Addcrop = () => {
   const { addPendingCrop } = useUserAuth();
@@ -196,6 +194,8 @@ const Addcrop = () => {
     newLinks[index] = value;
     setYoutubeLinks(newLinks);
   };
+  const[errorMessage,setErrorMessage]=useState("")
+  const[errorMessage1,setErrorMessage1]=useState("")
 
 
 
@@ -267,14 +267,29 @@ const Addcrop = () => {
       </div>
       <div className='multiinput'>
         <div className='textinputwithHeading'>
-          <span className='textinputLeft'>Temprature Required</span>
-          <input type="text" style={{ width: "300px" }} value={croptemp} onChange={(e) => setCroptemp(e.target.value)} />
+          <span className='textinputLeft'>Temprature Required(°C)</span>
+          <input type="number" style={{ width: "300px" }} value={croptemp} onChange={(e) =>{
+            const value = e.target.value;
+            const numValue = Number(value);
+            if (value === "" || numValue === 0) {
+              setErrorMessage("Value should be greater than 0 and less than 100")
+              setCroptemp("");
+            } 
+            else if (numValue > 0 && numValue<100) {
+              setCroptemp(value);
+              setErrorMessage("")
+            }
+          }} />
         </div>
+        
         <div className='textinputwithHeading'>
           <span className='textinputRight'>Location</span>
           <input type="text" style={{ width: "300px", marginLeft: "100px" }} value={croploc} onChange={(e) => setCroploc(e.target.value)} />
         </div>
       </div>
+      {errorMessage &&(<h6 className="errorMessageTemp">{errorMessage}</h6>)}
+      
+
       <div className='textinput'>
         <div className='textinputwithHeading'>
           <span className='textinputLeft1'>Crop Description</span>
@@ -348,10 +363,22 @@ const Addcrop = () => {
         </div>
         <div className='textinputwithHeading'>
           <span className='textinputPrice'>Price</span>
-          <input type="number" style={{ width: "300px", marginLeft: "100px" }} value={price} onChange={(e) => setPrice(e.target.value)} />
+          <input type="number" style={{ width: "300px", marginLeft: "100px" }} value={price} onChange={(e) => {
+             const value = e.target.value;
+             const numValue = Number(value);
+             if (value === "" || numValue === 0) {
+               setErrorMessage1("Value should be greater than 0.")
+               setPrice("");
+             } 
+             else if (numValue > 0 ) {
+              setPrice(value);
+               setErrorMessage1("")
+             }
+             }} />
         </div>
+        
       </div>
-
+      {errorMessage1 &&(<h6 className="errorMessagePrice">{errorMessage1}</h6>)}
       <span className='textinputCheckbox'>Crop growing states</span>
       <div className='checkbox'>
         <input type="checkbox" checked={isCheckedKerala} onChange={handleCheckboxChangeKerala} />

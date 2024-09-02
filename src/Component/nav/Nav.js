@@ -90,13 +90,14 @@ function Nav() {
         >
           <h3>Articles</h3> {location.match("/news") ? <hr /> : <div />}
         </div>
+        {user.user_type == "Farmer" && (
         <div onClick={
         ()=>{
           navigate("/orders");
         } 
       } className={location.match("/orders") ? "navitemon" : "navitem"}>
-      <h3>Orders</h3>
-      </div>
+      <h3>Orders</h3>{location.match("/orders") ? <hr /> : <div />}
+      </div>)}
       
       </div>
       
@@ -130,6 +131,38 @@ function Nav() {
               {" "}
               <h3>Crowd Souring</h3>
             </div>
+
+
+            {user.user_type == "Admin" && (<div
+              onClick={() => {
+                navigate("/uploadnews");
+              }}
+            >
+              {" "}
+              <h3>Upload News</h3>
+            </div>)
+            }
+
+            {user.user_type == "Admin" && (<div
+              onClick={() => {
+                navigate("/uploadarticle");
+              }}
+            >
+              {" "}
+              <h3>Upload Article</h3>
+            </div>)}
+
+
+            {user.user_type == "Admin" && (<div
+              onClick={() => {
+                navigate("/uploadscheme");
+              }}
+            >
+              {" "}
+              <h3>Upload Scheme</h3>
+            </div>)}
+
+
             <hr></hr>
             <div onClick={Logout}>
               <h3>LogOut</h3>

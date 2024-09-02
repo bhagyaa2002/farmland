@@ -108,8 +108,27 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    formValues.location = value;
-    setFormErrors(validate(formValues));
+  formValues.location = value;
+
+  const errors = validate(formValues);
+  setFormErrors(errors);
+
+  // Set isSubmit only after validation
+  if (Object.keys(errors).length === 0) {
+    setIsSubmit(true);
+  } else {
+    setIsSubmit(false);
+  }
+
+
+
+
+    // e.preventDefault();
+    // formValues.location = value;
+    // setFormErrors(validate(formValues));
+
+
+    
     // if (Object.keys(formErrors).length === 0) {
     //   console.log("line 115");
     //   setIsSubmit(true);
@@ -131,7 +150,7 @@ export default function Signup() {
 
         //const a = await signUp(formValues.email, formValues.password);
         console.log("line 133");
-       addUser(formValues).then(a=>{
+       await addUser(formValues).then(a=>{
         console.log("line 134",a);
           if (a !== "success") {
             setErrorDisplay(true);
@@ -440,7 +459,7 @@ export default function Signup() {
                   <MdLocationPin size={19} />
                 </div>
                 <>
-                  {!isSelectVisible && (
+                  {/* {!isSelectVisible && (
 
                       <input
                         type="text"
@@ -452,7 +471,7 @@ export default function Signup() {
                   
                   )}
 
-                  {isSelectVisible && (
+                  {isSelectVisible && ( */}
                    
                       <Select
                         onChange={handleSelectChange}
@@ -477,7 +496,7 @@ export default function Signup() {
                         ))}
                       </Select>
                    
-                  )}
+                  {/* )} */}
                 </>
               </div>
               {value.length >= 0 && formErrors.location ? (<>

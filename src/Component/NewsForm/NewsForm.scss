@@ -19,7 +19,7 @@ $input-padding: 15px 20px; // Increase padding for input fields
   margin-top: 30px;
 }
 
-h2 {
+.heading-news {
   text-align: center;
   margin-bottom: 20px;
   font-size: 26px;
@@ -83,7 +83,7 @@ h2 {
   }
 }
 
-.submit-btn {
+.submit-btn-news {
   padding: 12px;
   border: none;
   background-color: $submit-btn-bg;

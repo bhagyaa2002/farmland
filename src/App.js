@@ -48,9 +48,9 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/crowdsourcing" exact element={<Addcrop />} />
-          <Route path="/uploadscheme" exact element={<SchemeForm />} />
-          <Route path="/uploadnews" exact element={<NewsForm />} />
-          <Route path="/uploadarticle" exact element={<ArticleForm />} />
+          {/* <Route path="/uploadscheme" exact element={<SchemeForm />} /> */}
+          {/* <Route path="/uploadnews" exact element={<NewsForm />} /> */}
+          {/* <Route path="/uploadarticle" exact element={<ArticleForm />} /> */}
           <Route path="/login" exact element={<Login />} />
           <Route path="/signup" exact element={<Signup />} />
           <Route path="/forgotpassword" exact element={<ForgotPassword />} />
@@ -63,7 +63,7 @@ function App() {
               element={<UploadShortTerm />}
             />
           )}
-          {user && (
+          {/* {user && (
             <Route path="/uploadlongterm" exact element={<UploadLongTerm />} />
           )}
           {user && (
@@ -71,8 +71,8 @@ function App() {
           )}
           {user && (
             <Route path="/uploadarticle" exact element={<UploadArticle />} />
-          )}
-          {user && <Route path="/uploadnews" exact element={<UploadNews />} />}
+          )} */}
+          {/* {user && <Route path="/uploadnews" exact element={<UploadNews />} />} */}
           {user && <Route path="/news" exact element={<News_sg />} />}
           {/* {user && <Route path="/news" exact element={<Admindashboard />} />} */}
           {user && <Route path="/sucess/:id" exact element={<Done />} />}
@@ -115,6 +115,13 @@ function App() {
               }
             ></Route>
           )}
+
+          {user && user.user_type == "Admin" &&(         
+             <Route path="/uploadscheme" exact element={<SchemeForm />} />)}
+          {user && user.user_type == "Admin" &&(         
+             <Route path="/uploadnews" exact element={<NewsForm />} />)}
+          {user && user.user_type == "Admin" &&(         
+             <Route path="/uploadarticle" exact element={<ArticleForm />} />)}
           <Route path="/" element={<Navigate to="/Login" />} />
           <Route path="*" element={<Login />} />
         </Routes>

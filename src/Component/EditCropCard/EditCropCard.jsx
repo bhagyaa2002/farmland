@@ -17,6 +17,10 @@ const EditCropModel = ({open,onClose,data,id}) => {
   const[offerrate,setOfferate]=useState(data.offerPrice)
   const[requiredtype,setRequiredtype]=useState(data.requiredtime)
   const[croptype,setCroptype]=useState(data.croptype)
+  const[errorMessage,setErrorMessage]=useState("")
+  const[errorMessage1,setErrorMessage1]=useState("")
+  const[errorMessage2,setErrorMessage2]=useState("")
+  const[errorMessage4,setErrorMessage4]=useState("")
 
 
 
@@ -28,6 +32,27 @@ const EditCropModel = ({open,onClose,data,id}) => {
 
 
   const handleChange = async() =>{
+    if(cropname===""){
+      setErrorMessage4("Please enter a cropname.")
+    return;
+    }
+    setErrorMessage4("")
+    if(quantity==""){
+      setErrorMessage("Please enter the value.")
+      return;
+    }
+    setErrorMessage("")
+    if(rate==""){
+      setErrorMessage1("Please enter the value.")
+      return;
+    }
+    setErrorMessage1("")
+    if(offerrate==""){
+      setErrorMessage2("Please enter the value.")
+      return;
+    }
+    setErrorMessage2("")
+    
     setBtnclick(true)
 
         const data={
@@ -68,7 +93,7 @@ const EditCropModel = ({open,onClose,data,id}) => {
             <p onClick={onClose} className="closebtn">X</p>
             </div>
             <div className='modelbody'> 
-            <h2>Edit Crop</h2>
+            <h2 className='heading-model-edit'>Edit Crop</h2>
             <TextField 
             label="Crop Name" 
             variant="outlined" 
@@ -77,35 +102,68 @@ const EditCropModel = ({open,onClose,data,id}) => {
             value={cropname}
             onChange={(e)=>{setCropname(e.target.value)}}
             />
-
+            {errorMessage4 &&(<h6 className="errorMessage">{errorMessage4}</h6>)}
             <TextField  
             label="Quantity" 
             variant="outlined" 
-            sx={{width:"500px", marginTop:"20px"}}
+            sx={{width:"500px", marginTop:"10px"}}
             value={quantity}
-            onChange={(e)=>{setQuantity(e.target.value)}}
+            onChange={(e)=>{
+              
+                const value = e.target.value;
+                const numValue = Number(value);
+                if (value === "" || numValue === 0) {
+                  setErrorMessage("Value should be greater than 0")
+                  setQuantity("");
+                } 
+                else if (numValue > 0) {
+                  setQuantity(value);
+                  setErrorMessage("")
+                }
+              
+            }}
             />
+            {errorMessage &&(<h6 className="errorMessage">{errorMessage}</h6>)}
             <TextField  
             label="Market Rate" 
             variant="outlined" 
-            sx={{width:"500px", marginTop:"20px"}}
+            sx={{width:"500px", marginTop:"10px"}}
             value={rate}
-            onChange={(e)=>{setRate(e.target.value)}}
+            onChange={(e)=>{const value = e.target.value;
+              const numValue = Number(value);
+              if (value === "" || numValue === 0) {
+                setErrorMessage1("Value should be greater than 0")
+                setRate("");
+              } 
+              else if (numValue > 0) {
+                setRate(value);
+                setErrorMessage1("")
+              }}}
             />
+            {errorMessage1 &&(<h6 className="errorMessage">{errorMessage1}</h6>)}
             <TextField  
             label="Supplier Rate" 
             variant="outlined" 
-            sx={{width:"500px", marginTop:"20px"}}
+            sx={{width:"500px", marginTop:"10px"}}
             value={offerrate}
-            onChange={(e)=>{setOfferate(e.target.value)}}
+            onChange={(e)=>{ const value = e.target.value;
+              const numValue = Number(value);
+              if (value === "" || numValue === 0) {
+                setErrorMessage2("Value should be greater than 0")
+                setOfferate("");
+              } 
+              else if (numValue > 0) {
+                setOfferate(value);
+                setErrorMessage2("")
+              }}}
             />
-
-            <FormControl sx={{width:"500px", marginTop:"20px"}}>
+{errorMessage2 &&(<h6 className="errorMessage">{errorMessage2}</h6>)}
+            <FormControl sx={{width:"500px", marginTop:"10px"}}>
             <InputLabel id="demo-simple-select-label" >Required Time</InputLabel>
                 <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                label="Age"
+                label="RequiredTimee"
                 value={requiredtype}
                 onChange={(e)=>{setRequiredtype(e.target.value)}}
                 >
@@ -115,7 +173,7 @@ const EditCropModel = ({open,onClose,data,id}) => {
                 </Select>
             </FormControl>
 
-            <FormControl sx={{width:"500px", marginTop:"20px"}}>
+            <FormControl sx={{width:"500px", marginTop:"10px"}}>
             <InputLabel id="demo-simple-select-label" >Type</InputLabel>
                 <Select
                 labelId="demo-simple-select-label"

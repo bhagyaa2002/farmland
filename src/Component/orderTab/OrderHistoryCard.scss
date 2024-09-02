@@ -159,21 +159,31 @@ h1{
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 600px;
+  width: 800px;
 
   .order-details {
     flex-grow: 1;
 
-    h2 {
-      margin: 0 0 10px;
-      font-size: 1.5rem;
-      color: #333;
-    }
+    // h2 {
+    //   margin: 0 0 10px;
+    //   font-size: 1.5rem;
+    //   color: #333;
+    // }
 
-    p {
-      margin: 5px 0;
+    // p {
+    //   margin: 5px 0;
+    //   color: #555;
+    // }
+  }
+  .order-heading{
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  .order-content{
+    // margin: 5px 0;
       color: #555;
-    }
+      font-size:medium;
   }
 
   .order-image {

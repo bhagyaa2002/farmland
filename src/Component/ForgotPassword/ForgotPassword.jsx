@@ -13,6 +13,8 @@ import { MdEmail } from "react-icons/md";
 import {auth} from "../../config/firebase"
 import {sendPasswordResetEmail} from "firebase/auth"
 // import { Alert } from "@mui/material";
+import { BsFillTelephoneFill } from "react-icons/bs";
+
 
 export default function ForgotPassword() {
   const [values, setValues] = React.useState({
@@ -39,15 +41,41 @@ export default function ForgotPassword() {
   };
 
   const [email, setEmail] = useState("");
-  const { logIn, getCrop } = useUserAuth();
+  const [phone, setPhone] = useState("");
+  const { logIn, getCrop, forgotPassword} = useUserAuth();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [message, setMessage] = useState("");
+  const [errormessage, setErrorMessage] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
-    sendPasswordResetEmail(auth, email).then(()=>{
-      navigate("/login");
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
+    if(email.length>0 && phone.length>0){
+      
+    const data={
+      email:email,
+      phone:phone
+    }
+    setIsSubmitting(true); // Disable submit button
+    setMessage(""); 
+    setErrorMessage("")
+    try {
+      await forgotPassword(data);
+      setMessage("Password reset email has been sent."); // Success message
+      // setTimeout(() => {
+        
+      // }, 3000);
+      // navigate("/login");
+      setEmail("")
+      setPhone("")
+    } catch (error) {
+      setErrorMessage("User not found or phone number does not match."); // Error message
+    } finally {
+      setIsSubmitting(false); // Re-enable submit button
+    }
+    }
+    else{
+      setErrorMessage("Please enter the details.");
+    }
+    
   
 
   };
@@ -58,14 +86,14 @@ export default function ForgotPassword() {
           <div className="forms-container">
             <div className="signin-signup">
               <form
-                action="/login"
-                method="POST"
                 className="sign-in-form"
                 name="myLoginForm"
                 onSubmit={handleSubmit}
               >
                 <h2 className="title">Forgot Password</h2>
                 {/* {error && <Alert variant="danger">{error}</Alert> } */}
+                {message && <div className="success-message">{message}</div>}
+                {errormessage && <div className="forgot-message">{errormessage}</div>}
                 <div className="input-field">
                   <div className="icon">
                   <MdEmail size={16} />
@@ -75,13 +103,30 @@ export default function ForgotPassword() {
                     type="text"
                     name="user_phone"
                     placeholder="Email"
+                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    disabled={isSubmitting}
+                  />
+                
+                </div>
+                <div className="input-field">
+                  <div className="icon">
+                  <BsFillTelephoneFill size={16} />
+                  </div>
+                  <input
+                    type="text"
+                    name="user_phone"
+                    placeholder="Phone Number"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    disabled={isSubmitting}
                   />
                 </div>
                 <input
                   type="Submit"
                   value="Reset Password"
                   className="btn solid" /*onClick={Cropinfo}*/
+                  disabled={isSubmitting}
                 />
               </form>
             </div>

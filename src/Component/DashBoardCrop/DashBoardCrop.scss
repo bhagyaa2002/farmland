@@ -79,7 +79,7 @@
         {
            
 
-            width: 20%;
+            width: 23%;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -106,9 +106,9 @@
 
                 .profit
                 {
-                    width: 50%;
-                    padding-top: 20px;
-                    padding-bottom: 20px;
+                    width: 180px;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
@@ -121,6 +121,8 @@
                     font-size: 22px;
 
                 }
+
+                
 
                     h2{
                         margin-top: 20px;
@@ -164,9 +166,9 @@
                 margin-top: 30px;
                 .profit
                 {
-                    width: 50%;
-                    padding-top: 20px;
-                    padding-bottom: 20px;
+                    width: 180px;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
@@ -186,6 +188,7 @@
                         margin-top: 20px;
                     }
                 }
+
                 .totalprderprofit
                 {
                     padding-top: 20px;
@@ -264,5 +267,67 @@
             }
 
         }
+    }
+}
+
+.totalordercount{
+    width: 210px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:rgba(20, 74, 5, 0.05);
+    margin: 10px;
+border-radius: 8px;
+h1{
+    font-weight: 500;
+    font-size: 22px;
+}
+    h2{
+        margin-top: 20px;
+    }
+}
+
+
+.payout{
+    width: 240px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:rgba(20, 74, 5, 0.05);
+    margin: 10px;
+border-radius: 8px;
+h1{
+    font-weight: 500;
+    font-size: 22px;
+}
+    h2{
+        margin-top: 20px;
+    }
+}
+
+.totalpickupcount{
+    width: 220px;
+    padding-top: 10px;
+    // padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:rgba(20, 74, 5, 0.05);
+    margin: 10px;
+border-radius: 8px;
+h1{
+    font-weight: 500;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+    h2{
+        margin-top: 10px;
+        margin-bottom: 5px;
     }
 }

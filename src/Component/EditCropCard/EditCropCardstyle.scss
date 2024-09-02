@@ -1,7 +1,7 @@
 .editoverlay{
     background-color: rgba($color: #000000, $alpha: 0.9);
     width: 100vw;
-    height: 100vh;
+    // height: 100vh;
     position: fixed;
     z-index: 2;
     display: flex;
@@ -15,7 +15,7 @@
         .editmodelcontainer
         {
             width: 700px;
-            height: 600px;
+            // height: 600px;
             background-color: #ffffff;
             border-radius: 8px;
             display: flex;
@@ -37,8 +37,8 @@
             {
                 display: flex;
                 flex-direction: column;
-                align-items: center;
-                margin: 20px 20px 0px 20px;
+                // align-items: center;
+                margin: 20px 20px 0px 90px;
             }
             
            .cropsave{
@@ -55,6 +55,7 @@
                 text-align: center;
                 color: #ffffff;
                 cursor: pointer;
+                margin-bottom: 10px;
                }
 
                .savecropdisable{
@@ -74,3 +75,14 @@
         }
     
     }
+    .errorMessage {
+        color: red;
+        margin-top: 10px;
+        font-size: 10px;
+        font-weight: bold;
+        // margin-left: -350px;
+        text-align: left;
+      }
+      .heading-model-edit{
+        margin-left: 200px;
+      }

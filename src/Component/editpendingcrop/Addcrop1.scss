@@ -156,6 +156,23 @@
        font-weight: bold;
        
     }
+    .errorMessageTemp {
+        color: red;
+        margin-top: 10px;
+        font-size: 10px;
+        font-weight: bold;
+        margin-left: -470px;
+        text-align: left;
+      }
+      .errorMessagePrice{
+        color: red;
+        margin-top: 10px;
+        font-size: 10px;
+        font-weight: bold;
+        margin-left: 250px;
+        text-align: left;
+      }
+
     .textinputLeft1{
         margin-bottom: 10px;
         margin-top: 20px;
@@ -184,7 +201,7 @@
         width: 80px;
         height: 30px;
         border-radius: 0px;
-        background-color: #ffd700;
+        background-color: #80b918;
     }
     .removeButton{
         margin-right: 540px;
@@ -192,7 +209,7 @@
         width: 80px;
         height: 30px;
         border-radius: 0px;
-        background-color: #ffd700;
+        background-color: #d4d700;
     }
     .removeButton1{
         margin-right: 620px;
@@ -200,7 +217,7 @@
         width: 80px;
         height: 30px;
         border-radius: 0px;
-        background-color: #ffd700;
+        background-color: #d4d700;
     }
    
 

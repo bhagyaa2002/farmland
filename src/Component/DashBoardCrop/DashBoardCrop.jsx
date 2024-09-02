@@ -29,7 +29,7 @@ const capitalizeFirstLetter = (str) => {
     {
       field: 'transactionId',
       headerName: 'Transaction Date',
-      width: 300,
+      width: 200,
       valueGetter: (params) => {
         const timestamp = params.row.timestamp;
         if (timestamp && timestamp.seconds) {
@@ -45,11 +45,11 @@ const capitalizeFirstLetter = (str) => {
     { 
       field: 'sellerName', 
       headerName: 'Seller Name', 
-      width: 190,
+      width: 140,
       valueGetter: (params) => capitalizeFirstLetter(params.row.sellerName)
     },
-    { field: 'price', headerName: 'Price', width: 190 },
-    { field: 'Quantity', headerName: 'Quantity', width: 220 },
+    { field: 'price', headerName: 'Price', width: 120 },
+    { field: 'Quantity', headerName: 'Quantity', width: 100 },
     { field: 'Total', headerName: 'Total', width: 130, valueGetter: (params) =>
     `${'₹'} ${params.row.Total || '0'}`,},
 
@@ -59,7 +59,7 @@ const capitalizeFirstLetter = (str) => {
     {
       field: 'transactionId',
       headerName: 'Transaction Date',
-      width: 300,
+      width: 200,
       valueGetter: (params) => {
         const timestamp = params.row.timestamp;
         if (timestamp && timestamp.seconds) {
@@ -75,11 +75,11 @@ const capitalizeFirstLetter = (str) => {
     { 
       field: 'buyerName', 
       headerName: 'Buyer Name', 
-      width: 190,
+      width: 140,
       valueGetter: (params) => capitalizeFirstLetter(params.row.buyerName)
     },
-    { field: 'price', headerName: 'Price/Unit', width: 190 },
-    { field: 'Quantity', headerName: 'Quantity', width: 220 },
+    { field: 'price', headerName: 'Price/Unit', width: 120 },
+    { field: 'Quantity', headerName: 'Quantity', width: 100 },
     { field: 'Total', headerName: 'Total', width: 130,valueGetter: (params) =>
     `${'₹'} ${params.row.Total || '0'}` },
 
@@ -148,13 +148,13 @@ const DashBoardCrop = () => {
 
               <div className='dashboard_left_1'>
               <h1>Recent Transaction: Fertilizer</h1>
-              <div style={{ height: 400, width: '100%',}}>
+              <div style={{ height: 370, width: '100%',}}>
       <DataGrid
         rows={fertrans}
         getRowId ={(row) => row.transactionId}
         columns={columnsfer}
-        pageSize={6}
-        rowsPerPageOptions={[6]}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
         scrollbarSize={0}
         initialState={{
 
@@ -197,7 +197,7 @@ const DashBoardCrop = () => {
             <div className='dashboard_left_2'>
                   <h1>Recent Transaction: Crop</h1>
 
-                  <div style={{ height: 400, width: '100%',}}>
+                  <div style={{ height: 370, width: '100%',}}>
       <DataGrid
         rows={trans}
         getRowId ={(row) => row.transactionId}
@@ -260,20 +260,21 @@ const DashBoardCrop = () => {
                <h1>Profit</h1>
                <h2>₹{(payout+ferpay)*10/100}</h2>
              </div>
-             <div className='totalprderprofit'>
+             <div className='totalordercount'>
                <h1>Orders count</h1>
                <h2>{croporder+fertilizerorder}</h2>
              </div>
             </div>
             <div className='dashpayout'>
-            <div className='profit'>
-               <h1>Farmer Payout</h1>
-               <h2>₹{payout}</h2>
-             </div>
-             <div className='totalprderprofit'>
+            <div className='totalpickupcount'>
                <h1>Crop Pickup</h1>
                <h2>{croporder}</h2>
              </div>
+            <div className='payout'>
+               <h1>Farmer Payout</h1>
+               <h2>₹{payout}</h2>
+             </div>
+             
             </div>
             <div className='dashprogress'>
                 <h2>Procurement Progress</h2>

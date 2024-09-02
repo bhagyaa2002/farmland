@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './SchemeForm.scss';
 import Nav from "../nav/Nav";
+import { useUserAuth } from "../../context/UserAuthContext";
+
 
 const SchemeForm = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +13,8 @@ const SchemeForm = () => {
     title: "",
     type: "Central Government" // Default selected value
   });
+  const {addScheme} =useUserAuth();
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,12 +28,21 @@ const SchemeForm = () => {
     e.preventDefault();
     // Handle form submission, e.g., send the data to a server
     console.log('Form Data Submitted:', formData);
+    addScheme(formData)
+    setFormData({
+      content: "",
+      description: "",
+      link: "",
+      img_url: "",
+      title: "",
+      type: "Central Government" 
+    });
   };
 
   return (<>
     <Nav />
     <div className="form-container">
-      <h2>Upload Scheme Details</h2>
+      <h2 className='heading-news'>Upload Scheme Details</h2>
       <form onSubmit={handleSubmit} className="modern-form">
         <div className="form-group">
           <label htmlFor="title">Title</label>
@@ -78,12 +91,12 @@ const SchemeForm = () => {
             <option value="Central Government">Central Government</option>
             <option value="Kerala Government">Kerala Government</option>
             <option value="Karnataka Government">Karnataka Government</option>
-            <option value="Karnataka Government">Tamilnadu Government</option>
-            <option value="Karnataka Government">Andrapradesh Government</option>
+            <option value="Tamilnadu Government">Tamilnadu Government</option>
+            <option value="Andrapradesh Government">Andrapradesh Government</option>
           </select>
         </div>
 
-        <button type="submit" className="submit-btn">Submit</button>
+        <button type="submit" className="submit-btn-news">Submit</button>
       </form>
     </div>
     </>

@@ -48,15 +48,15 @@ const OrderHistoryCard = () => {
     <Nav/>
     
     <div className="order-history">
-    <h1>Order History</h1>
+    {/* <h1>Order History</h1> */}
       {orders.map((order) => (
         <div className="order-card" key="1">
           <div className="order-details">
-            <h2>{order.cropName}</h2>
-            <p>Quantity:{order.Quantity}</p>
-            <p>Unit Price:{order.Price}</p>
-            <p>Total Amount: ₹{order.Total}</p>
-            <p>Date: {formatLocalTime(order.createdAt)}</p>
+            <h2 className='order-heading'>{order.cropName}</h2>
+            <p className='order-content'>Quantity: {order.Quantity}</p>
+            <p className='order-content'>Unit Price: {order.price}</p>
+            <p className='order-content'>Total Amount: ₹{order.Total}</p>
+            <p className='order-content'>Date: {formatLocalTime(order.createdAt)}</p>
           </div>
           <div className="order-image">
             <img src={order.url} alt={order.cropName} />

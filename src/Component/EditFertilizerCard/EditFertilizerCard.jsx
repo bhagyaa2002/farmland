@@ -15,11 +15,36 @@ const EditFertilizerModel = ({open,onClose,data,id}) => {
     const[fertilizertype,setFertilizertype]=useState(data.fertilizertype)
   const { addCropMarket,user,updateCropMarket,getCropMarket,updateFertilizerMarket,getFertilizerMarket } =useUserAuth();
   const navigate  = useNavigate()
+  const[fertilizerErrorMessage,setFertilizerErrorMessage]=useState("")
+  const[fertilizerErrorMessage1,setFertilizerErrorMessage1]=useState("")
+  const[fertilizerErrorMessage2,setFertilizerErrorMessage2]=useState("")
+  const[fertilizerErrorMessage4,setFertilizerErrorMessage4]=useState("")
 
 
 
   const handleChange = async() =>{
       console.log("line 22",id);
+      if(fertilizername===""){
+        setFertilizerErrorMessage4("Please enter a fertilizer name.")
+      return;
+      }
+      setFertilizerErrorMessage4("")
+      if(fertilizerquantity==""){
+        setFertilizerErrorMessage("Please enter the value.")
+        return;
+      }
+      setFertilizerErrorMessage("")
+      if(fertilizerate==""){
+        setFertilizerErrorMessage1("Please enter the value.")
+        return;
+      }
+      setFertilizerErrorMessage1("")
+      if(fertilizerofferrate==""){
+        setFertilizerErrorMessage2("Please enter the value.")
+        return;
+      }
+      setFertilizerErrorMessage2("")
+      
       
         const data={
           _id:id,
@@ -58,7 +83,7 @@ const EditFertilizerModel = ({open,onClose,data,id}) => {
             <p onClick={onClose} className="closebtn">X</p>
             </div>
             <div className='modelbody'> 
-            <h2>Edit Fertilizer</h2>
+            <h2 className='heading-model-edit'>Edit Fertilizer</h2>
             <TextField 
             label="Fertilizer Name" 
             variant="outlined" 
@@ -66,34 +91,64 @@ const EditFertilizerModel = ({open,onClose,data,id}) => {
             value={fertilizername}
             onChange={(e)=>{setFertilizername(e.target.value)}}
             />
+            {fertilizerErrorMessage4 &&(<h6 className="errorMessage">{fertilizerErrorMessage4}</h6>)}
             <TextField  
             label="Quantity per bag" 
             variant="outlined" 
-            sx={{width:"500px", marginTop:"20px"}}
+            sx={{width:"500px", marginTop:"10px"}}
             value={fertilizerquantity}
-            onChange={(e)=>{setFertilizerQuantity(e.target.value)}}
+            onChange={(e)=>{const value = e.target.value;
+              const numValue = Number(value);
+            if (value === "" || numValue === 0) {
+              setFertilizerErrorMessage("Value should be greater than 0")
+              setFertilizerQuantity("");
+            } 
+            else if (numValue > 0) {
+              setFertilizerQuantity(value);
+              setFertilizerErrorMessage("");
+            }}}
             />
+            {fertilizerErrorMessage &&(<h6 className="errorMessage">{fertilizerErrorMessage}</h6>)}
             <TextField  
             label="Market Rate of Fertilizer" 
             variant="outlined" 
-            sx={{width:"500px", marginTop:"20px"}}
+            sx={{width:"500px", marginTop:"10px"}}
             value={fertilizerate}
-            onChange={(e)=>{setFertilizerRate(e.target.value)}}
+            onChange={(e)=>{const value = e.target.value;
+              const numValue = Number(value);
+            if (value === "" || numValue === 0) {
+              setFertilizerErrorMessage1("Value should be greater than 0")
+              setFertilizerRate("");
+            } 
+            else if (numValue > 0) {
+              setFertilizerRate(value);
+              setFertilizerErrorMessage1("");
+            }}}
             />
+            {fertilizerErrorMessage1 &&(<h6 className="errorMessage">{fertilizerErrorMessage1}</h6>)}
             <TextField  
             label="offer Rate" 
             variant="outlined" 
-            sx={{width:"500px", marginTop:"20px"}}
+            sx={{width:"500px", marginTop:"10px"}}
             value={fertilizerofferrate}
-            onChange={(e)=>{setFertilizerOfferate(e.target.value)}}
+            onChange={(e)=>{const value = e.target.value;
+              const numValue = Number(value);
+            if (value === "" || numValue === 0) {
+              setFertilizerErrorMessage2("Value should be greater than 0")
+              setFertilizerOfferate("");
+            } 
+            else if (numValue > 0) {
+              setFertilizerOfferate(value);
+              setFertilizerErrorMessage2("");
+            }}}
             />
-
-            <FormControl sx={{width:"500px", marginTop:"20px"}}>
-            <InputLabel id="demo-simple-select-label" >Categorie</InputLabel>
+            {fertilizerErrorMessage2 &&(<h6 className="errorMessage">{fertilizerErrorMessage2}</h6>)}
+            <FormControl sx={{width:"500px", marginTop:"10px"}}>
+            <InputLabel id="demo-simple-select-label" >Category</InputLabel>
                 <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                label="Age"
+                label="Category"
                 value={fertilizercat}
                 onChange={(e)=>{setFertilizerCat(e.target.value)}}
                 >
@@ -104,7 +159,7 @@ const EditFertilizerModel = ({open,onClose,data,id}) => {
                 </Select>
             </FormControl>
 
-            <FormControl sx={{width:"500px", marginTop:"20px"}}>
+            <FormControl sx={{width:"500px", marginTop:"10px"}}>
             <InputLabel id="demo-simple-select-label" >Type</InputLabel>
                 <Select
                 labelId="demo-simple-select-label"

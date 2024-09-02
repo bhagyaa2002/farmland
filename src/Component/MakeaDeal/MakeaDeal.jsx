@@ -13,18 +13,30 @@ const MakeaDeal = ({id,open,onClose,data}) => {
     const[kg, setKg] = useState(0)
     const {user,makeDeal,getCropMarket } =useUserAuth();
     const [succ,setSucc]=useState(false) 
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handelsell = async() =>{
+        if(kg>0){
+        setErrorMessage('');
         const senddata = {
+            _id:id,
             quantity:kg,
             farmerName:user.user_name,
             owner:data.owner
         }
         setSucc(true)
         makeDeal(id,senddata)
+        
+
+    }
+        else {
+            setErrorMessage('Please enter a quantity greater than 0.');
+        }
     }
 
     const handelclose = async() =>{
+        setErrorMessage('')
+        window.location.reload()
         onClose()
     }
 
@@ -74,11 +86,22 @@ const MakeaDeal = ({id,open,onClose,data}) => {
                             startAdornment: <InputAdornment position="start" sx={{color:"black"}}>kg</InputAdornment>,
                         }}
                         value={kg}
-                        onChange={(e)=>setKg(e.target.value)}
+                        onChange={(e)=>
+                        {const value = e.target.value;
+                            const numValue = Number(value);
+                            if (value === "" || numValue === 0) {
+                              setErrorMessage("Value should be greater than 0.")
+                              setKg("");
+                            } 
+                            else if (numValue > 0) {
+                                setKg(value);
+                              setErrorMessage("")
+                            }
+                            }}
                         type='number'
                         />
                     </div>
-
+                    {errorMessage && <h6 style={{ color: 'red' }}>{errorMessage}</h6>}
                     <div className='modalbtn'>
                         <div className='btnclose' onClick={()=>handelclose()}>
                             <Icon icon="eva:close-outline" color="white" width="24" height="24" />

@@ -1,11 +1,11 @@
-import { FormControl, InputAdornment, InputLabel, MenuItem, Select, TextField } from '@mui/material'
-import React,{useState} from 'react'
-import "./CropModelstyle.scss"
+import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { v4 } from "uuid";
+import { storage } from "../../config/firebase";
 import { useUserAuth } from "../../context/UserAuthContext";
-import {ref,uploadBytes,getDownloadURL} from "firebase/storage"
-import {v4} from "uuid";
-import {storage} from "../../config/firebase"
-import {useNavigate} from 'react-router'
+import "./CropModelstyle.scss";
 
 
 
@@ -28,9 +28,16 @@ const CropModel = ({open,onClose,type}) => {
   const[fertilizerofferrate,setFertilizerOfferate]=useState("")
   const[fertilizercat,setFertilizerCat]=useState("")
   const[fertilizertype,setFertilizertype]=useState("")
-
-
-
+  const[errorMessage,setErrorMessage]=useState("")
+  const[errorMessage1,setErrorMessage1]=useState("")
+  const[errorMessage2,setErrorMessage2]=useState("")
+  const[errorMessage3,setErrorMessage3]=useState("")
+  const[errorMessage4,setErrorMessage4]=useState("")
+  const[fertilizerErrorMessage,setFertilizerErrorMessage]=useState("")
+  const[fertilizerErrorMessage1,setFertilizerErrorMessage1]=useState("")
+  const[fertilizerErrorMessage2,setFertilizerErrorMessage2]=useState("")
+  const[fertilizerErrorMessage3,setFertilizerErrorMessage3]=useState("")
+  const[fertilizerErrorMessage4,setFertilizerErrorMessage4]=useState("")
 
   const { addCropMarket,user,addFertilizerMarket,getCropMarket,getFertilizerMarket } =useUserAuth();
   const navigate  = useNavigate()
@@ -38,7 +45,34 @@ const CropModel = ({open,onClose,type}) => {
 
 
   const handleChangefertilizer = async() =>{
-    if(fertilizerimage==null)return;
+    if(fertilizername===""){
+      setFertilizerErrorMessage4("Please enter a fertilizer name.")
+    return;
+    }
+    setFertilizerErrorMessage4("")
+    if(fertilizerimage==null){
+      setFertilizerErrorMessage3("No image choosen, Please choose a image.")
+    return;
+    }
+    setFertilizerErrorMessage3("")
+    if(fertilizerquantity==""){
+      setFertilizerErrorMessage("Please enter the value.")
+      return;
+    }
+    setFertilizerErrorMessage("")
+    if(fertilizerate==""){
+      setFertilizerErrorMessage1("Please enter the value.")
+      return;
+    }
+    setFertilizerErrorMessage1("")
+    if(fertilizerofferrate==""){
+      setFertilizerErrorMessage2("Please enter the value.")
+      return;
+    }
+    setFertilizerErrorMessage2("")
+    
+    
+   
     setBtnclick(true)
     const imageRef=ref(storage,`market/${fertilizerimage.name+v4()}`);
 
@@ -75,7 +109,33 @@ const CropModel = ({open,onClose,type}) => {
 
 
   const handleChange = async() =>{
-    if(image==null)return;
+    if(cropname===""){
+      setErrorMessage4("Please enter a cropname.")
+    return;
+    }
+    setErrorMessage4("")
+    if(image==null){
+      setErrorMessage3("No image choosen, Please choose a image.")
+    return;
+    }
+    setErrorMessage3("")
+    if(quantity==""){
+      setErrorMessage("Please enter the value.")
+      return;
+    }
+    setErrorMessage("")
+    if(rate==""){
+      setErrorMessage1("Please enter the value.")
+      return;
+    }
+    setErrorMessage1("")
+    if(offerrate==""){
+      setErrorMessage2("Please enter the value.")
+      return;
+    }
+    setErrorMessage2("")
+    
+    
     setBtnclick(true)
     const imageRef=ref(storage,`market/${image.name+v4()}`);
     await uploadBytes(imageRef,image).then((snapshot)=>{
@@ -123,7 +183,7 @@ const CropModel = ({open,onClose,type}) => {
             <p onClick={onClose} className="closebtn">X</p>
             </div>
             <div className='modelbody'> 
-            <h2>Add Fertilizer</h2>
+            <h2 className='heading-model'>Add Fertilizer</h2>
             <TextField 
             label="Fertilizer Name" 
             variant="outlined" 
@@ -131,42 +191,81 @@ const CropModel = ({open,onClose,type}) => {
             value={fertilizername}
             onChange={(e)=>{setFertilizername(e.target.value)}}
             />
+            
+            {fertilizerErrorMessage4 &&(<h6 className="errorMessage">{fertilizerErrorMessage4}</h6>)}
             <TextField   accept="image/*"
              InputLabelProps={{ shrink: true }}
              label="Fertilizer Image"
              multiple
              type="file" 
-             sx={{width:"500px", marginTop:"20px"}}
+             sx={{width:"500px", marginTop:"10px"}}
              onChange={(event)=>{setFertilizerImage(event.target.files[0])}}
              />
+             {fertilizerErrorMessage3 &&(<h6 className="errorMessage">{fertilizerErrorMessage3}</h6>)}
             <TextField  
             label="Quantity per bag" 
             variant="outlined" 
-            sx={{width:"500px", marginTop:"20px"}}
+            sx={{width:"500px", marginTop:"10px"}}
             value={fertilizerquantity}
-            onChange={(e)=>{setFertilizerQuantity(e.target.value)}}
+            onChange={(e)=>{
+              const value = e.target.value;
+              const numValue = Number(value);
+            if (value === "" || numValue === 0) {
+              setFertilizerErrorMessage("Value should be greater than 0")
+              setFertilizerQuantity("");
+            } 
+            else if (numValue > 0) {
+              setFertilizerQuantity(value);
+              setFertilizerErrorMessage("");
+            }
+            }}
             />
+            {fertilizerErrorMessage &&(<h6 className="errorMessage">{fertilizerErrorMessage}</h6>)}
             <TextField  
             label="Market Rate of Fertilizer" 
             variant="outlined" 
-            sx={{width:"500px", marginTop:"20px"}}
+            sx={{width:"500px", marginTop:"10px"}}
             value={fertilizerate}
-            onChange={(e)=>{setFertilizerRate(e.target.value)}}
+            onChange={(e)=>{
+            const value = e.target.value;
+              const numValue = Number(value);
+            if (value === "" || numValue === 0) {
+              setFertilizerErrorMessage1("Value should be greater than 0")
+              setFertilizerRate("");
+            } 
+            else if (numValue > 0) {
+              setFertilizerRate(value);
+              setFertilizerErrorMessage1("");
+            }
+      }}
             />
+            {fertilizerErrorMessage1 &&(<h6 className="errorMessage">{fertilizerErrorMessage1}</h6>)}
             <TextField  
             label="offer Rate" 
             variant="outlined" 
-            sx={{width:"500px", marginTop:"20px"}}
+            sx={{width:"500px", marginTop:"10px"}}
             value={fertilizerofferrate}
-            onChange={(e)=>{setFertilizerOfferate(e.target.value)}}
+            onChange={(e)=>{
+              const value = e.target.value;
+              const numValue = Number(value);
+            if (value === "" || numValue === 0) {
+              setFertilizerErrorMessage2("Value should be greater than 0")
+              setFertilizerOfferate("");
+            } 
+            else if (numValue > 0) {
+              setFertilizerOfferate(value);
+              setFertilizerErrorMessage2("");
+            }
+            }}
             />
+            {fertilizerErrorMessage2 &&(<h6 className="errorMessage">{fertilizerErrorMessage2}</h6>)}
 
-            <FormControl sx={{width:"500px", marginTop:"20px"}}>
-            <InputLabel id="demo-simple-select-label" >Categorie</InputLabel>
+            <FormControl sx={{width:"500px", marginTop:"10px"}}>
+            <InputLabel id="demo-simple-select-label" >Category</InputLabel>
                 <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                label="Age"
+                label="Categoryyy"
                 value={fertilizercat}
                 onChange={(e)=>{setFertilizerCat(e.target.value)}}
                 >
@@ -177,7 +276,7 @@ const CropModel = ({open,onClose,type}) => {
                 </Select>
             </FormControl>
 
-            <FormControl sx={{width:"500px", marginTop:"20px"}}>
+            <FormControl sx={{width:"500px", marginTop:"10px"}}>
             <InputLabel id="demo-simple-select-label" >Type</InputLabel>
                 <Select
                 labelId="demo-simple-select-label"
@@ -209,7 +308,7 @@ const CropModel = ({open,onClose,type}) => {
           <p onClick={onClose} className="closebtn">X</p>
           </div>
           <div className='modelbody'> 
-          <h2>Add Crop</h2>
+          <h2 className='heading-model'>Add Crop</h2>
 
           <TextField 
           label="Crop Name" 
@@ -218,43 +317,89 @@ const CropModel = ({open,onClose,type}) => {
           value={cropname}
           onChange={(e)=>{setCropname(e.target.value)}}
           />
+          {errorMessage4 &&(<h6 className="errorMessage">{errorMessage4}</h6>)}
           <TextField   accept="image/*"
            InputLabelProps={{ shrink: true }}
            label="Crop Image"
            multiple
            type="file" 
-           sx={{width:"500px", marginTop:"20px"}}
+           sx={{width:"500px", marginTop:"10px"}}
            onChange={(event)=>{setImage(event.target.files[0])}}
            />
+           {errorMessage3 &&(<h6 className="errorMessage">{errorMessage3}</h6>)}
           <TextField  
+          type='number'
           label="Quantity" 
           variant="outlined" 
-          sx={{width:"500px", marginTop:"20px"}}
+          sx={{width:"500px", marginTop:"10px"}}
           value={quantity}
-          onChange={(e)=>{setQuantity(e.target.value)}}
+          onChange={(e) => {
+            const value = e.target.value;
+            const numValue = Number(value);
+            if (value === "" || numValue === 0) {
+              setErrorMessage("Value should be greater than 0")
+              setQuantity("");
+            } 
+            else if (numValue > 0) {
+              setQuantity(value);
+              setErrorMessage("")
+            }
+          }}
           />
+          {errorMessage &&(<h6 className="errorMessage">{errorMessage}</h6>)}
           <TextField  
+          type='number'
           label="Market Rate" 
           variant="outlined" 
-          sx={{width:"500px", marginTop:"20px"}}
+          sx={{width:"500px", marginTop:"10px"}}
           value={rate}
-          onChange={(e)=>{setRate(e.target.value)}}
-          />
-          <TextField  
-          label="Supplier Rate" 
-          variant="outlined" 
-          sx={{width:"500px", marginTop:"20px"}}
-          value={offerrate}
-          onChange={(e)=>{setOfferate(e.target.value)}}
+          onChange={(e) => {
+    const value = e.target.value;
+            const numValue = Number(value);
+            if (value === "" || numValue === 0) {
+              setErrorMessage1("Value should be greater than 0")
+              setRate("");
+            } 
+            else if (numValue > 0) {
+              setRate(value);
+              setErrorMessage1("")
+            }
+          }}
+          
           />
 
-          <FormControl sx={{width:"500px", marginTop:"20px"}}>
+{errorMessage1 &&(<h6 className="errorMessage">{errorMessage1}</h6>)}
+          <TextField  
+          type='number'
+          label="Supplier Rate" 
+          variant="outlined" 
+          sx={{width:"500px", marginTop:"10px"}}
+          value={offerrate}
+          onChange={(e) => {
+
+    const value = e.target.value;
+            const numValue = Number(value);
+            if (value === "" || numValue === 0) {
+              setErrorMessage2("Value should be greater than 0")
+              setOfferate("");
+            } 
+            else if (numValue > 0) {
+              setOfferate(value);
+              setErrorMessage2("")
+            }
+
+    
+          }}
+          />
+{errorMessage2 &&(<h6 className="errorMessage">{errorMessage2}</h6>)}
+          <FormControl sx={{width:"500px", marginTop:"10px"}}>
           <InputLabel id="demo-simple-select-label" >Required Time</InputLabel>
               <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              label="Age"
+              label="RequiredTimee"
               value={requiredtype}
+              displayEmpty
               onChange={(e)=>{setRequiredtype(e.target.value)}}
               >
               <MenuItem value={"Required Instant"}>Required Instant</MenuItem>
@@ -263,7 +408,7 @@ const CropModel = ({open,onClose,type}) => {
               </Select>
           </FormControl>
 
-          <FormControl sx={{width:"500px", marginTop:"20px"}}>
+          <FormControl sx={{width:"500px", marginTop:"10px"}}>
           <InputLabel id="demo-simple-select-label" >Type</InputLabel>
               <Select
               labelId="demo-simple-select-label"

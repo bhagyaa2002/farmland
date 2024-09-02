@@ -11,6 +11,7 @@ import { auth, db } from "../config/firebase"
 import axios from 'axios';
 import CryptoJS from 'crypto-js';
 
+
 const userAuthContext = createContext();
 
 
@@ -31,6 +32,7 @@ export function UserAuthContextProvider({ children }) {
     const newsCollectionRef = collection(db, "news")
     const articleCollectionRef = collection(db, "article")
     const [cropMarketData, setCropMarket] = useState({})
+    
 
 
     // function signUp(email,password){
@@ -97,6 +99,7 @@ export function UserAuthContextProvider({ children }) {
     // }
 
     const addUser = async (newUser) => {
+        
         const url = 'http://localhost:8080/signup';
         console.log("line 96",newUser)
         const encryptedPassword = CryptoJS.AES.encrypt(newUser.password, 'your-secret-key').toString();
@@ -120,6 +123,13 @@ export function UserAuthContextProvider({ children }) {
         //await addDoc(userCollectionRef,newUser)
     }
 
+    const forgotPassword = async (data) => {
+        const url = 'http://localhost:8080/forgotPassword';
+           const res= await axios.post(url,data);
+           console.log("line 129",res.data.message);
+           
+        // await addDoc(cropsCollectionRef, crop)
+    }
 
 
     const addCrop = async (crop) => {
@@ -299,7 +309,10 @@ export function UserAuthContextProvider({ children }) {
        // await deleteDoc(doc(db, "pending crops", id))
     }
     const addScheme = async (scheme) => {
-        await addDoc(schemeCollectionRef, scheme)
+        const url = 'http://localhost:8080/addScheme';  
+        console.log("line 304",scheme);
+        const res = await axios.post(url,scheme);
+        // await addDoc(schemeCollectionRef, scheme)
     }
     const getScheme = async () => {
         //const data=await getDocs(schemeCollectionRef)
@@ -320,7 +333,10 @@ export function UserAuthContextProvider({ children }) {
     }
 
     const addNews = async (news) => {
-        await addDoc(newsCollectionRef, news)
+        // await addDoc(newsCollectionRef, news)
+        const url = 'http://localhost:8080/addNews';  
+        console.log("line 325",news);
+        const res = await axios.post(url,news);
     }
     const getNews = async () => {
         // const data1= await getDocs(newsCollectionRef).then(result=>{
@@ -339,7 +355,11 @@ export function UserAuthContextProvider({ children }) {
         return response.data.data
     }
     const addArticle = async (article) => {
-        await addDoc(articleCollectionRef, article)
+        // await addDoc(articleCollectionRef, article)
+        const url = 'http://localhost:8080/addArticle';  
+        console.log("line 368",article);
+        const res = await axios.post(url,article);
+
     }
     const getArticle = async () => {
         // const data=await getDocs(articleCollectionRef)
@@ -362,9 +382,20 @@ export function UserAuthContextProvider({ children }) {
     }
 
     const makeDeal = async (id, data) => {
-        const cropInfo = await (await getDoc(doc(db, "crop market", id))).data()
+        // const cropInfo = await (await getDoc(doc(db, "crop market", id))).data()
+        
+        const url = 'http://localhost:8080/getOneCropListing';  
+        console.log("line 368",data);
+        const res = await axios.post(url,data);
+        const cropInfo=res.data.data;
+        console.log("line 369",cropInfo);
         const price = cropInfo.reamining - data.quantity;
-        updateCropMarket(id, { reamining: price })
+
+        await updateCropMarket(id, { reamining: price,_id:id })
+        const date = new Date();
+        const seconds = Math.floor(date.getTime() / 1000).toString();
+    const nanoseconds = (date.getMilliseconds() * 1e6).toString();
+    const timestamp = {seconds,nanoseconds};
         const transaction = {
             transactionId: id,
             cropName: cropInfo.name,
@@ -372,10 +403,12 @@ export function UserAuthContextProvider({ children }) {
             price: cropInfo.offerPrice,
             Quantity: data.quantity,
             Total: data.quantity * cropInfo.offerPrice,
-            timestamp: new Date(),
+            timestamp: timestamp,
             owner: data.owner
         }
-        await addDoc(cropDashboardCollectionRef, transaction)
+        // await addDoc(cropDashboardCollectionRef, transaction)
+        const url1 = 'http://localhost:8080/addCropOrderHistory';  
+       await axios.post(url1,transaction);
     }
 
     const buyFertilizer = async (id, data) => {
@@ -475,7 +508,7 @@ export function UserAuthContextProvider({ children }) {
     }
 
     }, []);
-    return <userAuthContext.Provider value={{ user, setUser, logIn, addUser, addCrop, addPendingCrop, getCrop, getPendingCrop, cropdata, addCropMarket, getCropMarket, cropMarketData, updateCropMarket, deleteCropMarket, addFertilizerMarket, getFertilizerMarket, deleteFertilizerMarket, updateFertilizerMarket, makeDeal, buyFertilizer, getCropTransaction, getFertilizerTransaction, addScheme, getScheme, addArticle, getArticle, addNews, getNews, logout, deletePendingcrop, fetchFertilizerOrderHistoryByUser }}>{children}</userAuthContext.Provider>
+    return <userAuthContext.Provider value={{ user, setUser, logIn, forgotPassword, addUser, addCrop, addPendingCrop, getCrop, getPendingCrop, cropdata, addCropMarket, getCropMarket, cropMarketData, updateCropMarket, deleteCropMarket, addFertilizerMarket, getFertilizerMarket, deleteFertilizerMarket, updateFertilizerMarket, makeDeal, buyFertilizer, getCropTransaction, getFertilizerTransaction, addScheme, getScheme, addArticle, getArticle, addNews, getNews, logout, deletePendingcrop, fetchFertilizerOrderHistoryByUser }}>{children}</userAuthContext.Provider>
 }
 
 

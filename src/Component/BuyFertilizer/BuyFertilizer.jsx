@@ -105,11 +105,24 @@ const BuyFertilizer = ({ id, open, onClose, data }) => {
                                     startAdornment: <InputAdornment position="start" sx={{ color: "black" }}>Qty</InputAdornment>,
                                 }}
                                 value={kg}
-                                onChange={(e) => setKg(e.target.value)}
+                                onChange={(e) => 
+                                    {const value = e.target.value;
+                                        const numValue = Number(value);
+                                        if (value === "" || numValue === 0) {
+                                          setErrorMessage("Value should be greater than 0.")
+                                          setKg("");
+                                        } 
+                                        else if (numValue > 0) {
+                                            setKg(value);
+                                          setErrorMessage("")
+                                        }
+                                        }
+                                    
+                                    }
                                 type='number'
                             />
                         </div>
-                        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+                        {errorMessage && <h6 style={{ color: 'red' }}>{errorMessage}</h6>}
                         <div className='modalbtnfer'>
                             <div className='btnclosefer' onClick={() => handelclose()}>
                                 <Icon icon="eva:close-outline" color="white" width="24" height="24" />

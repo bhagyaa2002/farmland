@@ -15,7 +15,7 @@ function Card(prop) {
   const cropcat = prop.cat
   const {deleteCropMarket,user } =useUserAuth();
 
-
+  console.log("line 18", data);
   const mrp=data.mrp
   const offer = data.offerPrice
   const[selldata,setSelldata]=useState()
