@@ -40,22 +40,60 @@ const ref=collection(db,"crops")
   //     setCrops(doc.docs)
   //  });
 
-    const setdata=async()=>{
-     await console.log(cropdata);
-    const res= await getCrop()
-    await  cropdata.map((onecrop) => {
-        // if (onecrop.data().cropname == params.id) {
-        //     console.log(params.id);
+    // const setdata=async()=>{
+    //  await console.log(cropdata);
+    // const res= await getCrop()
+    // await  cropdata.map((onecrop) => {
+    //     // if (onecrop.data().cropname == params.id) {
+    //     //     console.log(params.id);
 
-        //   setCrop(onecrop.data())
-        // }
-        if(onecrop.cropname==params.id){
-          setCrop(onecrop);
+    //     //   setCrop(onecrop.data())
+    //     // }
+    //     if(onecrop.cropname==params.id){
+    //       setCrop(onecrop);
+    //     }
+    //   })
+    // }
+    const setdata = async () => {
+      try {
+        console.log(cropdata);
+        const res = await getCrop();
+  
+        if (Array.isArray(cropdata)) {  // Check if cropdata is an array
+          cropdata.forEach((onecrop) => { // Use forEach instead of map since we don't need a return value
+            if (onecrop.cropname === params.id) {
+              setCrop(onecrop);
+            }
+          });
+        } else {
+          console.error('cropdata is not an array:', cropdata);
         }
-      })
-    }
+      } catch (error) {
+        console.error('Error fetching crop data:', error);
+      }
+    };
+    // const setdata = async () => {
+    //   try {
+    //     const res = await getCrop(); // Fetch crop data
+    //     console.log(res); // Log the result to see what it returns
+  
+    //     if (Array.isArray(res)) {  // Check if the response is an array
+    //       const foundCrop = res.find((onecrop) => onecrop.cropname === params.id);
+    //       if (foundCrop) {
+    //         setCrop(foundCrop); // Set the found crop in state
+    //       } else {
+    //         console.error('No crop found with the given name:', params.id);
+    //       }
+    //     } else {
+    //       console.error('Returned data is not an array:', res);
+    //     }
+    //   } catch (error) {
+    //     console.error('Error fetching crop data:', error);
+    //   }
+    // };
   setdata()
-  }, [params.id])
+  }, [params.id,cropdata,getCrop])
+ 
 
   
   return (
@@ -218,7 +256,7 @@ const ref=collection(db,"crops")
             </div>
           </div>
 
-          <div className='video'>
+          {/* <div className='video'>
             <h2>Related videos</h2>
             <div className='videolist'>
               {crop.youtubeLinks.map((id)=>(
@@ -229,7 +267,15 @@ const ref=collection(db,"crops")
               ))}
                
             </div>
-          </div>
+          </div> */}
+          <div className='video'>
+  <h2>Related videos</h2>
+  <div className='videolist'>
+    {crop.youtubeLinks.map((id) => (
+      <Video embedId={id} key={id} />
+    ))}
+  </div>
+</div>
         </div>
         </div>:<Loder/>}
         

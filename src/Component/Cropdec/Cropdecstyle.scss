@@ -358,6 +358,7 @@
     .videolist {
         display: flex;
         flex-direction: row;
+        overflow-y: auto; 
         justify-content: space-between;
         margin-top: 30px;
     }
