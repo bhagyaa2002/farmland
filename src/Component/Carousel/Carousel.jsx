@@ -1,6 +1,6 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+// import "react-responsive-carousel/lib/styles/carousel.min.css";
 import main_banner_1 from '../../assets/image/main_banner_1.jpg'
 import main_banner_2 from '../../assets/image/main_banner_2.jpg'
 import main_banner_3 from '../../assets/image/main_banner_3.jpg'
@@ -24,8 +24,8 @@ import "./Carousel.scss"
 
 const CarouselList = ({type}) => {
   return (
-    <Carousel showArrows={false} autoPlay showStatus={false}  showThumbs={false} infiniteLoop>
-        {type=="main"?         <div>
+    <Carousel  showArrows={false} autoPlay showStatus={false}  showThumbs={false} infiniteLoop>
+        {type=="main"?         <div >
             <img src={main_banner_1} alt="" />
             <div className="insidediv">
             <h1 style={{marginTop:"80px",color:"rgba(20, 74, 5, 1)", fontSize:"48px",fontWeight:"700",fontFamily:'Montserrat',fontStyle:"normal"}}>Crops</h1>

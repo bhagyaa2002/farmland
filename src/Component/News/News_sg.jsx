@@ -1,20 +1,13 @@
-import { MenuItem, Select } from "@mui/material";
-import axios from "axios";
+import { collection } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import Footer from "../../Component/Footer/Footer";
+import { db } from "../../config/firebase";
+import { useUserAuth } from "../../context/UserAuthContext";
 import Nav from "../nav/Nav";
 import NewsCard_sg from "../NewsCard/NewsCard_sg";
-import CustomPagination from "../Pagination/CustomPagination";
-import coconut_banner from "../../assets/image/coconut_banner.jpg";
-import Button from "@mui/material/Button";
-import "./News.scss";
-import CarouselList from "../Carousel/Carousel";
-import { useUserAuth } from "../../context/UserAuthContext";
-import { collection, onSnapshot } from "firebase/firestore";
-import { db } from "../../config/firebase";
-import Header from '../Header/Header'
 import Weather from "../Weather/Weather";
-import { useNavigate } from "react-router";
-
+import "./News.scss";
 const News_sg = () => {
   const navigate = useNavigate();
 
@@ -57,9 +50,9 @@ const News_sg = () => {
       {/* <div className="newsbanner">
           <CarouselList/>
       </div> */}
-
+<Weather/>
       <div className="news-main">
-        <Weather/>
+        
         <div className="news-filter">
           <div className="newswrap">
 
@@ -122,6 +115,7 @@ const News_sg = () => {
       ) : (
         ""
       )} */}
+       <Footer/>
     </div>
   );
 };

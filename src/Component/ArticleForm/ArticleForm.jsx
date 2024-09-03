@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./ArticleForm.scss";
-import Nav from "../nav/Nav";
-import { useUserAuth } from "../../context/UserAuthContext";
 import Footer from "../../Component/Footer/Footer";
+import { useUserAuth } from "../../context/UserAuthContext";
+import Nav from "../nav/Nav";
+import "./ArticleForm.scss";
 
 const ArticleForm = () => {
   const [formData, setFormData] = useState({
@@ -67,7 +67,7 @@ const ArticleForm = () => {
           </button>
         </form>
       </div>
-    
+      <Footer/>
     </>
   );
 };

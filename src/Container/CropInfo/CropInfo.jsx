@@ -155,7 +155,7 @@ const changecat = (cat) =>{
           </div>
 
         </div>
-        <Footer/>
+       <Footer/>
       </>
       :<Loder/>}
 

@@ -1,48 +1,36 @@
-import { useState } from "react";
-import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Crop from "./Component/Crop/Crop";
-import Login from "./Component/loginPage/login";
-import Nav from "./Component/nav/Nav";
-import Signup from "./Component/signUp/signup";
-import CropInfo from "./Container/CropInfo/CropInfo";
 import Cropdec from "./Component/Cropdec/Cropdec";
-import UploadShortTerm from "./Component/UploadCropDetails/uploadShortTerm";
-import UploadLongTerm from "./Component/UploadCropDetails/uploadLongTerm";
-import UploadScheme from "./Component/UploadCropDetails/uploadScheme";
-import UploadArticle from "./Component/UploadCropDetails/uploadArticle";
-import UploadNews from "./Component/UploadCropDetails/uploadNews";
-import Cropmarket from "./Container/CropMarket/Cropmarket";
+import Login from "./Component/loginPage/login";
 import News_sg from "./Component/News/News_sg";
-import Scheme from "./Component/Scheme/Scheme";
 import OrderHistoryCard from "./Component/orderTab/OrderHistoryCard";
+import Scheme from "./Component/Scheme/Scheme";
+import Signup from "./Component/signUp/signup";
+import UploadShortTerm from "./Component/UploadCropDetails/uploadShortTerm";
+import CropInfo from "./Container/CropInfo/CropInfo";
+import Cropmarket from "./Container/CropMarket/Cropmarket";
 
 import { useUserAuth } from "./context/UserAuthContext";
 
-import { AddMarketplace } from "./Component/UploadCropDetails/AddMarketplace";
-import Fertilizermarket from "./Container/Fertilizermarket/Fertilizermarket";
 import AdminCropmarket from "./Component/AdminCropmarket/AdminCropmarket";
 import AdminFertilizermarket from "./Component/AdminFertilizermarket/AdminFertilizermarket";
-import MakeaDeal from "./Component/MakeaDeal/MakeaDeal";
-import Done from "./Component/Done/Done";
 import BuyDone from "./Component/BuyDone/BuyDone";
 import Cancel from "./Component/BuyDone/Cancel";
 import DashBoardCrop from "./Component/DashBoardCrop/DashBoardCrop";
-import { Provider } from "react-redux";
-import Profile from "./Component/Profile/Profile";
+import Done from "./Component/Done/Done";
 import ForgotPassword from "./Component/ForgotPassword/ForgotPassword";
+import Fertilizermarket from "./Container/Fertilizermarket/Fertilizermarket";
 
-import Admindashboard from "./Component/AdminDashboard/Admindashboard";
-import CrowdSourcing from "./Component/CrowdSourcing/CrowdSourcing";
 import Addcrop from "./Component/AddCrop/Addcrop";
-import Addpendingcrop from "./Component/editpendingcrop/Addcrop"
-import Editpendingcrop from "./Component/editpendingcrop/EditPendingCrop";
-import SchemeForm from "./Component/SchemeForm/SchemeForm";
-import NewsForm from "./Component/NewsForm/NewsForm";
+import Admindashboard from "./Component/AdminDashboard/Admindashboard";
 import ArticleForm from "./Component/ArticleForm/ArticleForm";
-
+import Editpendingcrop from "./Component/editpendingcrop/EditPendingCrop";
+import Footer from "./Component/Footer/Footer";
+import NewsForm from "./Component/NewsForm/NewsForm";
+import SchemeForm from "./Component/SchemeForm/SchemeForm";
 function App() {
   const { user } = useUserAuth();
+  
   return (
     <BrowserRouter>
       <div className="App">
@@ -129,6 +117,7 @@ function App() {
         {/* {user ? (<div><Signup/> </div>):(<div>     <Nav />
      <CropInfo /></div>)} */}
       </div>
+     
     </BrowserRouter>
   );
 }

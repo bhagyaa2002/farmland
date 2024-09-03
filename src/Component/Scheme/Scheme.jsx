@@ -1,15 +1,11 @@
-import { MenuItem, Select } from "@mui/material";
-import axios from "axios";
+import { collection } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import Footer from "../../Component/Footer/Footer";
+import { db } from "../../config/firebase";
+import { useUserAuth } from "../../context/UserAuthContext";
 import Nav from "../nav/Nav";
 import SchemeCard from "../SchemeCard/SchemeCard";
-import CustomPagination from "../Pagination/CustomPagination";
 import "./Scheme.scss";
-import SchemeData from "./SchemeData";
-import { useUserAuth } from "../../context/UserAuthContext";
-import { collection, onSnapshot } from "firebase/firestore";
-import { db } from "../../config/firebase";
-
 const Scheme = () => {
   const { user, getScheme } = useUserAuth();
 
@@ -94,6 +90,7 @@ const Scheme = () => {
           })}
       </div>
       {/* <CustomPagination setPage={setPage}/> */}
+      <Footer/>
     </div>
   );
 };

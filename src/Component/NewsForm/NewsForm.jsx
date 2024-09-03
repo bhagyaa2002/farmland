@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './NewsForm.scss';
-import Nav from "../nav/Nav";
+import Footer from "../../Component/Footer/Footer";
 import { useUserAuth } from "../../context/UserAuthContext";
-
+import Nav from "../nav/Nav";
+import './NewsForm.scss';
 
 const NewsForm = () => {
   const [formData, setFormData] = useState({
@@ -92,6 +92,7 @@ const NewsForm = () => {
         <button type="submit" className="submit-btn-news">Submit</button>
       </form>
     </div>
+    <Footer/>
     </>
   );
 };

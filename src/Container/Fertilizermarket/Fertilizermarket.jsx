@@ -1,18 +1,15 @@
-import React,{useEffect, useState} from 'react'
-import Card from '../../Component/Card/Card'
+import React, { useEffect, useState } from 'react'
 import CarouselList from '../../Component/Carousel/CarouselFertilizer'
 import Nav from '../../Component/nav/Nav'
 import './Fertilizermarketstyle.scss'
 
-import Pesticides from '../../assets/image/Pesticides.jpg'
 import money_1 from '../../assets/image/money_1.jpg'
+import Pesticides from '../../assets/image/Pesticides.jpg'
 import rupee from '../../assets/image/rupee.jpg'
 import Fertilizercard from '../../Component/Fertilizercard/Fertilizercard'
-import Varieties from '../../Component/Varieties/Varieties'
-import Marketcategories from '../../Component/Marketcategories/Marketcategories'
+import Footer from "../../Component/Footer/Footer"
 
-
-import { useUserAuth } from "../../context/UserAuthContext";
+import { useUserAuth } from "../../context/UserAuthContext"
 
 
 const Fertilizermarket = () => {
@@ -113,7 +110,7 @@ const Fertilizermarket = () => {
           ))}
         </div>
       </div>
-      
+      <Footer/>
       </>
       :<div/>}
 

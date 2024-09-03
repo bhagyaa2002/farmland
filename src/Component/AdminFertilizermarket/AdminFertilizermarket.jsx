@@ -1,20 +1,19 @@
-import React,{useState,useEffect} from 'react'
-import "./AdminFertilizermarketstyle.scss"
+import React, { useEffect, useState } from 'react'
 import wheat from '../../assets/image/Pesticides.jpg'
 import money from '../../assets/image/money_1.jpg'
 import rupee from '../../assets/image/rupee.jpg'
+import "./AdminFertilizermarketstyle.scss"
 
-import CarouselList from '../Carousel/CarouselFertilizer'
-import Nav from '../nav/Nav'
 import { Icon } from '@iconify/react'
-import AdminCropcard from '../AdminCropcard/AdminCropcard'
-import CropModel from '../CropModel/CropModel'
-import { useUserAuth } from "../../context/UserAuthContext";
+import { collection } from "firebase/firestore"
+import Footer from "../../Component/Footer/Footer"
+import { db } from "../../config/firebase"
+import { useUserAuth } from "../../context/UserAuthContext"
 import AdminFertilizerCard from '../AdminFertilizerCard/AdminFertilizerCard'
-import {collection,onSnapshot} from "firebase/firestore"
-import {db} from "../../config/firebase"
+import CarouselList from '../Carousel/CarouselFertilizer'
+import CropModel from '../CropModel/CropModel'
 import Loder from '../Loder/Loder'
-import Footer from "../../Component/Footer/Footer";
+import Nav from '../nav/Nav'
 
 
 const AdminFertilizermarket = () => {
@@ -89,7 +88,7 @@ const AdminFertilizermarket = () => {
      </>:<Loder/>}
      <CropModel open={open} onClose={()=>{setOpen(false)}} type="fertilizer"/>
 
-      
+     <Footer/>
     </div>
   )
 }

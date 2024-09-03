@@ -8,7 +8,7 @@ export default function UploadDetails(){
     //const [imageUpload,setImageUpload]=useState(null)
     const cropData = { 
         category:"Long Term Crop",
-        cropname: "ತೆಂಗಿನ ಕಾಯಿ",
+        cropname: "Coconut",
         bannerImageUrl:["https://firebasestorage.googleapis.com/v0/b/farmland-89e6d.appspot.com/o/crops%2Fcoconut%2Fzdenek-machacek-jvdvp6bplTs-unsplash.jpg?alt=media&token=a9f78c0f-9030-4ac8-982c-eba85d6f0d6a",
 "https://firebasestorage.googleapis.com/v0/b/farmland-89e6d.appspot.com/o/crops%2Fcoconut%2Fsebastien-gabriel-rMqbe4WLqXk-unsplash.jpg?alt=media&token=991e0f91-e39c-4cef-9e31-29b12099e3a9"
 ],

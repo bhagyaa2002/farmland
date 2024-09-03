@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import "./Admindashboard.scss"
-import Nav from '../nav/Nav'
-import cron from "../../assets/image/corn.png"
 import { Icon } from '@iconify/react';
-import {auth,db} from "../../config/firebase"
-import { collection, onSnapshot } from 'firebase/firestore'
-import Loder from '../Loder/Loder';
-import { useUserAuth } from "../../context/UserAuthContext";
+import { collection } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router";
 import Footer from "../../Component/Footer/Footer";
+import { db } from "../../config/firebase";
+import { useUserAuth } from "../../context/UserAuthContext";
+import Loder from '../Loder/Loder';
+import Nav from '../nav/Nav';
+import "./Admindashboard.scss";
 
 const Admindashboard = () => {
   const ref=collection(db,"pending crops")
@@ -31,10 +30,10 @@ const Admindashboard = () => {
 
 
  const publish = async (i,id)=>{
-  console.log(cropdata[i]);
+  console.log("line 33",cropdata[i]);
     await addCrop(cropdata[i])
     console.log(id);
-    await deletePendingcrop({cropname:cropdata[i].cropname})
+    // await deletePendingcrop({cropname:cropdata[i].cropname})
     const updatedData = await getPendingCrop();
     console.log(updatedData);
     setCropdata(updatedData);  
@@ -116,7 +115,7 @@ const Admindashboard = () => {
       </div>
       
     </div>
-    
+    <Footer/>
     </>
   )
 }

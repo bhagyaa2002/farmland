@@ -1,18 +1,18 @@
-import React,{useState,useEffect} from 'react'
-import "./AdminCropmarketstyle.scss"
-import wheat from '../../assets/image/wheat.jpg'
+import { Icon } from '@iconify/react'
+import { collection } from "firebase/firestore"
+import React, { useEffect, useState } from 'react'
 import money from '../../assets/image/money.jpg'
 import rupee from '../../assets/image/rupee.jpg'
-import CarouselList from '../Carousel/Carousel'
-import Nav from '../nav/Nav'
-import { Icon } from '@iconify/react'
+import wheat from '../../assets/image/wheat.jpg'
+import Footer from "../../Component/Footer/Footer"
+import { db } from "../../config/firebase"
+import { useUserAuth } from "../../context/UserAuthContext"
 import AdminCropcard from '../AdminCropcard/AdminCropcard'
+import CarouselList from '../Carousel/Carousel'
 import CropModel from '../CropModel/CropModel'
-import { useUserAuth } from "../../context/UserAuthContext";
-import {collection,onSnapshot} from "firebase/firestore"
-import {db} from "../../config/firebase"
 import Loder from '../Loder/Loder'
-import Footer from "../../Component/Footer/Footer";
+import Nav from '../nav/Nav'
+import "./AdminCropmarketstyle.scss"
 
 const AdminCropmarket = () => {
     const[open,setOpen]=useState(false)
@@ -89,7 +89,7 @@ const AdminCropmarket = () => {
       </div>
      </>:<Loder/>}      
     <CropModel open={open} onClose={()=>{setOpen(false)}} type="crop"/>
-    
+    <Footer/>
     </div>
     </>
   )

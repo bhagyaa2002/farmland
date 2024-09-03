@@ -1,22 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import './DashBoardCrop.scss'
-import Nav from '../nav/Nav'
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { useUserAuth } from "../../context/UserAuthContext";
-import Progress from '../Progress/Progress';
 import { DataGrid } from '@mui/x-data-grid';
-import { collection, onSnapshot } from 'firebase/firestore';
-import { db } from '../../config/firebase';
-import Loder from '../Loder/Loder';
-import Spinner from '../Spinner/Spinner';
+import { collection } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
 import Footer from "../../Component/Footer/Footer";
+import { db } from '../../config/firebase';
+import { useUserAuth } from "../../context/UserAuthContext";
+import Loder from '../Loder/Loder';
+import Nav from '../nav/Nav';
+import Progress from '../Progress/Progress';
+import './DashBoardCrop.scss';
 
 
 const capitalizeFirstLetter = (str) => {
@@ -303,6 +294,7 @@ const DashBoardCrop = () => {
             </div>
             </div>
         </div>
+        <Footer/>
         </> :<Loder/>}
         
     </div>

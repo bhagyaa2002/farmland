@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import './OrderHistoryCard.scss';
-import img from "../../assets/image/coconut_1.png";
-import Nav from "../../Component/nav/Nav"
-import img1 from "../../assets/image/paddy.jpg";
-import img2 from "../../assets/image/wheat.jpg";
+import Footer from "../../Component/Footer/Footer";
+import Nav from "../../Component/nav/Nav";
 import { useUserAuth } from "../../context/UserAuthContext";
-import Loder from '../Loder/Loder';
-
+import './OrderHistoryCard.scss';
 const OrderHistoryCard = () => {
   const [orders, setOrders] = useState([]);
   const { fetchFertilizerOrderHistoryByUser,user} =useUserAuth();
@@ -65,7 +61,9 @@ const OrderHistoryCard = () => {
 
 
       ))}
+      
     </div>
+    <Footer/>
     </>
   );
 };

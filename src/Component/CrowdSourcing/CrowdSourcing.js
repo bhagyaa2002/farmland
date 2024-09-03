@@ -1,9 +1,8 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import Nav from "../nav/Nav";
-import { MicNone } from "@mui/icons-material";
+import * as React from "react";
 import Footer from "../../Component/Footer/Footer";
+import Nav from "../nav/Nav";
 
 export default function CrowdSourcing() {
   return (
@@ -99,7 +98,7 @@ export default function CrowdSourcing() {
       </div>
       
     </div>
-    
+    <Footer/>
     </>
   );
 }

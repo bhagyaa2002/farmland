@@ -1,13 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import insta from "../../assets/instagram.png";
-import whatsapp from "../../assets/whatsapp.png";
-import twitter from "../../assets/twitter.png";
-import mail from "../../assets/mail.png";
-import address from "../../assets/location.png";
-import call from "../../assets/call.png";
-import "./Footer.scss";
 import { useNavigate } from "react-router-dom";
+import call from "../../assets/call.png";
+import insta from "../../assets/instagram.png";
+import address from "../../assets/location.png";
+import mail from "../../assets/mail.png";
+import twitter from "../../assets/twitter.png";
+import whatsapp from "../../assets/whatsapp.png";
+import "./Footer.scss";
 
 const Footer = () => {
     const navigate = useNavigate();
@@ -15,7 +14,7 @@ const Footer = () => {
     <div className="footer">
       <div className="footer-section">
         <div className="footer-icons">
-          <img src={address} alt="Address" />
+          <img className="footerImage" src={address} alt="Address" />
           <p className="footer-section-address">Address</p>
         </div>
         <p>FarmLand PVT LTD</p>
@@ -27,21 +26,22 @@ const Footer = () => {
 
       <div className="footer-section">
         <p className="footer-section-links">Links</p>
-        <p onClick={() => navigate("/")}>Home</p>
-        <p onClick={() => navigate("/menu/659406f93b93bd0168a36af6")}>Menu</p>
-        <p onClick={() => navigate("/about")}>About</p>
-        <p onClick={() => navigate("/contact")}>Contact</p>
-        <p onClick={() => navigate("/orders")}>Order</p>
+        <p className="footerClick" onClick={() => navigate("/cropinfo")}>Home</p>
+        <p className="footerClick" onClick={() => navigate("/cropmarket")}>Crop Market</p>
+        <p className="footerClick" onClick={() => navigate("/fertilizermarket")}>Fertilizer Market</p>
+        <p className="footerClick" onClick={() => navigate("/scheme")}>Schemes</p>
+        <p className="footerClick" onClick={() => navigate("/news")}>Article</p>
+        <p className="footerClick" onClick={() => navigate("/orders")}>Order</p>
       </div>
 
       <div className="footer-section">
         <p className="footer-section-support1">Support</p>
         <div className="footer-icons">
-          <img src={mail} alt="Mail" />
+          <img className="footerImage" src={mail} alt="Mail" />
           <p>FarmLand.com</p>
         </div>
         <div className="footer-icons">
-          <img src={call} alt="Call" />
+          <img className="footerImage" src={call} alt="Call" />
           <p>123-456-7890</p>
         </div>
       </div>
@@ -49,10 +49,10 @@ const Footer = () => {
       <div className="footer-section">
         <p className="footer-section-connect">Connect With Us</p>
         <div className="footer-icons">
-          <img src={insta} alt="Instagram" />
-          <img src={whatsapp} alt="WhatsApp" />
-          <img src={twitter} alt="Twitter" />
-          <img src={mail} alt="Mail" />
+          <img className="footerImage" src={insta} alt="Instagram" />
+          <img className="footerImage" src={whatsapp} alt="WhatsApp" />
+          <img className="footerImage" src={twitter} alt="Twitter" />
+          <img className="footerImage" src={mail} alt="Mail" />
         </div>
       </div>
     </div>

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import "./Weather.scss"
-import rain from "../../assets/image/rain.jpeg"
 import clouds from "../../assets/image/cloud.jpeg"
+import rain from "../../assets/image/rain.jpeg"
 import warm from "../../assets/image/warm.png"
+import "./Weather.scss"
 
 
+import { useUserAuth } from "../../context/UserAuthContext"
 import Loder from '../Loder/Loder'
-import { useUserAuth } from "../../context/UserAuthContext";
 
 
 

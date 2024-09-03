@@ -301,8 +301,9 @@ export function UserAuthContextProvider({ children }) {
 
     const deletePendingcrop = async (cropname) => {
         console.log("line 217",cropname);
+
         const data= {
-            cropname:cropname
+            cropname:cropname.cropname
         }
         const url = 'http://localhost:8080/deletePendingCrop';
                 axios.post(url,data);

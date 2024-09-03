@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from 'react'
+import honest from '../../assets/image/honest.jpg'
+import mix from '../../assets/image/mix.jpg'
 import Card from '../../Component/Card/Card'
 import CarouselList from '../../Component/Carousel/Carousel'
 import Nav from '../../Component/nav/Nav'
 import './Cropmarketstyle.scss'
-import wheat from '../../assets/image/wheat.jpg'
-import mix from '../../assets/image/mix.jpg'
-import honest from '../../assets/image/honest.jpg'
-
-import Business from '../../assets/image/Business.png'
 
 
-import money from '../../assets/image/money.jpg'
+
+import { collection } from "firebase/firestore"
 import rupee from '../../assets/image/rupee.jpg'
-import { useUserAuth } from "../../context/UserAuthContext";
-import MakeaDeal from '../../Component/MakeaDeal/MakeaDeal'
-import {collection,onSnapshot} from "firebase/firestore"
-import {db} from "../../config/firebase"
+import Footer from "../../Component/Footer/Footer"
 import Loder from '../../Component/Loder/Loder'
+import { db } from "../../config/firebase"
+import { useUserAuth } from "../../context/UserAuthContext"
 
 
 function Cropmarket() {
@@ -106,6 +103,7 @@ function Cropmarket() {
           ))}
         </div>
       </div>
+      <Footer/>
       </>
       :<Loder/>}
      

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './SchemeForm.scss';
-import Nav from "../nav/Nav";
+import Footer from "../../Component/Footer/Footer";
 import { useUserAuth } from "../../context/UserAuthContext";
-
+import Nav from "../nav/Nav";
+import './SchemeForm.scss';
 
 const SchemeForm = () => {
   const [formData, setFormData] = useState({
@@ -99,6 +99,7 @@ const SchemeForm = () => {
         <button type="submit" className="submit-btn-news">Submit</button>
       </form>
     </div>
+    <Footer/>
     </>
   );
 };

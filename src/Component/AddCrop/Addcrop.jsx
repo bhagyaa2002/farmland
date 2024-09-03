@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
+import Footer from "../../Component/Footer/Footer";
 import { useUserAuth } from "../../context/UserAuthContext";
 import Nav from '../nav/Nav';
 import "./Addcrop.scss";
-import Footer from "../../Component/Footer/Footer";
 
 const Addcrop = () => {
   const { addPendingCrop } = useUserAuth();
   const [cropname, setCropname] = useState("")
-
+  const naviagte=useNavigate();
   const [soiltype, setSoiltype] = useState("")
   const [cropirr, setCropirr] = useState("")
   const [croptemp, setCroptemp] = useState("")
@@ -216,17 +217,31 @@ const Addcrop = () => {
     }
     console.log("line 201",getFormattedDiseases);
     
+    let subcrops = [];
 
+    // Check each value and push to the array if it's not empty
+    if (cropsub1) subcrops.push(cropsub1);
+    if (cropsub2) subcrops.push(cropsub2);
+    if (cropsub3) subcrops.push(cropsub3);
+    if (cropsub4) subcrops.push(cropsub4);
+
+    let variety = [];
+
+    // Check each value and push to the array if it's not empty
+    if (cropvar1) variety.push(cropvar1);
+    if (cropvar2) variety.push(cropvar2);
+    if (cropvar3) variety.push(cropvar3);
+    if (cropvar4) variety.push(cropvar4);
     const data = {
       cropname: cropname,
       soiltype: soiltype,
       irrigation: cropirr,
       temperature: croptemp,
       cropImageUrl: Imageurl,
-      subcrops: [cropsub1, cropsub2, cropsub3, cropsub4],
+      subcrops: subcrops,
       description: cropdec,
       location: croploc,
-      variety: [cropvar1, cropvar2, cropvar3, cropvar4],
+      variety: variety,
       category: category,
       state: states,
       bannerImageUrl: [bannerImageurl],
@@ -244,9 +259,11 @@ const Addcrop = () => {
     }
     console.log("line 48", data);
     await addPendingCrop(data);
+    // naviagte("/cropinfo");
   }
 
   return (
+    <>
     <div className='addcontanier'>
       <Nav />
       <h1>CrowdSourcing</h1>
@@ -745,6 +762,8 @@ const Addcrop = () => {
       </div>
       
     </div>
+     <Footer/>
+     </>
   )
 }
 
