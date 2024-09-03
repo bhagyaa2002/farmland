@@ -43,7 +43,7 @@ const Weather = () => {
                 <h2>Today</h2>
                 <img src={iconUrlFromCode(weatherdata[0].weather[0].icon)} alt="" />
                 <h2>{weatherdata[0].weather[0].description}</h2>
-                <h1>{(weatherdata[0].main.temp-273.15).toFixed(0)}°c</h1>
+                <h1 className='weather-temp'>{(weatherdata[0].main.temp-273.15).toFixed(0)}°c</h1>
             </div>
             </div>
 
@@ -55,7 +55,7 @@ const Weather = () => {
                 <h2>{ weekday[new Date(weatherdata[8].dt_txt).getDay()]}</h2>
                 <img src={iconUrlFromCode(weatherdata[8].weather[0].icon)} alt="" />
                 <h2>{weatherdata[8].weather[0].description}</h2>
-                <h1>{(weatherdata[8].main.temp-273.15).toFixed(0)}°c</h1>
+                <h1 className='weather-temp'>{(weatherdata[8].main.temp-273.15).toFixed(0)}°c</h1>
             </div>
             </div>
 
@@ -67,7 +67,7 @@ const Weather = () => {
                 <h2>{ weekday[new Date(weatherdata[16].dt_txt).getDay()]}</h2>
                 <img src={iconUrlFromCode(weatherdata[16].weather[0].icon)} alt="" />
                 <h2>{weatherdata[16].weather[0].description}</h2>
-                <h1>{(weatherdata[16].main.temp-273.15).toFixed(0)}°c</h1>
+                <h1 className='weather-temp'>{(weatherdata[16].main.temp-273.15).toFixed(0)}°c</h1>
             </div>
             </div>
 
@@ -79,7 +79,7 @@ const Weather = () => {
                 <h2>{ weekday[new Date(weatherdata[24].dt_txt).getDay()]}</h2>
                 <img src={iconUrlFromCode(weatherdata[24].weather[0].icon)} alt="" />
                 <h2>{weatherdata[24].weather[0].description}</h2>
-                <h1>{(weatherdata[24].main.temp-273.15).toFixed(0)}°c</h1>
+                <h1 className='weather-temp'>{(weatherdata[24].main.temp-273.15).toFixed(0)}°c</h1>
             </div>
             </div>
 
@@ -91,7 +91,7 @@ const Weather = () => {
                 <h2>{ weekday[new Date(weatherdata[32].dt_txt).getDay()]}</h2>
                 <img src={iconUrlFromCode(weatherdata[32].weather[0].icon)} alt="" />
                 <h2>{weatherdata[32].weather[0].description}</h2>
-                <h1>{(weatherdata[32].main.temp-273.15).toFixed(0)}°c</h1>
+                <h1 className='weather-temp'>{(weatherdata[32].main.temp-273.15).toFixed(0)}°c</h1>
             </div>
             </div>
         </div>
