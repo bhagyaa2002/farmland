@@ -8,6 +8,7 @@ import { collection, getDocs, onSnapshot } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import Loder from "../Loder/Loder";
 import { useNavigate } from "react-router";
+import Footer from "../../Component/Footer/Footer";
 
 const Addpendingcrop = () => {
   const ref=collection(db,"pending crops")
@@ -383,6 +384,7 @@ const convertBackToOrganicFertilizer = (formattedOrganicFertilizer = []) => {
     <>
     {
       cropdata?
+      <>
       <div className='addcontanier'>
       <Nav />
       <h1>CrowdSourcing</h1>
@@ -877,6 +879,8 @@ const convertBackToOrganicFertilizer = (formattedOrganicFertilizer = []) => {
       </div>
 
     </div>
+    
+    </>
     :<Loder/>
     }
      

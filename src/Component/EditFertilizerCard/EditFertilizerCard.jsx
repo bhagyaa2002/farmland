@@ -152,7 +152,7 @@ const EditFertilizerModel = ({open,onClose,data,id}) => {
                 value={fertilizercat}
                 onChange={(e)=>{setFertilizerCat(e.target.value)}}
                 >
-                <MenuItem value={"Fertilizer"}>Fertilizere</MenuItem>
+                <MenuItem value={"Fertilizer"}>Fertilizer</MenuItem>
                 <MenuItem value={"Seeds"}>Seeds</MenuItem>
                 <MenuItem value={"Pestisides"}>Pestisides</MenuItem>
                 <MenuItem value={"Equipment"}>Equipment</MenuItem>

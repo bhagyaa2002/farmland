@@ -12,6 +12,7 @@ import { useUserAuth } from "../../context/UserAuthContext";
 import {collection,onSnapshot} from "firebase/firestore"
 import {db} from "../../config/firebase"
 import Loder from '../Loder/Loder'
+import Footer from "../../Component/Footer/Footer";
 
 const AdminCropmarket = () => {
     const[open,setOpen]=useState(false)
@@ -88,7 +89,7 @@ const AdminCropmarket = () => {
       </div>
      </>:<Loder/>}      
     <CropModel open={open} onClose={()=>{setOpen(false)}} type="crop"/>
-
+    
     </div>
     </>
   )

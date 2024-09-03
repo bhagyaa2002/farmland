@@ -14,6 +14,7 @@ import { useUserAuth } from "../../context/UserAuthContext";
 import Loder from '../Loder/Loder';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../../config/firebase';
+import Footer from "../../Component/Footer/Footer";
 
 
 function Cropdec() {
@@ -231,6 +232,7 @@ const ref=collection(db,"crops")
           </div>
         </div>
         </div>:<Loder/>}
+        
     </div>
   )
 }

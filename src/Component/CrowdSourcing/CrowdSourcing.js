@@ -3,9 +3,11 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Nav from "../nav/Nav";
 import { MicNone } from "@mui/icons-material";
+import Footer from "../../Component/Footer/Footer";
 
 export default function CrowdSourcing() {
   return (
+    <>
     <div>
       <Nav />
       <div
@@ -95,6 +97,9 @@ export default function CrowdSourcing() {
           </div>
         </Box>
       </div>
+      
     </div>
+    
+    </>
   );
 }

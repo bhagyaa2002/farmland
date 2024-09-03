@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useUserAuth } from "../../context/UserAuthContext";
 import Nav from '../nav/Nav';
 import "./Addcrop.scss";
+import Footer from "../../Component/Footer/Footer";
 
 const Addcrop = () => {
   const { addPendingCrop } = useUserAuth();
@@ -742,7 +743,7 @@ const Addcrop = () => {
         <h4>Submit</h4>
 
       </div>
-
+      
     </div>
   )
 }

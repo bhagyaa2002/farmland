@@ -16,6 +16,8 @@ import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../../config/firebase';
 import Loder from '../Loder/Loder';
 import Spinner from '../Spinner/Spinner';
+import Footer from "../../Component/Footer/Footer";
+
 
 const capitalizeFirstLetter = (str) => {
   if (!str) return '';

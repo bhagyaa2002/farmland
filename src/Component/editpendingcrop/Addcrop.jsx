@@ -8,6 +8,7 @@ import { collection, getDocs, onSnapshot } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import Loder from "../Loder/Loder";
 import { useNavigate } from "react-router";
+import Footer from "../../Component/Footer/Footer";
 
 const Addpendingcrop = () => {
   const ref=collection(db,"pending crops")
@@ -155,7 +156,7 @@ const Addpendingcrop = () => {
             <h4>Submit</h4>
 
         </div>
-
+      
     </div>
     :<Loder/>
     }

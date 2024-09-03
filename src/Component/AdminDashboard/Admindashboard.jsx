@@ -8,7 +8,7 @@ import { collection, onSnapshot } from 'firebase/firestore'
 import Loder from '../Loder/Loder';
 import { useUserAuth } from "../../context/UserAuthContext";
 import { useNavigate } from "react-router";
-
+import Footer from "../../Component/Footer/Footer";
 
 const Admindashboard = () => {
   const ref=collection(db,"pending crops")
@@ -51,6 +51,7 @@ const Admindashboard = () => {
  }
 
   return (
+    <>
     <div className='dashContainer'>
       <Nav/>
       <h1>Add Crop Request</h1>
@@ -113,8 +114,10 @@ const Admindashboard = () => {
 
 
       </div>
-
+      
     </div>
+    
+    </>
   )
 }
 

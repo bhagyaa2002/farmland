@@ -29,6 +29,7 @@ import { db } from '../../config/firebase';
 import {useNavigate} from 'react-router'
 import Weather from '../../Component/Weather/Weather';
 import axios from 'axios';
+import Footer from "../../Component/Footer/Footer";
 
 
 
@@ -154,6 +155,7 @@ const changecat = (cat) =>{
           </div>
 
         </div>
+        <Footer/>
       </>
       :<Loder/>}
 
