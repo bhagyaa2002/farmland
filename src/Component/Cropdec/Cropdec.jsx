@@ -59,7 +59,7 @@ const ref=collection(db,"crops")
 
   
   return (
-    
+    <>
     <div className='cropdecmain'>
         <Nav />
         {crop?<div>
@@ -234,6 +234,8 @@ const ref=collection(db,"crops")
         </div>:<Loder/>}
         
     </div>
+    <Footer />
+    </>
   )
 }
 
