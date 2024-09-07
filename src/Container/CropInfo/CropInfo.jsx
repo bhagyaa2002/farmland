@@ -88,7 +88,10 @@ const changecat = (cat) =>{
             <div className='cropdiv'>
               {
                 cropdata?.map((crop) => (
+                  // <div key={crop.id} className="crop-card">
+                
                   <Crop id={crop.id} crop={crop} categorie={categorie}/>
+                  // </div>
                 )
                 )
               }
@@ -134,7 +137,9 @@ const changecat = (cat) =>{
             <div className='cropdivdemand'>
               {
                 cropdata?.map((crop) => (
+                  // <div key={crop.id} className="crop-cards">
                   <Crop id={crop.id} crop={crop} categorie="Long Term Crop"/>
+                  //  </div>
                 )
                 )
               }

@@ -33,7 +33,7 @@ const Admindashboard = () => {
   console.log("line 33",cropdata[i]);
     await addCrop(cropdata[i])
     console.log(id);
-    // await deletePendingcrop({cropname:cropdata[i].cropname})
+    await deletePendingcrop({cropname:cropdata[i].cropname})
     const updatedData = await getPendingCrop();
     console.log(updatedData);
     setCropdata(updatedData);  
@@ -47,6 +47,10 @@ const Admindashboard = () => {
  const view=(id)=>{
   console.log("line 49",id);
   navigate(`/editpendingcrop/${id}`)
+ }
+ const deleteCrop= async(cropname)=>{
+   await deletePendingcrop({cropname:cropname})
+  //  window.location.reload();
  }
 
   return (
@@ -93,7 +97,7 @@ const Admindashboard = () => {
               <div className='btndash' onClick={()=>publish(i,crop._id)}  style={{backgroundColor:"green"}}>
                Publish
               </div>
-              <div className='btndash'  style={{backgroundColor:"red"}}>
+              <div className='btndash' onClick={()=>deleteCrop(crop.cropname)}  style={{backgroundColor:"red"}}>
                Delete
               </div>
     

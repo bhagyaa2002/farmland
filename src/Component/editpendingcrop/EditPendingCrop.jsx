@@ -387,7 +387,7 @@ const convertBackToOrganicFertilizer = (formattedOrganicFertilizer = []) => {
       
       await addCrop(data);
      
-      await deletePendingcrop(cropname)
+      await deletePendingcrop({cropname:cropname})
       navigate(`/cropinfo`)
 
     }
