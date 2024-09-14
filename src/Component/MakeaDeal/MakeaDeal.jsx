@@ -105,7 +105,7 @@ const MakeaDeal = ({id,open,onClose,data}) => {
                     <div className='modalbtn'>
                         <div className='btnclose' onClick={()=>handelclose()}>
                             <Icon icon="eva:close-outline" color="white" width="24" height="24" />
-                            <h2>close</h2>
+                            <h2>Close</h2>
                         </div>
                         <div className="btnsell" onClick={()=>handelsell()}>
                         <Icon icon="ep:sell" color="white" width="24" height="24" />
