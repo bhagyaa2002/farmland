@@ -22,7 +22,7 @@ const Fertilizercard = ({id,data,categori,type}) => {
     </div>
 
     <div className='cardheadding'>
-      <h1>{data.name} - </h1>
+      <h1 style={{height:"50px"}}>{data.name} - </h1>
       <h1>{data.quantity}</h1>
     </div>
 

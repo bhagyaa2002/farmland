@@ -111,12 +111,12 @@ const EditCropModel = ({open,onClose,data,id}) => {
             onChange={(e)=>{
               
                 const value = e.target.value;
-                const numValue = Number(value);
-                if (value === "" || numValue === 0) {
+                // const numValue = Number(value);
+                if (value === "" ) {
                   setErrorMessage("Value should be greater than 0")
                   setQuantity("");
                 } 
-                else if (numValue > 0) {
+                else if (value !== "") {
                   setQuantity(value);
                   setErrorMessage("")
                 }

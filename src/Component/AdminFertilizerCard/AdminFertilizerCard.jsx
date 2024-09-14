@@ -34,7 +34,7 @@ if(data.owner!=user.shop) return null
         </div>
 
         <div className='admincardheaddingfer'>
-          <h1>{data.name} - </h1>
+          <h1 style={{height:"50px"}}>{data.name} - </h1>
           <h1>{data.quantity}</h1>
         </div>
 

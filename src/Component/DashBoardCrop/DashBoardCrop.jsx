@@ -105,28 +105,49 @@ const DashBoardCrop = () => {
              data = data
              marketcrop = marketcrop
              ferdata = ferdata
-      
-
-             await setCroporder(data.length)
-             await setFertilizerorder(ferdata.length)
+          
+             var cropOrder=0;
+             data.map((d)=>{
+              if(user.shop===d.owner){
+               cropOrder=cropOrder+1;
+              }
+           })
+           var fertilizerOrder=0;
+           await ferdata.map((fer)=>{
+            if(user.shop===fer.owner){
+              fertilizerOrder=fertilizerOrder+1;
+            }
+           })
+           console.log(fertilizerOrder);
+           
+           
+             await setCroporder(cropOrder)
+             await setFertilizerorder(fertilizerOrder)
              
              var pay=0
              data.map((d)=>{
+                if(user.shop===d.owner){
                  pay =pay+d.Total
+                }
              })
              setPayout(pay)
 
              pay=0
              await ferdata.map((fer)=>{
+              if(user.shop===fer.owner){
                  pay=pay+fer.Total
-                
+              }
              })
              setFerpay(pay)
-
-            await setTrans(data.map((document) => document))
-            await setFertrans(ferdata.map((document) => document))
+            // await setTrans(data);
+          console.log(ferdata);
+          console.log("Filtered Crop Transaction Data:", data.filter((document) => document.owner === user.shop));
+          console.log("Filtered Fertilizer Transaction Data:", ferdata.filter((document) => document.owner === user.shop));
+      
+            await setTrans(data.filter((document) => document.owner === user.shop));
+            await setFertrans(ferdata.filter((document) => document.owner === user.shop));
             await setCropMarket(marketcrop)
-            await console.log(trans);
+            await console.log(data);
 
         }
          getdata()
@@ -146,8 +167,8 @@ const DashBoardCrop = () => {
         rows={fertrans}
         getRowId ={(row) => row.transactionId}
         columns={columnsfer}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        pageSize={20}
+        rowsPerPageOptions={[5,10,20]}
         scrollbarSize={0}
         initialState={{
 
@@ -295,7 +316,7 @@ const DashBoardCrop = () => {
             </div>
         </div>
         <Footer/>
-        </> :<Loder/>}
+        </> :<>Nothing to show</>}
         
     </div>
   )

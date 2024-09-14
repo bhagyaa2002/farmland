@@ -98,12 +98,12 @@ const EditFertilizerModel = ({open,onClose,data,id}) => {
             sx={{width:"500px", marginTop:"10px"}}
             value={fertilizerquantity}
             onChange={(e)=>{const value = e.target.value;
-              const numValue = Number(value);
-            if (value === "" || numValue === 0) {
+              // const numValue = Number(value);
+            if (value === "") {
               setFertilizerErrorMessage("Value should be greater than 0")
               setFertilizerQuantity("");
             } 
-            else if (numValue > 0) {
+            else if (value !== "") {
               setFertilizerQuantity(value);
               setFertilizerErrorMessage("");
             }}}
