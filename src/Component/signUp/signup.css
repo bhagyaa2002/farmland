@@ -95,7 +95,7 @@ input[type="radio"] {
 }
 
 .signin-signup1 {
-  position: absolute;
+  position:relative;
   top: 52%;
   transform: translate(-50%, -50%);
   left: 75%;
@@ -106,7 +106,7 @@ input[type="radio"] {
   z-index: 5;
 }
 
-form {
+/* form {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -116,16 +116,38 @@ form {
   overflow: hidden;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
-}
+} */
 
 form.sign-up-form {
   opacity: 0;
   z-index: 1;
 }
 
-form.sign-in-form {
+form.sign-in-form1 {
   z-index: 2;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  flex-direction: column;
+  padding: 0rem 5rem;
+  transition: all 0.2s 0.7s;
+  overflow: hidden;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
 }
+.sign-in-form1 {
+  z-index: 2;
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+  flex-direction: column;
+  padding: 0rem 5rem;
+  transition: all 0.2s 0.7s;
+  overflow: hidden;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
 
 .title {
   font-size: 2.2rem;
@@ -133,28 +155,33 @@ form.sign-in-form {
   margin-bottom: 10px;
 }
 
-.input-field {
+.input-field1 {
   max-width: 380px;
   width: 100%;
   background-color: #f0f0f0;
   margin: 10px 0;
-  height: 55px;
+  height: 35px;
   border-radius: 55px;
   display: grid;
   grid-template-columns: 15% 85%;
   padding: 0 0.4rem;
   position: relative;
+  
 }
 
-.input-field i {
+.input-field1 i {
   text-align: center;
-  line-height: 55px;
+  line-height: 5px;
   color: #acacac;
   transition: 0.5s;
   font-size: 1.1rem;
+  
+}
+.custom-input::placeholder {
+  color: red; /* Set placeholder text color to red */
 }
 
-.input-field input {
+.input-field1 input {
   background: none;
   outline: none;
   border: none;
@@ -162,9 +189,10 @@ form.sign-in-form {
   font-weight: 600;
   font-size: 1.1rem;
   color: #333;
+  margin-left: 15px;
 }
 
-.input-field input::placeholder {
+.input-field1 input::placeholder {
   color: #aaa;
   font-weight: 500;
 }
@@ -435,4 +463,8 @@ input[type="radio"] {
     bottom: 28%;
     left: 50%;
   }
+}
+
+.btn-solid-signup{
+  margin-left: 30px;
 }
