@@ -1,14 +1,15 @@
 import { collection } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
+import { usePagination, useSortBy, useTable } from 'react-table';
 import Footer from "../../Component/Footer/Footer";
 import { db } from '../../config/firebase';
 import { useUserAuth } from "../../context/UserAuthContext";
-import Loder from '../Loder/Loder';
 import Nav from '../nav/Nav';
 import Progress from '../Progress/Progress';
 import './DashBoardCrop.scss';
-import { useTable, useSortBy, usePagination } from 'react-table';
-
+import { Icon } from '@iconify/react';
+import chevronLeft from '@iconify-icons/mdi/chevron-left';
+import chevronRight from '@iconify-icons/mdi/chevron-right';
 
 const capitalizeFirstLetter = (str) => {
   if (!str) return '';
@@ -321,11 +322,11 @@ const DashBoardCrop = () => {
                     </table>
                     {/* Pagination for Fertilizer Table */}
                     <div className="pagination">
-                      <button onClick={() => ferPreviousPage()} disabled={!canFerPreviousPage}>Previous</button>
+                      <button  style={{width:"80px", backgroundColor:"white"}} onClick={() => ferPreviousPage()} disabled={!canFerPreviousPage}><Icon style={{height:"30px", width:"60px",}} icon="mdi:chevron-left" /></button>
                       <span className="page-info">
                         Page {ferPageIndex + 1} of {ferPageOptions.length} | <strong>Total Fertilizer Transactions: {fertrans.length}</strong>
                       </span>
-                      <button style={{width:"80px"}} onClick={() => ferNextPage()} disabled={!canFerNextPage}>Next</button>
+                      <button style={{width:"80px", backgroundColor:"white"}} onClick={() => ferNextPage()} disabled={!canFerNextPage}><Icon style={{height:"30px", width:"60px"}} icon="mdi:chevron-right" /></button>
                     </div>
                   </div>
 
@@ -367,11 +368,11 @@ const DashBoardCrop = () => {
                     </table>
                     {/* Add Pagination */}
                     <div className="pagination">
-                      <button onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</button>
+                      <button style={{width:"80px", backgroundColor:"white"}}  onClick={() => previousPage()} disabled={!canPreviousPage}><Icon style={{height:"30px", width:"60px",}} icon="mdi:chevron-left" /></button>
                       <span className="page-info">
                         Page {pageIndex + 1} of {pageOptions.length} | <strong>Total Crop Transactions: {rows.length}</strong>
                       </span>
-                      <button style={{width:"80px"}} onClick={() => nextPage()} disabled={!canNextPage}>Next</button>
+                      <button style={{width:"80px", backgroundColor:"white"}} onClick={() => nextPage()} disabled={!canNextPage}><Icon style={{height:"30px", width:"60px"}} icon="mdi:chevron-right" /></button>
                     </div>
                   </div>
 

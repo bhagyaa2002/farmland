@@ -397,10 +397,10 @@ table tr:hover {
 }
 
 .pagination button {
-  padding: 5px 10px;
+  padding: 0px 0px;
   margin: 0 5px;
   background-color: rgba(20, 74, 5, 0.7);
-  color: white;
+  color: rgba(20, 74, 5, 0.7);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -408,6 +408,7 @@ table tr:hover {
 
 .pagination button[disabled] {
   background-color: #ddd;
+  color: rgba(209, 209, 209, 0.7) ;
   cursor: not-allowed;
 }
 
@@ -440,7 +441,7 @@ table tr:hover {
   
   .menu button {
     display: block;
-    padding: 8px 12px;
+    padding: 0px 0px;
     border: none;
     background: none;
     cursor: pointer;
