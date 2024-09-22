@@ -409,7 +409,7 @@ table tr:hover {
 .pagination button[disabled] {
   background-color: #ddd;
   color: rgba(209, 209, 209, 0.7) ;
-  cursor: not-allowed;
+  cursor:auto;
 }
 
 .pagination .page-info {

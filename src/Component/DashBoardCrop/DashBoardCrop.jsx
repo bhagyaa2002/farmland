@@ -8,6 +8,7 @@ import Nav from '../nav/Nav';
 import Progress from '../Progress/Progress';
 import './DashBoardCrop.scss';
 import { Icon } from '@iconify/react';
+import Loder from "../Loder/Loder";
 import chevronLeft from '@iconify-icons/mdi/chevron-left';
 import chevronRight from '@iconify-icons/mdi/chevron-right';
 
@@ -277,7 +278,8 @@ const DashBoardCrop = () => {
 
 
   if (loading) {
-    return <div>Loading...</div>;  // You can replace this with a spinner component or custom loader
+    // return <div>Loading...</div>;
+   return <Loder/>// You can replace this with a spinner component or custom loader
   }
   return (
     <div className='dashboard_main'>
