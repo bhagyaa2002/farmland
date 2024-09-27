@@ -24,6 +24,7 @@ const CropModel = ({open,onClose,type}) => {
   const[fertilizername,setFertilizername]=useState("")
   const[fertilizerimage,setFertilizerImage]=useState()
   const[fertilizerquantity,setFertilizerQuantity]=useState("")
+  const[fertilizerstock,setFertilizerStock]=useState("")
   const[fertilizerate,setFertilizerRate]=useState("")
   const[fertilizerofferrate,setFertilizerOfferate]=useState("")
   const[fertilizercat,setFertilizerCat]=useState("")
@@ -33,12 +34,13 @@ const CropModel = ({open,onClose,type}) => {
   const[errorMessage2,setErrorMessage2]=useState("")
   const[errorMessage3,setErrorMessage3]=useState("")
   const[errorMessage4,setErrorMessage4]=useState("")
+  
   const[fertilizerErrorMessage,setFertilizerErrorMessage]=useState("")
   const[fertilizerErrorMessage1,setFertilizerErrorMessage1]=useState("")
   const[fertilizerErrorMessage2,setFertilizerErrorMessage2]=useState("")
   const[fertilizerErrorMessage3,setFertilizerErrorMessage3]=useState("")
   const[fertilizerErrorMessage4,setFertilizerErrorMessage4]=useState("")
-
+  const[fertilizerErrorMessage5,setFertilizerErrorMessage5]=useState("")
   const { addCropMarket,user,addFertilizerMarket,getCropMarket,getFertilizerMarket } =useUserAuth();
   const navigate  = useNavigate()
 
@@ -60,10 +62,18 @@ const CropModel = ({open,onClose,type}) => {
       return;
     }
     setFertilizerErrorMessage("")
+   
+    if(fertilizerstock==""){
+      setFertilizerErrorMessage5("Please enter the value.")
+      return;
+    }
+    setFertilizerErrorMessage5("")
+
     if(fertilizerate==""){
       setFertilizerErrorMessage1("Please enter the value.")
       return;
     }
+   
     setFertilizerErrorMessage1("")
     if(fertilizerofferrate==""){
       setFertilizerErrorMessage2("Please enter the value.")
@@ -82,6 +92,7 @@ const CropModel = ({open,onClose,type}) => {
           url:url,
           name:fertilizername,
           quantity:fertilizerquantity,
+          NoOfItemsAvailable:fertilizerstock,
           mrp:fertilizerate,
           offerPrice:fertilizerofferrate,
           categori:fertilizercat,
@@ -97,6 +108,7 @@ const CropModel = ({open,onClose,type}) => {
     setFertilizername("")
     setFertilizerImage(null)
     setFertilizerQuantity("")
+    setFertilizerStock("")
     setFertilizerRate("")
     setFertilizerOfferate("")
     setFertilizerCat("")
@@ -128,6 +140,7 @@ const CropModel = ({open,onClose,type}) => {
       setErrorMessage1("Please enter the value.")
       return;
     }
+   
     setErrorMessage1("")
     if(offerrate==""){
       setErrorMessage2("Please enter the value.")
@@ -221,6 +234,27 @@ const CropModel = ({open,onClose,type}) => {
             }}
             />
             {fertilizerErrorMessage &&(<h6 className="errorMessage">{fertilizerErrorMessage}</h6>)}
+
+            <TextField  
+            label="Stock Availability" 
+            variant="outlined" 
+            sx={{width:"500px", marginTop:"10px"}}
+            value={fertilizerstock}
+            onChange={(e)=>{
+              const value = e.target.value;
+              // const numValue = Number(value);
+            if (value === "" ) {
+              setFertilizerErrorMessage5("Value should be greater than 0")
+              setFertilizerStock("");
+            } 
+            else if (value !== "") {
+              setFertilizerStock(value);
+              setFertilizerErrorMessage5("");
+            }
+            }}
+            />
+            {fertilizerErrorMessage5 &&(<h6 className="errorMessage">{fertilizerErrorMessage5}</h6>)}
+
             <TextField  
             label="Market Rate of Fertilizer" 
             variant="outlined" 

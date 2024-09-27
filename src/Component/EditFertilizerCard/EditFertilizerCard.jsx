@@ -9,6 +9,7 @@ import {useNavigate} from 'react-router'
 const EditFertilizerModel = ({open,onClose,data,id}) => {
     const[fertilizername,setFertilizername]=useState(data.name)
     const[fertilizerquantity,setFertilizerQuantity]=useState(data.quantity)
+    const[fertilizerstock,setFertilizerStock]=useState(data.NoOfItemsAvailable)
     const[fertilizerate,setFertilizerRate]=useState(data.mrp)
     const[fertilizerofferrate,setFertilizerOfferate]=useState(data.offerPrice)
     const[fertilizercat,setFertilizerCat]=useState(data.categori)
@@ -19,7 +20,7 @@ const EditFertilizerModel = ({open,onClose,data,id}) => {
   const[fertilizerErrorMessage1,setFertilizerErrorMessage1]=useState("")
   const[fertilizerErrorMessage2,setFertilizerErrorMessage2]=useState("")
   const[fertilizerErrorMessage4,setFertilizerErrorMessage4]=useState("")
-
+  const[fertilizerErrorMessage5,setFertilizerErrorMessage5]=useState("")
 
 
   const handleChange = async() =>{
@@ -28,16 +29,18 @@ const EditFertilizerModel = ({open,onClose,data,id}) => {
         setFertilizerErrorMessage4("Please enter a fertilizer name.")
       return;
       }
-      setFertilizerErrorMessage4("")
-      if(fertilizerquantity==""){
-        setFertilizerErrorMessage("Please enter the value.")
-        return;
-      }
       setFertilizerErrorMessage("")
-      if(fertilizerate==""){
-        setFertilizerErrorMessage1("Please enter the value.")
-        return;
-      }
+   
+    if(fertilizerstock==""){
+      setFertilizerErrorMessage5("Please enter the value.")
+      return;
+    }
+    setFertilizerErrorMessage5("")
+
+    if(fertilizerate==""){
+      setFertilizerErrorMessage1("Please enter the value.")
+      return;
+    }
       setFertilizerErrorMessage1("")
       if(fertilizerofferrate==""){
         setFertilizerErrorMessage2("Please enter the value.")
@@ -50,6 +53,7 @@ const EditFertilizerModel = ({open,onClose,data,id}) => {
           _id:id,
             name:fertilizername,
             quantity:fertilizerquantity,
+            NoOfItemsAvailable:fertilizerstock,
             mrp:fertilizerate,
             offerPrice:fertilizerofferrate,
             categori:fertilizercat,
@@ -59,6 +63,7 @@ const EditFertilizerModel = ({open,onClose,data,id}) => {
         await getFertilizerMarket();
         setFertilizername("")
         setFertilizerQuantity("")
+        setFertilizerStock("")
         setFertilizerRate("")
         setFertilizerOfferate("")
         setFertilizerCat("")
@@ -109,6 +114,25 @@ const EditFertilizerModel = ({open,onClose,data,id}) => {
             }}}
             />
             {fertilizerErrorMessage &&(<h6 className="errorMessage">{fertilizerErrorMessage}</h6>)}
+            <TextField  
+            label="Stock Availability" 
+            variant="outlined" 
+            sx={{width:"500px", marginTop:"10px"}}
+            value={fertilizerstock}
+            onChange={(e)=>{
+              const value = e.target.value;
+              // const numValue = Number(value);
+            if (value === "" ) {
+              setFertilizerErrorMessage5("Value should be greater than 0")
+              setFertilizerStock("");
+            } 
+            else if (value !== "") {
+              setFertilizerStock(value);
+              setFertilizerErrorMessage5("");
+            }
+            }}
+            />
+            {fertilizerErrorMessage5 &&(<h6 className="errorMessage">{fertilizerErrorMessage5}</h6>)}
             <TextField  
             label="Market Rate of Fertilizer" 
             variant="outlined" 
