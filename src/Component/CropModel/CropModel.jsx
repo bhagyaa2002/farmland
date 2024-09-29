@@ -319,12 +319,12 @@ const CropModel = ({open,onClose,type}) => {
                 value={fertilizertype}
                 onChange={(e)=>{setFertilizertype(e.target.value)}}
                 >
-                {fertilizercat==="Fertilizer"&&<MenuItem value={"Organic"}>Organic</MenuItem>}
-                {fertilizercat==="Fertilizer"&&<MenuItem value={"Chemical"}>Chemical</MenuItem>}
-                <MenuItem value={"Normal"}>Normal</MenuItem>
-                <MenuItem value={"Hybrid"}>Hybrid</MenuItem>
-                <MenuItem value={"With subsidy"}>With subsidy</MenuItem>
-                <MenuItem value={"Without subsidy"}>Without subsidy</MenuItem>
+                {(fertilizercat==="Fertilizer" || fertilizercat==="Pestisides")&&<MenuItem value={"Organic"}>Organic</MenuItem>}
+                {(fertilizercat==="Fertilizer" || fertilizercat==="Pestisides")&&<MenuItem value={"Chemical"}>Chemical</MenuItem>}
+                {fertilizercat==="Seeds" &&<MenuItem value={"Normal"}>Normal</MenuItem>}
+                {fertilizercat==="Seeds" &&<MenuItem value={"Hybrid"}>Hybrid</MenuItem>}
+                {fertilizercat==="Equipment" &&<MenuItem value={"With subsidy"}>With subsidy</MenuItem>}
+                {fertilizercat==="Equipment" &&<MenuItem value={"Without subsidy"}>Without subsidy</MenuItem>}
 
                 </Select>
             </FormControl>

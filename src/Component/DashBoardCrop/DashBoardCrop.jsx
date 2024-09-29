@@ -386,27 +386,27 @@ const DashBoardCrop = () => {
             <div className='dashboard_right'>
               <div className='dashprofit'>
                 <div className='profit'>
-                  <h1>Profit</h1>
+                  <h1 style={{fontWeight:"bolder"}}>Profit</h1>
                   <h2>₹{(payout + ferpay) * 10 / 100}</h2>
                 </div>
                 <div className='totalordercount'>
-                  <h1>Orders count</h1>
+                  <h1 style={{fontWeight:"bolder"}}>Orders count</h1>
                   <h2>{croporder + fertilizerorder}</h2>
                 </div>
               </div>
               <div className='dashpayout'>
                 <div className='totalpickupcount'>
-                  <h1>Crop Pickup</h1>
+                  <h1 style={{fontWeight:"bolder"}}>Crop Pickup</h1>
                   <h2>{croporder}</h2>
                 </div>
                 <div className='payout'>
-                  <h1>Farmer Payout</h1>
+                  <h1 style={{fontWeight:"bolder"}}>Farmer Payout</h1>
                   <h2>₹{payout}</h2>
                 </div>
 
               </div>
               <div className='dashprogress'>
-                <h2>Procurement Progress</h2>
+                <h2 >Procurement Progress</h2>
                 {cropMarket.map((crop, i) => {
                   if (crop.owner != user.shop || i > 6) return <div />
                   var req = crop.quantity
