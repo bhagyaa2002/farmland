@@ -4,6 +4,8 @@ import Footer from "../../Component/Footer/Footer";
 import { useUserAuth } from "../../context/UserAuthContext";
 import Nav from '../nav/Nav';
 import "./Addcrop.scss";
+import { Tooltip } from 'antd';
+import InfoIcon from '@mui/icons-material/Info';
 
 const Addcrop = () => {
   const { addPendingCrop } = useUserAuth();
@@ -423,8 +425,14 @@ const Addcrop = () => {
                   <span className='textinputLeftTimeframe1'>Step {index + 1}</span>
                   <div className='multiinput'>
                     <div className='textinputwithHeading'>
+                    <div style={{marginBottom:"10px"}}>
                       <span className='textinputLeftTimeframe'>Timeframe</span>
-                      <input type="text" placeholder='eg: 0-10days' style={{ width: "140px" }} value={organic.name} onChange={(e) => handleOrganicFerilizerChange(index, 'name', e.target.value)} />
+                      <Tooltip title="Provide timeframe in days for short term crops and in months for long term crops.">
+                        
+    <button className="info-btn"><InfoIcon fontSize='small' sx={{width:"15px",height:"15px"}}/></button>
+  </Tooltip>
+  </div>
+                      <input type="text" style={{ width: "140px" }} value={organic.name} onChange={(e) => handleOrganicFerilizerChange(index, 'name', e.target.value)} />
                     </div>
                     <div className='textinputwithHeading'>
                       <span className='textinputRightForFertilizer'>Description</span>
@@ -466,7 +474,9 @@ const Addcrop = () => {
     
       <div className='textinput'>
         <div className='textinputwithHeading'>
-          <span className='textinputLeft1'>Chemical Fertilizer</span>
+          <div><span className='textinputLeft1'>Chemical Fertilizer</span> 
+          
+          </div>
           {chemicalFerilizer.map((chemical, index) => (
             <div key={index} className='textinput'>
               <div className='textinputwithHeading'>
@@ -474,8 +484,14 @@ const Addcrop = () => {
                   <span className='textinputLeftTimeframe1'>Step {index + 1}</span>
                   <div className='multiinput'>
                     <div className='textinputwithHeading'>
+                      <div style={{marginBottom:"10px"}}>
                       <span className='textinputLeftTimeframe'>Timeframe</span>
-                      <input type="text" placeholder='eg: 0-10days' style={{ width: "140px" }} value={chemical.name} onChange={(e) => handleChemicalFerilizerChange(index, 'name', e.target.value)} />
+                      <Tooltip title="Provide timeframe in days for short term crops and in months for long term crops.">
+                        
+    <button className="info-btn"><InfoIcon fontSize='small' sx={{width:"15px",height:"15px"}}/></button>
+  </Tooltip>
+  </div>
+                      <input type="text" style={{ width: "140px" }} value={chemical.name} onChange={(e) => handleChemicalFerilizerChange(index, 'name', e.target.value)} />
                     </div>
                     <div className='textinputwithHeading'>
                       <span className='textinputRightForFertilizer'>Description</span>

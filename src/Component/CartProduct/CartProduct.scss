@@ -1,0 +1,104 @@
+.cart-product {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid #d1d5db; /* Slate 300 */
+  
+    .image-container {
+      padding: 12px;
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+  
+    .product-image {
+      height: 112px; /* 28 * 4 */
+      width: 160px; /* 40 * 4 */
+      object-fit: cover;
+    }
+  
+    .product-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+  
+      .product-header {
+        display: flex;
+        justify-content: space-between;
+  
+        .product-name {
+          font-size: 1.125rem; /* text-lg */
+          font-weight: 600; /* semi-bold */
+          color: #374151; /* Slate 600 */
+          text-transform: capitalize;
+        }
+  
+        .delete-icon {
+          cursor: pointer;
+          color: #374151; /* Slate 700 */
+          transition: color 0.3s;
+  
+          &:hover {
+            color: #ef4444; /* Red 500 */
+          }
+        }
+      }
+  
+      .product-category {
+        color: #6b7280; /* Slate 500 */
+        font-weight: 500;
+      }
+  
+      .product-price {
+        font-size: 1rem;
+        font-weight: bold;
+  
+        .currency {
+          color: #ef4444; /* Red 500 */
+        }
+      }
+  
+      .product-footer {
+        display: flex;
+        justify-content: space-between;
+  
+        .quantity-controls {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+  
+          .quantity-btn {
+            padding: 8px;
+            background-color: #d1d5db; /* Slate 300 */
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+  
+            &:hover {
+              background-color: #9ca3af; /* Slate 400 */
+            }
+          }
+  
+          .quantity {
+            font-weight: 600;
+          }
+        }
+  
+        .total-price {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-weight: bold;
+          color: #374151; /* Slate 700 */
+  
+          .currency {
+            color: #ef4444; /* Red 500 */
+          }
+        }
+      }
+    }
+  }
+  

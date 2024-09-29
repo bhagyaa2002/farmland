@@ -28,7 +28,6 @@ const BuyDone = () => {
 
   useEffect(() => {
     const getdata=async()=>{
-      
       const searchParams = new URLSearchParams(location.search);
         const sessionId = searchParams.get('session_id');
         console.log("line 27",sessionId);
@@ -39,15 +38,19 @@ const BuyDone = () => {
     const res= await axios.post(url, transaction);
     console.log("line 33",res.data.data);
     setData(res.data.data)
-    const ans=res.data.data
-    const senddata = {
-      quantity:ans.quantity,
-      farmerName:ans.farmerName,
-      owner:ans.owner,
-      email:ans.email
-  }
-    await buyFertilizer(ans.id,senddata)
+    const ids = res.data.data.ids;
+
+ids.forEach(async (ans) => {
+    await buyFertilizer(ans.id);
+});
+const email = res.data.data.email
+console.log("line 47", email);
+
+const url1 = 'http://localhost:8080/deleteCartByUser';
+ await axios.post(url1, {email});
     }
+    
+
    getdata()
   }, [])
 

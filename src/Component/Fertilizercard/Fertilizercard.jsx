@@ -105,7 +105,7 @@ const Fertilizercard = ({ id, data, categori, type }) => {
 
         <div className="cardbutton" style={{ marginTop: "30px" }}>
           <div className="btnrightfertilizer" onClick={() => setOpen(true)}>
-            <h4>Buy</h4>
+            <h4>Add To Cart</h4>
           </div>
         </div>
       </div>

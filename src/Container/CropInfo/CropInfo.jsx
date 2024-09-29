@@ -37,6 +37,7 @@ import Footer from "../../Component/Footer/Footer";
 
 function CropInfo() {
 const[categorie,setCategorie]=useState("Short Term Crop")
+const[title,setTitle]=useState("Short Term Crop")
 const[cropdata,setCropdata]=useState()
 const ref=collection(db,"crops")
 const navigate  = useNavigate()
@@ -67,8 +68,10 @@ useEffect(() => {
 
 
 
-const changecat = (cat) =>{
+const changecat = (cat,title) =>{
   setCategorie(cat);
+  setTitle(title);
+
 }
 
   return (
@@ -84,7 +87,7 @@ const changecat = (cat) =>{
 
        <div className='cropshort'>
             {/* <h2>/{categorie}</h2> */}
-            <h2>Recommended {categorie}</h2>
+            <h2>Recommended {title}</h2>
             <div className='cropdiv'>
               {
                 cropdata?.map((crop) => (
@@ -101,19 +104,19 @@ const changecat = (cat) =>{
         <div className='croplong'>
            <h2>Featured Categories</h2>
             <div className='cropdiv'>
-              <div onClick={()=>changecat("Short Term Crop")}>
+              <div onClick={()=>changecat("Short Term Crop","Short Term Crop")}>
               <Categories name="Short Term Crops" icon={shrotterm} />
               </div>
-              <div onClick={()=>changecat("Long Term Crop")}>
+              <div onClick={()=>changecat("Long Term Crop", "Long Term Crop")}>
               <Categories name="Long term Crops" icon={longterm}/>
               </div>
-              <div onClick={()=>changecat("Horticulture")}>
+              <div onClick={()=>changecat("Horticulture","Horticulture")}>
               <Categories name="Horticulture" icon={hydroponics}/>
               </div>
-              <div onClick={()=>changecat("Long Term Crop")}> 
+              <div onClick={()=>changecat("Long Term Crop", "Cash Crops")}> 
               <Categories name="Cash Crops" icon={cotton}/>
               </div>
-              <div onClick={()=>changecat("Short Term Crop")}>
+              <div onClick={()=>changecat("Short Term Crop", "Food Crops")}>
               <Categories name="Food Crops " icon={corn_}/>
               </div>
               {/* <div onClick={()=>navigate("/cropmarket")}>

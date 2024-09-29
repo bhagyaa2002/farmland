@@ -8,13 +8,15 @@ import { loadStripe } from "@stripe/stripe-js";
 import Backdrop from '@mui/material/Backdrop';
 import axios from 'axios';
 import Loder from '../Loder/LoderPayment';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
 const BuyFertilizer = ({ id, open, onClose, data }) => {
     console.log(new Date().getDate());
     const [kg, setKg] = useState(0)
-    const { user, makeDeal, getCropMarket, buyFertilizer } = useUserAuth();
+    const { user, addToCart,getCartItemsLength, makeDeal, getCropMarket, buyFertilizer } = useUserAuth();
     const [isProcessing, setIsProcessing] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -43,8 +45,8 @@ const BuyFertilizer = ({ id, open, onClose, data }) => {
             name: data.name,
             offerPrice: data.offerPrice,
             quantity: kg,
-            farmerName: user.user_name,
-            email: user.email
+            farmerName: user.user_name, 
+            email: user.email 
         }
         const res = await axios.post(url, transaction);
 
@@ -58,6 +60,27 @@ const BuyFertilizer = ({ id, open, onClose, data }) => {
 
     }
 
+    const handleCart = async () =>{
+        const senddata = {
+            quantity:kg,
+            farmerName:user.user_name,
+            owner:data.owner,
+            email:user.email 
+        }
+        await addToCart(id,senddata)
+        toast.success('Added to cart successfully!', {
+            position: "top-center",
+            autoClose: 2000 // Toast will disappear after 2 seconds
+        });
+        await getCartItemsLength(user.email);
+
+       setKg(0)
+        // handelclose();
+        setTimeout(() => {
+            handelclose();
+        }, 2000); 
+    }   
+
     const handelclose = async () => {
         onClose()
     }
@@ -65,7 +88,7 @@ const BuyFertilizer = ({ id, open, onClose, data }) => {
     if (!open) return null
     return (
         <>
-        <div className='overlayfer'>
+        <div className='overlayfer'> 
             <div onClick={(e) => {
                 e.stopPropagation()
             }} className='modelcontainerfer'>
@@ -124,14 +147,14 @@ const BuyFertilizer = ({ id, open, onClose, data }) => {
                         </div>
                         {errorMessage && <h6 style={{ color: 'red' }}>{errorMessage}</h6>}
                         <div className='modalbtnfer'>
-                            <div className='btnclosefer' onClick={() => handelclose()}>
+                            {/* <div className='btnclosefer' onClick={() => handelclose()}>
                                 <Icon icon="eva:close-outline" color="white" width="24" height="24" />
                                 <h2>Close</h2>
-                            </div>
+                            </div> */}
                         
-                             <div className="btnsellfer" onClick={()=>handelsell()}>
+                             <div className="btnsellfer" onClick={()=>handleCart()}>
                                     <Icon icon="icons8:buy" color="white" width="24" height="24" />
-                                    <h2>Buy</h2>
+                                    <h2>Add To Cart</h2>
                                     </div>
                               
                         </div>
@@ -140,7 +163,7 @@ const BuyFertilizer = ({ id, open, onClose, data }) => {
             </div>
             {isProcessing && <Loder />} 
         </div>
-        
+        <ToastContainer/>
         </>
     )
 }

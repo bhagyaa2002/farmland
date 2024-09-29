@@ -154,6 +154,7 @@ import Editpendingcrop from "./Component/editpendingcrop/EditPendingCrop";
 // import Footer from "./Component/Footer/Footer";
 import NewsForm from "./Component/NewsForm/NewsForm";
 import SchemeForm from "./Component/SchemeForm/SchemeForm";
+import Cart from "./Component/Cart/Cart";
 
 function App() {
   const { user } = useUserAuth();
@@ -184,6 +185,7 @@ function App() {
           {user && <Route path="/sucess/:id" exact element={<Done />} />}
           {user && <Route path="/buysucess" exact element={<BuyDone />} />}
           {user && <Route path="/cancel" exact element={<Cancel />} />}
+          {user && <Route path="/cart" exact element={<Cart/>}/>}
           {user && (
             <Route path="/orders" exact element={<OrderHistoryCard />} />
           )}

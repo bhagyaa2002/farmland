@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import "./Navstyle.scss";
 import { useNavigate } from "react-router";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
 import { Icon } from "@iconify/react";
@@ -22,7 +23,19 @@ function Nav() {
   let location = useLocation().pathname;
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-  const { user, getCrop, logout, setUser } = useUserAuth();
+  const { user, getCrop, logout, setUser,getCartItemsLength, cartItemLength } = useUserAuth();
+  const [cartLength, setCartLength] = useState(-1);
+
+
+  useEffect(() => {
+    const fetchCartItemsLength = async () => {
+      const itemLength= await getCartItemsLength(user.email)
+      setCartLength(itemLength);
+    };
+
+    fetchCartItemsLength();
+  }, []);
+
   const Logout = async () => {
     await logout();
     await setUser(false);
@@ -110,6 +123,36 @@ function Nav() {
         {capitalizeFirstLetter(user.city)}, {capitalizeFirstLetter(user.location)}
         </h3>
       </div>
+
+      {user.user_type == "Farmer" && (
+      <div onClick={
+        ()=>{
+          navigate("/cart");
+        }} className="cartIcon">
+          
+      <ShoppingCartIcon sx={{fontSize: 30, color: "#fff",position:"relative",top:"15px"}}/>
+      {location.match("/cart") ? <hr style={{color:"white", position:"relative",top:"10px",height:"4px", backgroundColor:"white"}}/> : <div />}
+      {/* <p style={{position:"relative",top:"-25px",left:"20px", fontSize:"12px",color:"white", backgroundColor:"red", height:"20px",width:"20px",  borderRadius:"20px",paddingBottom:"20px"}}>10</p>
+       */}
+       <p style={{
+    position: "relative",
+    top: "-25px",
+    left: "20px",
+    fontSize: "10px", // Reduced font size
+    color: "white",
+    backgroundColor: "red",
+    height: "16px", // Circle height
+    width: "16px", // Circle width
+    borderRadius: "50%", // Make it a circle
+    display: "flex", // Use flexbox for centering
+    alignItems: "center", // Center vertically
+    justifyContent: "center", // Center horizontally
+    padding: "0" // Remove padding
+}}>
+    {cartItemLength}
+</p>
+
+      </div>)}
 
 
       

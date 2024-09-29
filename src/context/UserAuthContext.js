@@ -32,6 +32,7 @@ export function UserAuthContextProvider({ children }) {
     const newsCollectionRef = collection(db, "news")
     const articleCollectionRef = collection(db, "article")
     const [cropMarketData, setCropMarket] = useState({})
+    const [cartItemLength, setCartItemLength] = useState(0)
     
 
 
@@ -412,7 +413,38 @@ export function UserAuthContextProvider({ children }) {
        await axios.post(url1,transaction);
     }
 
-    const buyFertilizer = async (id, data) => {
+    const buyFertilizer = async (id) => {
+        //const fertilizerInfo = await (await getDoc(doc(db, "fertilizer market", id))).data()
+        console.log("line 328",id);
+             const url = 'http://localhost:8080/fetchCartById';
+        const res= await (await axios.post(url, {id})).data.data[0]
+        console.log("line 420",res);
+       
+    //     const fertilizerInfo = await getOneFertilizerMarket(id);
+        const date = new Date();
+        const seconds = Math.floor(date.getTime() / 1000).toString();
+    const nanoseconds = (date.getMilliseconds() * 1e6).toString();
+    const timestamp = {seconds,nanoseconds};
+        const transaction = {
+            transactionId: res._id,
+            cropName: res.cropName,
+            buyerName: res.buyerName,
+            price: res.price,
+            Quantity: res.Quantity,
+            Total: res.Total,
+            timestamp: timestamp,
+            owner: res.owner,
+            email:res.email,
+            url:res.url
+        }
+        console.log("line 439",transaction);
+        
+        const url1 = 'http://localhost:8080/addFertilizerOrderHistory';
+        axios.post(url1, transaction)
+       // await addDoc(fertilizerDashboardCollectionRef, transaction)
+    }
+
+    const addToCart = async (id, data) => {
         //const fertilizerInfo = await (await getDoc(doc(db, "fertilizer market", id))).data()
         console.log("line 328",id);
         const fertilizerInfo = await getOneFertilizerMarket(id);
@@ -432,10 +464,18 @@ export function UserAuthContextProvider({ children }) {
             email:data.email,
             url:fertilizerInfo.url
         }
-        const url = 'http://localhost:8080/addFertilizerOrderHistory';
+        const url = 'http://localhost:8080/addCart';
         axios.post(url, transaction)
        // await addDoc(fertilizerDashboardCollectionRef, transaction)
     }
+    const getCartItemsLength = async (email)=>{
+        const url = 'http://localhost:8080/fetchCartByUser';
+        const res=(await axios.post(url, {email})).data.data
+        console.log("line 473",res.length);
+        setCartItemLength(res.length);
+    }
+
+    
 
     const getCropTransaction = async () => {
         // const data=await getDocs(cropDashboardCollectionRef)
@@ -509,7 +549,7 @@ export function UserAuthContextProvider({ children }) {
     }
 
     }, []);
-    return <userAuthContext.Provider value={{ user, setUser, logIn, forgotPassword, addUser, addCrop, addPendingCrop, getCrop, getPendingCrop, cropdata, addCropMarket, getCropMarket, cropMarketData, updateCropMarket, deleteCropMarket, addFertilizerMarket, getFertilizerMarket, deleteFertilizerMarket, updateFertilizerMarket, makeDeal, buyFertilizer, getCropTransaction, getFertilizerTransaction, addScheme, getScheme, addArticle, getArticle, addNews, getNews, logout, deletePendingcrop, fetchFertilizerOrderHistoryByUser }}>{children}</userAuthContext.Provider>
+    return <userAuthContext.Provider value={{ user,cartItemLength, setUser, logIn, forgotPassword, addUser, addCrop, addPendingCrop, getCrop, getPendingCrop, cropdata, addCropMarket, getCropMarket, cropMarketData, updateCropMarket, deleteCropMarket, addFertilizerMarket, getFertilizerMarket, deleteFertilizerMarket, updateFertilizerMarket, makeDeal, buyFertilizer, getCropTransaction, getFertilizerTransaction, addScheme, getScheme, addArticle, getArticle, addNews, getNews, logout, deletePendingcrop, fetchFertilizerOrderHistoryByUser, addToCart, getCartItemsLength }}>{children}</userAuthContext.Provider>
 }
 
 
