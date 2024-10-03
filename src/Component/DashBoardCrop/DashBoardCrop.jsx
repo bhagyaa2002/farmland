@@ -193,7 +193,7 @@ const DashBoardCrop = () => {
   const fertilizerColumns = React.useMemo(() => [
     {
       Header: 'Transaction Date',
-      accessor: row => new Date((row.timestamp.seconds * 1000) + (row.timestamp.nanoseconds / 1e6)).toLocaleString("en-US", {
+      accessor: row => new Date((row.timestamp.seconds * 1000) + (row.timestamp.nanoseconds / 1e6)).toLocaleString("en-GB", {
         timeZone: "Asia/Kolkata",
       }),
     },
@@ -207,7 +207,7 @@ const DashBoardCrop = () => {
   const cropColumns = React.useMemo(() => [
     {
       Header: 'Transaction Date',
-      accessor: row => new Date((row.timestamp.seconds * 1000) + (row.timestamp.nanoseconds / 1e6)).toLocaleString("en-US", {
+      accessor: row => new Date((row.timestamp.seconds * 1000) + (row.timestamp.nanoseconds / 1e6)).toLocaleString("en-GB", {
         timeZone: "Asia/Kolkata",
       }),
     },

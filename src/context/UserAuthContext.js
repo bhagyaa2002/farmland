@@ -411,7 +411,7 @@ export function UserAuthContextProvider({ children }) {
         // await addDoc(cropDashboardCollectionRef, transaction)
         const url1 = 'http://localhost:8080/addCropOrderHistory';  
        await axios.post(url1,transaction);
-       deleteCropMarket(id)
+    //    deleteCropMarket(id)
     }
 
     const buyFertilizer = async (id) => {

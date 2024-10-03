@@ -7,9 +7,9 @@ import {useNavigate} from 'react-router'
 
 
 const EditCropModel = ({open,onClose,data,id}) => {
-
+  console.log("line 10",data);
   const[btnclick,setBtnclick] = useState(false)
-
+  const[reamining,setReamining] = useState(data.reamining);
   const[cropname,setCropname]=useState(data.name)
   const[image,setImage]=useState()
   const[quantity,setQuantity]=useState(data.quantity)
@@ -32,6 +32,8 @@ const EditCropModel = ({open,onClose,data,id}) => {
 
 
   const handleChange = async() =>{
+    
+    
     if(cropname===""){
       setErrorMessage4("Please enter a cropname.")
     return;
@@ -63,6 +65,7 @@ const EditCropModel = ({open,onClose,data,id}) => {
           offerPrice:offerrate,
           requiredtime:requiredtype,
           croptype:croptype,
+          reamining:reamining+quantity
         };
         updateCropMarket(id,data);
         await getCropMarket();

@@ -28,12 +28,12 @@ function Card(prop) {
     return null
   }
 
-  // if(data.reamining<=0) 
-  // {
-  //   deleteCropMarket(Id)
-  //   return null
+  if(data.reamining<=0) 
+  {
+    // deleteCropMarket(Id)
+    return null
 
-  // }
+  }
 
   if(type2.length>1)
   {
