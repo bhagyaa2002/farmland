@@ -597,6 +597,8 @@ export default function Signup() {
   const validate = (values) => {
     const errors = {};
     const regex = /^\d{10}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).+$/;
+
 
     if (!values.user_name) errors.user_name = "Username is required!";
     if (!regex.test(values.phoneNo)) errors.phoneNo = "This is not a valid phone number!";
@@ -606,6 +608,12 @@ export default function Signup() {
       errors.password = { message: "Password must be more than 4 characters!", type: "too_short" };
     } else if (values.password.length > 10) {
       errors.password = { message: "Password cannot exceed more than 10 characters!", type: "too_long" };
+    }
+    else if (!passwordRegex.test(values.password)) {
+      errors.password = {
+        message: "Password needs upper, lower, and a special character.",
+        type: "invalid_format",
+      };
     }
     if (!values.city) errors.city = "City is required!";
     if (!values.location) errors.location = "State is required!";
@@ -758,7 +766,8 @@ export default function Signup() {
         ? "78px"
         : formErrors.password.type === "too_long"
         ? "35px"
-        : "190px"
+        : formErrors.password.type === "invalid_format"?
+        "17px":"190px"
     }/>}
 
               <div className="input-field1">

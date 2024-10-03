@@ -183,7 +183,7 @@ const EditCropModel = ({open,onClose,data,id}) => {
                 onChange={(e)=>{setCroptype(e.target.value)}}
                 >
                 <MenuItem value={"Vegitable"}>Vegitable</MenuItem>
-                <MenuItem value={"Fruits"}>Furutes</MenuItem>
+                <MenuItem value={"Fruits"}>Fruits</MenuItem>
                 </Select>
             </FormControl>
 

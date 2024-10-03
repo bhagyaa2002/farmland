@@ -89,13 +89,20 @@ const MakeaDeal = ({id,open,onClose,data}) => {
                         onChange={(e)=>
                         {const value = e.target.value;
                             const numValue = Number(value);
+                            console.log("line 92:",data.reamining);
+                            
+                           
                             if (value === "" || numValue === 0) {
-                              setErrorMessage("Value should be greater than 0.")
+                              setErrorMessage("Value should be greater than 10.")
                               setKg("");
                             } 
                             else if (numValue > 0) {
                                 setKg(value);
                               setErrorMessage("")
+                            }
+                            if(data.reamining<numValue){
+                                setKg("");
+                                setErrorMessage("The seller required only "+data.reamining +"Kg.")
                             }
                             }}
                         type='number'
