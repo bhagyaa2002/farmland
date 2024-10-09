@@ -284,8 +284,7 @@ const DashBoardCrop = () => {
   return (
     <div className='dashboard_main'>
       <Nav />
-      {trans.length > 0 && cropMarket && fertrans ?
-        <>
+      
           <div className='dashboard_body'>
             <div className='dashboard_left'>
 
@@ -408,7 +407,7 @@ const DashBoardCrop = () => {
               <div className='dashprogress'>
                 <h2 >Procurement Progress</h2>
                 {cropMarket.map((crop, i) => {
-                  if (crop.owner != user.shop || i > 6) return <div />
+                  if (crop.owner != user.shop) return <div />
                   var req = crop.quantity
                   var comp = crop.quantity - crop.reamining
                   return (
@@ -431,7 +430,7 @@ const DashBoardCrop = () => {
             </div>
           </div>
           <Footer />
-        </> : <>Nothing to show</>}
+        
 
     </div>
   )

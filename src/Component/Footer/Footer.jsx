@@ -49,10 +49,19 @@ const Footer = () => {
       <div className="footer-section">
         <p className="footer-section-connect">Connect With Us</p>
         <div className="footer-icons">
-          <img className="footerImage" src={insta} alt="Instagram" />
-          <img className="footerImage" src={whatsapp} alt="WhatsApp" />
-          <img className="footerImage" src={twitter} alt="Twitter" />
-          <img className="footerImage" src={mail} alt="Mail" />
+        <a href="https://www.instagram.com/farm_land_agri/" target="_blank" rel="noopener noreferrer">
+      <img className="footerImage" src={insta} alt="Instagram" />
+    </a>
+    <a href="https://wa.me/8281045212?text=Hello,%20I%20have%20a%20query%20regarding%20your%20services" target="_blank" rel="noopener noreferrer">
+  <img className="footerImage" src={whatsapp} alt="WhatsApp" />
+</a>
+
+    <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+      <img className="footerImage" src={twitter} alt="Twitter" />
+    </a>
+    <a href="mailto:bhagyaammenadka@gmail.com" target="_blank" rel="noopener noreferrer">
+      <img className="footerImage" src={mail} alt="Mail" />
+    </a>
         </div>
       </div>
     </div>
