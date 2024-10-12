@@ -52,7 +52,7 @@ const Footer = () => {
         <a href="https://www.instagram.com/farm_land_agri/" target="_blank" rel="noopener noreferrer">
       <img className="footerImage" src={insta} alt="Instagram" />
     </a>
-    <a href="https://wa.me/8281045212?text=Hello,%20I%20have%20a%20query%20regarding%20your%20services" target="_blank" rel="noopener noreferrer">
+    <a href="https://wa.me/+918281045212?text=Hello,%20I%20have%20a%20query%20regarding%20your%20services" target="_blank" rel="noopener noreferrer">
   <img className="footerImage" src={whatsapp} alt="WhatsApp" />
 </a>
 
