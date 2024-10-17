@@ -59,7 +59,7 @@ const Footer = () => {
     <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
       <img className="footerImage" src={twitter} alt="Twitter" />
     </a>
-    <a href="mailto:bhagyaammenadka@gmail.com" target="_blank" rel="noopener noreferrer">
+    <a href="mailto:190985@sdmcujire.in" target="_blank" rel="noopener noreferrer">
       <img className="footerImage" src={mail} alt="Mail" />
     </a>
         </div>

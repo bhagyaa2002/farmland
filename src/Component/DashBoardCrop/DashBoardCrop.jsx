@@ -195,6 +195,7 @@ const DashBoardCrop = () => {
       Header: 'Transaction Date',
       accessor: row => new Date((row.timestamp.seconds * 1000) + (row.timestamp.nanoseconds / 1e6)).toLocaleString("en-GB", {
         timeZone: "Asia/Kolkata",
+        hour12: true,
       }),
     },
     { Header: 'Fetilizer Name', accessor: 'cropName' },
@@ -209,6 +210,7 @@ const DashBoardCrop = () => {
       Header: 'Transaction Date',
       accessor: row => new Date((row.timestamp.seconds * 1000) + (row.timestamp.nanoseconds / 1e6)).toLocaleString("en-GB", {
         timeZone: "Asia/Kolkata",
+        hour12: true,
       }),
     },
     { Header: 'Crop Name', accessor: 'cropName' },
